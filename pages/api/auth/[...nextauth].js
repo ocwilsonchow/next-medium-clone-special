@@ -1,12 +1,11 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from 'next-auth';
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { SanityAdapter, SanityCredentials } from "../../../../../../dist";
+import { SanityAdapter, SanityCredentials } from '../../../../../../dist';
 
 import { client } from "../../../lib/sanity";
-import { NextApiRequest, NextApiResponse } from "next";
 
-export default NextAuth({
+const options = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -24,8 +23,11 @@ export default NextAuth({
       },
     }),
   ],
+  secret: 'any-secret-word',
   session: {
-    jwt: true,
-  },
+        strategy: 'jwt'
+    },
   adapter: SanityAdapter(client),
-});
+};
+
+export default NextAuth(options);
