@@ -1,4 +1,4 @@
-import { Text, VStack, IconButton, Avatar } from "@chakra-ui/react";
+import { Text, VStack, IconButton, Avatar, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import {
@@ -13,6 +13,7 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const Leftbar = () => {
   const menuItems = [
@@ -48,6 +49,8 @@ const Leftbar = () => {
     },
   ];
 
+   const { data: session } = useSession()
+
   return (
     <VStack
       borderRightWidth="1px"
@@ -69,6 +72,8 @@ const Leftbar = () => {
         ))}
       </VStack>
       <VStack>
+        {session && <Button>Sign out</Button>}
+        {!session && <Button>Sign in</Button>}
         <ColorModeSwitcher />
       </VStack>
     </VStack>
