@@ -1,4 +1,4 @@
 import { signUpHandler } from 'next-auth-sanity';
-import { client } from 'your/sanity/client';
+import { client } from '../../../lib/sanity';
 
 export default signUpHandler(client);
