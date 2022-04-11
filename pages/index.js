@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <Flex>
-      <Text fontWeight="medium" fontSize="4xl">Home Page</Text>
+      <Text fontWeight="bold" fontSize="4xl">Home Page</Text>
     </Flex>
   )
 }

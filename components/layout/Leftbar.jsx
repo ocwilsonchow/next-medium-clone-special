@@ -1,4 +1,4 @@
-import { Text, VStack, IconButton } from "@chakra-ui/react";
+import { Text, VStack, IconButton, Avatar } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import {
@@ -23,6 +23,12 @@ const Leftbar = () => {
       link: "/",
     },
     {
+      name: "Notes",
+      fillIcon: <AiFillFileText />,
+      outlineIcon: <AiOutlineFileText />,
+      link: "/me/notes",
+    },
+    {
       name: "Notifications",
       fillIcon: <AiFillNotification />,
       outlineIcon: <AiOutlineNotification />,
@@ -35,12 +41,6 @@ const Leftbar = () => {
       link: "/me/saved",
     },
     {
-      name: "Notes",
-      fillIcon: <AiFillFileText />,
-      outlineIcon: <AiOutlineFileText />,
-      link: "/me/notes",
-    },
-    {
       name: "Create",
       fillIcon: <AiFillEdit />,
       outlineIcon: <AiOutlineForm />,
@@ -51,22 +51,26 @@ const Leftbar = () => {
   return (
     <VStack
       borderRightWidth="1px"
-      p={4}
+      p={2}
       h="100vh"
-      justifyContent="center"
+      justifyContent="space-evenly"
       spacing={6}
       w="100px"
     >
-      {menuItems.map((item, i) => (
-        <Link  key={i} href={item.link}>
-          <IconButton
-            icon={item.outlineIcon}
-            variant="ghost"
-            fontSize="20px"
-          />
-        </Link>
-      ))}
-      <ColorModeSwitcher />
+      <VStack spacing={6}>
+        {menuItems.map((item, i) => (
+          <Link key={i} href={item.link}>
+            <IconButton
+              icon={item.outlineIcon}
+              variant="ghost"
+              fontSize="20px"
+            />
+          </Link>
+        ))}
+      </VStack>
+      <VStack>
+        <ColorModeSwitcher />
+      </VStack>
     </VStack>
   );
 };
