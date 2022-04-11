@@ -23,10 +23,10 @@ const Leftbar = () => {
       link: "/",
     },
     {
-      name: "Notes",
+      name: "Blog",
       fillIcon: <AiFillFileText />,
       outlineIcon: <AiOutlineFileText />,
-      link: "/me/notes",
+      link: "/me/blog",
     },
     {
       name: "Notifications",
@@ -44,7 +44,7 @@ const Leftbar = () => {
       name: "Create",
       fillIcon: <AiFillEdit />,
       outlineIcon: <AiOutlineForm />,
-      link: "/new-note",
+      link: "/me/new-note",
     },
   ];
 

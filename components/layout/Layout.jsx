@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
           <Topbar />
           <Flex p={4}>{children}</Flex>
         </Flex>
-        <Box display={{base: "none", md: "flex"}}>
+        <Box display={{base: "none", md: "flex"}} >
           <Rightbar />
         </Box>
       </Flex>
