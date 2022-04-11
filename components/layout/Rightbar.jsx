@@ -13,12 +13,8 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-
 const Rightbar = () => {
   const { data: session } = useSession();
-
-
-
 
   return (
     <VStack borderLeftWidth="1px" p={8} h="100vh" spacing={6} w="300px">
