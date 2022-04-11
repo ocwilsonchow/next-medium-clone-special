@@ -13,7 +13,6 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { useSession, signIn, signOut } from "next-auth/react"
 
 const Leftbar = () => {
   const menuItems = [
@@ -49,8 +48,6 @@ const Leftbar = () => {
     },
   ];
 
-   const { data: session } = useSession()
-
   return (
     <VStack
       borderRightWidth="1px"
@@ -72,8 +69,6 @@ const Leftbar = () => {
         ))}
       </VStack>
       <VStack>
-        {session && <Button>Sign out</Button>}
-        {!session && <Button>Sign in</Button>}
         <ColorModeSwitcher />
       </VStack>
     </VStack>
