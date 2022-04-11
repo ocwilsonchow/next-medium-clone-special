@@ -20,7 +20,7 @@ const Rightbar = () => {
     <VStack borderLeftWidth="1px" p={8} h="100vh" spacing={6} w="350px">
       <Flex h="100%" flexDir="column" justifyContent="space-between" w="full">
         <InputGroup>
-          <InputLeftElement pointerEvents="none" children={<SearchIcon />} />
+          <InputLeftElement pointerEvents="none"><SearchIcon /></InputLeftElement>/
           <Input type="tel" placeholder="Search" />
         </InputGroup>
         <Flex flexDir="column">
