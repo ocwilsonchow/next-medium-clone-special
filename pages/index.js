@@ -124,7 +124,7 @@ export default function Home() {
         </Text>
         <Flex flexWrap="wrap">
           {skills.map((skill, i) => (
-            <Button p={4} mr={3} my={1} bg="none" variant="outline">
+            <Button key={i} p={4} mr={3} my={1} bg="none" variant="outline">
               {skill}
             </Button>
           ))}
@@ -142,7 +142,7 @@ export default function Home() {
         </Text>
         <Flex flexWrap="wrap">
           {learnings.map((tech, i) => (
-            <Button p={4} mr={3} my={1} bg="none" variant="outline">
+            <Button key={i} p={4} mr={3} my={1} bg="none" variant="outline">
               {tech}
             </Button>
           ))}
