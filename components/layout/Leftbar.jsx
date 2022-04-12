@@ -60,7 +60,7 @@ const Leftbar = () => {
 
   return (
     <VStack
-      borderRightWidth="1px"
+      borderRightWidth="0.5px"
       p={2}
       h="100vh"
       justifyContent="space-evenly"

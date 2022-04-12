@@ -14,6 +14,7 @@ export const ColorModeSwitcher = (props) => {
       aria-label={`Switch to ${text} mode`}
       onClick={toggleColorMode}
       icon={<SwitchIcon />}
+      color="cyan.400"
       {...props}
       transition="all ease 0.2s"
     />

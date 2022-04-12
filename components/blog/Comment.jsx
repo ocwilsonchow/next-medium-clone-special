@@ -20,15 +20,15 @@ const Comments = ({ comments }) => {
         <Text fontWeight="thin">No comment on this post yet.</Text>
       )}
       {comments?.map((comment, i) => (
-        <Flex key={i} flexDir="column" borderLeftWidth="5px" p={3} my={1}>
-          <Text fontSize="md">{comment.comment}</Text>
-          <Text fontSize="xs" color="gray.500" isTruncated>
+        <Flex key={i} flexDir="column" borderWidth="0.5px" borderRadius="md" p={4} my={1}>
+          <Text fontSize="md" fontWeight="medium">{comment.comment}</Text>
+          <Text fontSize="xs" color="gray.500">
             {moment(comment.publishedAt).calendar()} by {comment.username}
           </Text>
         </Flex>
       ))}
       <FormControl py={4}>
-        <Textarea />
+        <Textarea borderWidth="0.5px"/>
       </FormControl>
       <Button>Comment</Button>
     </Flex>
