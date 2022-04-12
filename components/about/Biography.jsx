@@ -19,7 +19,7 @@ const Biography = () => {
         I finally became a registered pharmacist.
       </Text>
       <Text mb={6} fontSize="lg">
-        My working experience in pharmacy sparked my interest in software development. I worked at one of the largest healthcare companies in the UK, only to discovered many of their software applications were fairly out-of-date. It was slow and lack UI and UX design. It inspired me to build applications one day, which could effectively improve patients' treatment journey, and empower more efficient provision of healthcare services.
+        My working experience in pharmacy sparked my interest in software development. I worked at one of the largest healthcare companies in the UK, only to discovered many of their software applications were fairly out-of-date. It was slow and lack UI and UX design. It inspired me to build applications one day, which could effectively improve patient treatment journey, and empower more efficient provision of healthcare services.
       </Text>
       <Text mb={6} fontSize="lg">
         During my full-time job as a <strong className="text-blue-400">trainee pharmacist</strong>, I spent most of my spare time and weekends learning coding. I began with taking a full stack <strong className="text-blue-400">Udemy</strong> course taught by Angela Yu. Then I started to build projects following Youtube tutorials.
