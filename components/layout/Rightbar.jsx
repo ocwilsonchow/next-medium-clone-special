@@ -17,7 +17,7 @@ const Rightbar = () => {
   const { data: session } = useSession();
 
   return (
-    <VStack borderLeftWidth="1px" p={8} h="100vh" spacing={6} w="350px">
+    <VStack borderLeftWidth="1px" p={8}  spacing={6} w="300px">
       <Flex h="100%" flexDir="column" justifyContent="space-between" w="full">
         <InputGroup>
           <InputLeftElement pointerEvents="none"><SearchIcon /></InputLeftElement>/

@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
         <Box display={{base: "none", md: "flex"}}>
           <Leftbar />
         </Box>
-        <Flex flexDir="column" w="full" alignItems="center"  px="2">
+        <Flex flexDir="column" w="full" alignItems="center" h="100vh" px="2" overflow="auto">
           <Topbar />
           <Flex p={4} w="85%" >{children}</Flex>
         </Flex>

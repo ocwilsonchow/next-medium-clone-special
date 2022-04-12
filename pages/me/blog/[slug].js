@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-  Flex,
-  Text,
-  Img,
-  useColorModeValue,
-  Grid,
-  GridItem,
-  VStack,
-} from "@chakra-ui/react";
+import { Flex, Text, Img, HStack, VStack } from "@chakra-ui/react";
 import {
   apiGetBlogPost,
   apiGetBlogPostIds,
@@ -28,7 +20,7 @@ function urlFor(source) {
 }
 
 export default function PageShowBlogPost({ post, posts }) {
-  console.log(post)
+  console.log(post);
   const router = useRouter();
 
   if (router.isFallback) return <div>Loading...</div>;
@@ -45,15 +37,38 @@ export default function PageShowBlogPost({ post, posts }) {
   };
 
   return (
-    <VStack alignItems="start" spacing={4}>
-      <Text fontWeight="bold" fontSize="4xl">
-        {post?.title}
-      </Text>
-      <Text fontSize="xs" color="gray.500" mb={4}>
-        {moment(post.publishedAt).calendar()}
-      </Text>
-      <PortableText value={post.body} components={components} />
-    </VStack>
+    <Flex justifyContent="center" w="full">
+      <VStack alignItems="start" maxW="800px" p={8}>
+        <HStack>
+          <Img
+            src={urlFor(post?.authorImage)}
+            boxSize="40px"
+            borderRadius="full"
+            objectFit="cover"
+            alt=""
+            mr={1}
+          />
+          <Flex flexDir="column">
+            <Text fontSize="sm" fontWeight="bold">{post?.author}</Text>
+            <Text fontSize="xs" color="gray.500">
+              {moment(post.publishedAt).calendar()}
+            </Text>
+          </Flex>
+        </HStack>
+        <Text fontWeight="bold" fontSize="4xl">
+          {post?.title}
+        </Text>
+        <Img
+          src={post?.mainImage?.asset?.url}
+          objectFit="cover"
+          alt=""
+          py={4}
+        />
+        <VStack spacing={6}>
+          <PortableText value={post.body} components={components} />
+        </VStack>
+      </VStack>
+    </Flex>
   );
 }
 
