@@ -14,9 +14,9 @@ const Typewritter = () => {
         "I love building beautiful and interactive web applications",
         "React.js and Next.js are one of my favorite technologies",
         "This website is built with Next.js and Sanity",
-        "Contact me for work! ",
+        "Please reach out to me anytime!",
         "Check out my website! ",
-        "I am a full stack web developer"
+        "I am a full stack web developer. Love frontend engineering"
       ]}
       typeSpeed={100}
     />
