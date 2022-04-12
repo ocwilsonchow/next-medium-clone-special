@@ -6,6 +6,7 @@ import {
   Flex,
   HStack,
   IconButton,
+  Tag,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -17,16 +18,30 @@ import {
   AiTwotoneMail,
   AiFillInstagram,
 } from "react-icons/ai";
+import Slider from "../components/home/Slider";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
 });
 
+const skills = [
+  "React.js",
+  "Next.js 🔥",
+  "Blender ⚙️ ",
+  "Framer Motion",
+  "Chakra UI",
+  "UI Design 👀",
+  "Tailwind 💨",
+];
+const learnings = ["Three.js 🌟", "Redux", "RTK Query", "Graphql"];
+
 export default function Home() {
   return (
     <Flex flexDir="column" w="full" justifyContent="space-evenly">
-      <Center>
-        <Code>This website is still under development!</Code>
+      <Center p={4}>
+        <Code colorScheme="teal">
+          Bear with me, I am still building the site out!
+        </Code>
       </Center>
       <Box py="17%" w="full" h="500px">
         <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
@@ -39,6 +54,11 @@ export default function Home() {
       </Box>
 
       <Box py="100px" w="full" h="300px">
+        <Link href="/me/about">
+          <Button mb={2} colorScheme="twitter">
+            My Story 🌍
+          </Button>
+        </Link>
         <HStack py={4} mb={4} spacing={3}>
           <a
             href="https://github.com/ocwilsonchow/next-medium-clone-special"
@@ -97,9 +117,36 @@ export default function Home() {
             icon={<AiTwotoneMail />}
           />
         </HStack>
-        <Link href="/me/about">
-          <Button borderRadius="full">Read more about Wilson</Button>
-        </Link>
+      </Box>
+      <Box pb={20}>
+        <Text fontWeight="bold" fontSize="3xl" mb={4}>
+          Skills
+        </Text>
+        <Flex flexWrap="wrap">
+          {skills.map((skill, i) => (
+            <Button p={4} mr={3} my={1} bg="none" variant="outline">
+              {skill}
+            </Button>
+          ))}
+        </Flex>
+      </Box>
+      <Box pb={20}>
+        <Text fontWeight="bold" fontSize="3xl" mb={4}>
+          My favorite libraries
+        </Text>
+        <Slider />
+      </Box>
+      <Box pb={20}>
+        <Text fontWeight="bold" fontSize="3xl" mb={4}>
+          Technologies that I am learning and practising
+        </Text>
+        <Flex flexWrap="wrap">
+          {learnings.map((tech, i) => (
+            <Button p={4} mr={3} my={1} bg="none" variant="outline">
+              {tech}
+            </Button>
+          ))}
+        </Flex>
       </Box>
     </Flex>
   );

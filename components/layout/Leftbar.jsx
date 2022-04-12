@@ -70,15 +70,13 @@ const Leftbar = () => {
     >
       <VStack spacing={6}>
         {menuItems.map((item, i) => (
-          <Tooltip key={i} label={item.name} placement="right">
-            <Link href={item.link}>
-              <IconButton
-                icon={item.outlineIcon}
-                variant="ghost"
-                fontSize="20px"
-              />
-            </Link>
-          </Tooltip>
+          <Link key={i} href={item.link}>
+            <IconButton
+              icon={item.outlineIcon}
+              variant="ghost"
+              fontSize="20px"
+            />
+          </Link>
         ))}
       </VStack>
       <VStack>

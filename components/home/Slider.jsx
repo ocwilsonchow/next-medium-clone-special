@@ -1,45 +1,31 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Box, Text, Flex, useColorModeValue, Img } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Flex,
+  useColorModeValue,
+  Img,
+  Button,
+} from "@chakra-ui/react";
 
 const Slider = () => {
-  const projects = [
-    {
-      name: "React.js",
-      image: "",
-    },
-    {
-      name: "Next.js",
-      image: "",
-    },
-    {
-      name: "SWR",
-      image: "",
-    },
-    {
-      name: "Tailwind",
-      image: "",
-    },
-    {
-      name: "Chakra",
-      image: "",
-    },
-    {
-      name: "Framer Motion",
-      image: "",
-    },
-    {
-      name: "Framer Motion",
-      image: "",
-    },
-    {
-      name: "Framer Motion",
-      image: "",
-    },
-    {
-      name: "Framer Motion",
-      image: "",
-    },
+  const libraries = [
+    "SWR",
+    "Sanity",
+    "Chakra UI",
+    "Firebase",
+    "Algolia",
+    "Prisma",
+    "NextAuth",
+    "Socket.io",
+    "GraphCMS",
+    "Mapbox",
+    "JQuery",
+    "Yup",
+    "PayPal",
+    "Stripe",
+    "Supabase",
   ];
 
   const [width, setWidth] = useState(0);
@@ -55,22 +41,19 @@ const Slider = () => {
     <>
       <motion.div
         ref={carousel}
-        className="carousel cursor-grab overflow-hidden"
+        className="carousel cursor-grab overflow-hidden pb-2"
         whileTap={{ cursor: "grabbing" }}
       >
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
-          className="inner-carousel flex py-10"
+          className="inner-carousel flex"
         >
-          {projects.map((project, i) => (
-            <motion.div key={i} className="p-2 mr-2">
-              <Box boxSize="120px" p={4}  borderRadius="lg">
-                <Text fontSize="xl" fontWeight="bold">
-                  {project.name}
-                </Text>
-                <Img src={project.image || ""}/>
-              </Box>
+          {libraries.map((lib, i) => (
+            <motion.div key={i} className="mr-1 p-1">
+              <Button p={4} bg="none" variant="outline">
+                {lib}
+              </Button>
             </motion.div>
           ))}
         </motion.div>
