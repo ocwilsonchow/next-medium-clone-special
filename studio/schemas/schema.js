@@ -8,6 +8,7 @@ import post from "./post";
 import author from "./author";
 import user from "./user";
 import account from "./account";
+import comment from "./comment"
 
 export default createSchema({
   name: "default",
@@ -18,5 +19,6 @@ export default createSchema({
     blockContent,
     user,
     account,
+    comment
   ]),
 });

@@ -1,4 +1,4 @@
-import { Img, Flex, Text, LinkBox, HStack } from "@chakra-ui/react";
+import { Img, Flex, Text, LinkBox, HStack, Tag } from "@chakra-ui/react";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import moment from "moment";
@@ -23,11 +23,11 @@ const SinglePost = ({ post }) => {
       py={8}
       alignItems="center"
       cursor="pointer"
-      _hover={{ color: "blue.500" }}
+      _hover={{ color: "teal.400" }}
     >
       <Link href={`blog/${post.slug.current}`}>
         <HStack spacing={6}>
-          <Flex flexDir="column" >
+          <Flex flexDir="column">
             <HStack>
               <Img
                 src={urlFor(post?.authorImage)}
@@ -41,16 +41,30 @@ const SinglePost = ({ post }) => {
                 {moment(post.publishedAt).calendar()}
               </Text>
             </HStack>
-            <Text fontWeight="bold" fontSize={["xl","xl","2xl","2xl"]} my={2}>
+            <Text
+              fontWeight="bold"
+              fontSize={["xl", "xl", "2xl", "2xl"]}
+              my={2}
+            >
               {post.title}
             </Text>
-            <Text noOfLines="3" my={2} fontWeight="light" fontSize={["sm","sm","md","md"]}>
+            <Text
+              noOfLines="3"
+              my={2}
+              fontWeight="light"
+              fontSize={["sm", "sm", "md", "md"]}
+            >
               <PortableText value={post.body} />
             </Text>
+            <HStack mt={3}>
+              {post.tags?.map((tag) => (
+                <Tag borderRadius="full" fontWeight="light" fontSize="xs">{tag.label}</Tag>
+              ))}
+            </HStack>
           </Flex>
           <Img
             src={post?.mainImage?.asset?.url}
-            boxSize={["100px","100px","130px","150px"]}
+            boxSize={["100px", "100px", "130px", "150px"]}
             objectFit="cover"
             alt=""
             borderRadius="md"

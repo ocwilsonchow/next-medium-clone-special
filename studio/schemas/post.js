@@ -52,9 +52,7 @@ export default {
       title: "Tags",
       type: "tags",
       options: {
-        //Locks menu from creating new tags (defaults to false)
         frozen: true,
-        //Preset of tags (defaults to empty)
         preload: [
           { label: "Web Development", value: "web Development" },
           { label: "Blender", value: "blender" },
@@ -63,7 +61,6 @@ export default {
           { label: "React.js", value: "react.js" },
           { label: "Next.js", value: "next.js" },
         ],
-        //Closes menu after tag selected (defaults to true)
         closeMenuOnSelect: true,
       },
     },
