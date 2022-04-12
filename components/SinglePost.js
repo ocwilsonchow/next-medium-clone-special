@@ -57,8 +57,8 @@ const SinglePost = ({ post }) => {
               <PortableText value={post.body} />
             </Text>
             <HStack mt={3}>
-              {post.tags?.map((tag) => (
-                <Tag borderRadius="full" fontWeight="light" fontSize="xs">{tag.label}</Tag>
+              {post.tags?.map((tag, i) => (
+                <Tag key={i} borderRadius="full" fontWeight="light" fontSize="xs">{tag.label}</Tag>
               ))}
             </HStack>
           </Flex>
