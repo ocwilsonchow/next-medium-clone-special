@@ -40,30 +40,57 @@ export default function Home() {
 
       <Box py="100px" w="full" h="300px">
         <HStack py={4} spacing={3}>
-          <IconButton
-            fontSize="lg"
-            variant="outline"
-            rounded="full"
-            icon={<AiOutlineGithub />}
-          />
-          <IconButton
-            fontSize="lg"
-            variant="outline"
-            rounded="full"
-            icon={<AiFillFacebook />}
-          />
-          <IconButton
-            fontSize="lg"
-            variant="outline"
-            rounded="full"
-            icon={<AiFillInstagram />}
-          />
-          <IconButton
-            fontSize="lg"
-            variant="outline"
-            rounded="full"
-            icon={<AiFillYoutube />}
-          />
+          <a
+            href="https://github.com/ocwilsonchow/next-medium-clone-special"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconButton
+              icon={<AiOutlineGithub />}
+              fontSize="lg"
+              variant="outline"
+              borderRadius="full"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/ocwilsonchow/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconButton
+              fontSize="lg"
+              variant="outline"
+              rounded="full"
+              icon={<AiFillFacebook />}
+            />
+          </a>
+
+          <a
+            href="https://www.instagram.com/ocwilsonchow/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconButton
+              fontSize="lg"
+              variant="outline"
+              rounded="full"
+              icon={<AiFillInstagram />}
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/c/SLCHOW/featured"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            <IconButton
+              fontSize="lg"
+              variant="outline"
+              rounded="full"
+              icon={<AiFillYoutube />}
+            />
+          </a>
+
           <IconButton
             fontSize="lg"
             variant="outline"

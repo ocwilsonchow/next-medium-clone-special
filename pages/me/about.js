@@ -12,7 +12,7 @@ const PageAbout = () => {
   return (
     <Flex flexDir="column" py={6} maxW="800px" >
       <Text fontWeight="bold" fontSize="4xl">
-        Wilson's Story
+        Background Story
       </Text>
       <Biography />
       <TerminalCode/>

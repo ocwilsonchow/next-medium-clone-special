@@ -18,8 +18,8 @@ import {
   AiOutlineForm,
   AiFillEdit,
   AiOutlineHeart,
-  AiFillGithub,
-  AiFillTrophy,
+  AiTwotoneMail,
+  AiOutlineMail,
   AiOutlineTrophy,
   AiOutlineFire,
 } from "react-icons/ai";
@@ -47,9 +47,9 @@ const Leftbar = () => {
     },
     {
       name: "Favorites",
-      fillIcon: <AiOutlineHeart />,
-      outlineIcon: <AiOutlineHeart />,
-      link: "/me/favorites",
+      fillIcon: <AiTwotoneMail />,
+      outlineIcon: <AiOutlineMail />,
+      link: "/contact-wilson",
     },
     {
       name: "About",
@@ -70,8 +70,8 @@ const Leftbar = () => {
     >
       <VStack spacing={6}>
         {menuItems.map((item, i) => (
-          <Tooltip label={item.name} placement="right">
-            <Link key={i} href={item.link}>
+          <Tooltip key={i} label={item.name} placement="right">
+            <Link href={item.link}>
               <IconButton
                 icon={item.outlineIcon}
                 variant="ghost"

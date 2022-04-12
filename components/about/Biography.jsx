@@ -6,7 +6,7 @@ const Biography = () => {
     <Flex flexDir="column" py={10} fontWeight="light">
       <Text mb={6} fontSize="lg">
         Since I was a child, I started <strong className="text-blue-400">building</strong> things. At first I built all
-        sort of toys and "buildings" with legos. Then I started learning
+        sort of toys and models with legos. Then I started learning
         drawing, I particularly liked drawing architecture. After I entered high
         school, I became the captain of our video and photography team. I made a
         lot of videos and album for a variety of school events.
