@@ -114,7 +114,7 @@ export default function Home() {
           applications that help people live better lives.
         </Text>
         <Link href="/me/about">
-          <button class="px-3 py-2 rounded-full bg-blue-500 hover:bg-blue-600 shadow-xl shadow-cyan-500/50 text-white">
+          <button className="px-3 py-2 rounded-full bg-blue-500 hover:bg-blue-600 shadow-xl shadow-cyan-500/50 text-white">
             Read more
           </button>
         </Link>
