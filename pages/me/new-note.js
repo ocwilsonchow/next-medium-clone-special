@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Center, Flex, Text, VStack } from "@chakra-ui/react";
-import Editor from "../../components/Editor";
+
 
 const PageNewNote = () => {
 

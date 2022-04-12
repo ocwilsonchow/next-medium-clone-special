@@ -10,6 +10,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 
 import moment from "moment";
+import Comments from "../../../components/blog/Comment";
 
 const builder = imageUrlBuilder({
   projectId: "zmau43jq",
@@ -38,7 +39,7 @@ export default function PageShowBlogPost({ post, posts }) {
 
   return (
     <Flex justifyContent="center" w="full">
-      <VStack alignItems="start" maxW="800px" p={8}>
+      <VStack alignItems="start" maxW="800px" py={8} px={[0,0,6,12]}>
         <HStack>
           <Img
             src={urlFor(post?.authorImage)}
@@ -49,7 +50,9 @@ export default function PageShowBlogPost({ post, posts }) {
             mr={1}
           />
           <Flex flexDir="column">
-            <Text fontSize="sm" fontWeight="bold">{post?.author}</Text>
+            <Text fontSize="sm" fontWeight="bold">
+              {post?.author}
+            </Text>
             <Text fontSize="xs" color="gray.500">
               {moment(post.publishedAt).calendar()}
             </Text>
@@ -67,6 +70,7 @@ export default function PageShowBlogPost({ post, posts }) {
         <VStack spacing={6}>
           <PortableText value={post.body} components={components} />
         </VStack>
+        <Comments comments={post.relatedComments}/>
       </VStack>
     </Flex>
   );

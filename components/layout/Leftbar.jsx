@@ -11,6 +11,10 @@ import {
   AiOutlineForm,
   AiFillEdit,
   AiOutlineHeart,
+  AiFillGithub,
+  AiFillTrophy,
+  AiOutlineTrophy,
+  AiOutlineFire
 } from "react-icons/ai";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
@@ -40,11 +44,17 @@ const Leftbar = () => {
       outlineIcon: <AiOutlineHeart />,
       link: "/me/saved",
     },
+    // {
+    //   name: "Create",
+    //   fillIcon: <AiFillEdit />,
+    //   outlineIcon: <AiOutlineForm />,
+    //   link: "/me/new-note",
+    // },
     {
-      name: "Create",
-      fillIcon: <AiFillEdit />,
-      outlineIcon: <AiOutlineForm />,
-      link: "/me/new-note",
+      name: "About",
+      fillIcon: <AiOutlineTrophy />,
+      outlineIcon: <AiOutlineTrophy />,
+      link: "/me/about",
     },
   ];
 
