@@ -1,8 +1,11 @@
 import { Box, Button, Center, Flex, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
-import Typewritter from "../components/Typewritter";
-import styles from "../styles/Home.module.css";
+import dynamic from "next/dynamic";
+
+const Typewritter = dynamic(() => import("../components/Typewritter"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -15,7 +18,6 @@ export default function Home() {
           I am Wilson
         </Text>
         <Typewritter />
-
       </Box>
     </Flex>
   );
