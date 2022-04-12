@@ -7,6 +7,8 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import React from "react";
+import PrivateChat from "./PrivateChat";
+import PublicChat from "./PublicChat";
 
 const ChatContainer = () => {
   return (
@@ -19,10 +21,10 @@ const ChatContainer = () => {
 
         <TabPanels>
           <TabPanel>
-            <p>one!</p>
+            <PublicChat />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <PrivateChat />
           </TabPanel>
         </TabPanels>
       </Tabs>

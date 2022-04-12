@@ -1,5 +1,12 @@
 import { Box, Flex } from "@chakra-ui/react";
-import TypeWriterEffect from "react-typewriter-effect";
+
+
+import dynamic from "next/dynamic";
+
+const TypeWriterEffect = dynamic(() => import("react-typewriter-effect"), {
+  ssr: false,
+});
+
 
 const ReactCode = () => {
   return (
@@ -11,7 +18,7 @@ const ReactCode = () => {
       borderWidth="0.5px"
       overflow="auto"
     >
-      <Flex borderBottomWidth="0.5px" borderColor="gray.500" w="full">
+      <Flex borderBottomWidth="0.5px" borderColor="gray.500" w="full" flexWrap="wrap">
         <Box px={4} py={2} borderRadius="md" fontSize="sm" color="gray.500">
           Problems
         </Box>

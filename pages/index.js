@@ -24,22 +24,22 @@ const Typewritter = dynamic(() => import("../components/Typewritter"), {
 
 export default function Home() {
   return (
-    <Flex flexDir="column" w="full">
+    <Flex flexDir="column" w="full" justifyContent="space-evenly">
       <Center>
         <Code>This website is still under development!</Code>
       </Center>
-      <Box py="150px" w="full" h="500px">
-        <Text fontWeight="bold" fontSize="6xl">
+      <Box py="17%" w="full" h="500px">
+        <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
           Hello 👋🏻
         </Text>
-        <Text fontWeight="bold" fontSize="6xl" mb={6}>
+        <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]} mb={6}>
           I am Wilson
         </Text>
         <Typewritter />
       </Box>
 
       <Box py="100px" w="full" h="300px">
-        <HStack py={4} spacing={3}>
+        <HStack py={4} mb={4} spacing={3}>
           <a
             href="https://github.com/ocwilsonchow/next-medium-clone-special"
             target="_blank"
@@ -82,7 +82,6 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            {" "}
             <IconButton
               fontSize="lg"
               variant="outline"
@@ -98,25 +97,8 @@ export default function Home() {
             icon={<AiTwotoneMail />}
           />
         </HStack>
-      </Box>
-
-      <Box pb={20}>
-        <Text fontWeight="medium" color="cyan.500">
-          Everyone has a story
-        </Text>
-        <Text fontWeight="bold" fontSize="4xl">
-          About Wilson
-        </Text>
-        <Text mb={8} fontWeight="light">
-          Passionate web developer based in Hong Kong. From a pharmacy
-          background. Love beautiful software applications. Passionate in
-          front-end development and Blender 3D graphics. His vision is to build
-          applications that help people live better lives.
-        </Text>
         <Link href="/me/about">
-          <button className="px-3 py-2 rounded-full bg-blue-500 hover:bg-blue-600 shadow-xl shadow-cyan-500/50 text-white">
-            Read more
-          </button>
+          <Button borderRadius="full">Read more about Wilson</Button>
         </Link>
       </Box>
     </Flex>
