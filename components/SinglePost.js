@@ -1,7 +1,8 @@
-import { Img, Flex, Text, LinkBox } from "@chakra-ui/react";
+import { Img, Flex, Text, LinkBox, HStack } from "@chakra-ui/react";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import moment from "moment";
+import { PortableText } from "@portabletext/react";
 
 const builder = imageUrlBuilder({
   projectId: "zmau43jq",
@@ -17,42 +18,44 @@ const SinglePost = ({ post }) => {
   return (
     <LinkBox
       my={2}
-      borderWidth="1px"
-      borderRadius="md"
-      maxW="xs"
-      p={4}
+      borderBottomWidth="1px"
+      maxW="800px"
+      py={8}
       alignItems="center"
       cursor="pointer"
       _hover={{ color: "blue.500" }}
     >
       <Link href={`blog/${post.slug.current}`}>
-        <Flex flexDir="column" h="100%">
-          <Img
-            src={post?.mainImage?.asset?.url}
-            objectFit="cover"
-            mb={3}
-            alt=""
-          />
-          <Flex alignItems="center">
-            <Img
-              src={urlFor(post?.authorImage).url()}
-              boxSize="40px"
-              objectFit="cover"
-              mr={2}
-              borderRadius="full"
-              alt=""
-            />
-
-            <Flex flexDir="column" justifyContent="center">
-              <Text fontWeight="bold" fontSize="lg">
-                {post?.title}
-              </Text>
+        <HStack>
+          <Flex flexDir="column">
+            <HStack >
+              <Img
+                src={urlFor(post?.authorImage)}
+                boxSize="25px"
+                borderRadius="full"
+                objectFit="cover"
+                alt=""
+              />
+              <Text fontSize="sm">{post?.author}</Text>
               <Text fontSize="xs" color="gray.500">
                 {moment(post.publishedAt).calendar()}
               </Text>
-            </Flex>
+            </HStack>
+            <Text fontWeight="bold" fontSize="2xl" my={2}>
+              {post.title}
+            </Text>
+            <Text noOfLines="3" my={2} fontWeight="light">
+              <PortableText value={post.body} />
+            </Text>
           </Flex>
-        </Flex>
+          <Img
+            src={post?.mainImage?.asset?.url}
+            boxSize="150px"
+            objectFit="cover"
+            alt=""
+            borderRadius="md"
+          />
+        </HStack>
       </Link>
     </LinkBox>
   );

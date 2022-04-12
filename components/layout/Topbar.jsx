@@ -1,10 +1,10 @@
-import { HStack, Text } from '@chakra-ui/react'
+import { Code, HStack, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const Topbar = () => {
   return (
     <HStack borderBottomWidth="1px" w="full" p={4}>
-      <Text>Top bar</Text>
+      <Code bg="none" fontWeight="black" fontSize="xl">wilson_dev</Code>
     </HStack>
   )
 }

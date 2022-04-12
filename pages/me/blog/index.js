@@ -7,6 +7,7 @@ import {
   Spinner,
   Text,
   Alert,
+  VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import SinglePost from "../../../components/SinglePost";
@@ -15,17 +16,15 @@ import { apiGetBlogPosts } from "../../../lib/blog";
 export default function PageBlogIndex({ posts }) {
   console.log(posts);
   return (
-    <Flex flexDir="column" justifyContent="center">
+    <Flex flexDir="column" justifyContent="center" w="full">
       {!posts && (
         <Center p={6}>
           <Spinner />
         </Center>
       )}
-      <Flex flexWrap="wrap" justifyContent="center">
+      <Flex flexDir="column" alignItems="center">
         {posts?.map((post, i) => (
-          <Flex key={i} m={1.5}>
-            <SinglePost post={post} i={i} />
-          </Flex>
+          <SinglePost post={post} key={i} />
         ))}
       </Flex>
     </Flex>
