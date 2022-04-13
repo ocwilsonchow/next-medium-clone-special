@@ -7,7 +7,7 @@ import {
   useDisclosure,
   Button,
   IconButton,
-   Menu,
+  Menu,
   MenuButton,
   MenuList,
   MenuItem,
@@ -17,7 +17,7 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import MenuItems from '../layout/MenuItems'
+import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";
 
@@ -34,10 +34,10 @@ const Topbar = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Link href="/" >
-        <Code bg="none" fontWeight="black" fontSize="xl">
-        wilson_dev
-      </Code>
+      <Link href="/">
+        <Code bg="none" fontWeight="black" fontSize="xl" cursor="pointer" _hover={{color: 'cyan.400'}}>
+          wilson_dev
+        </Code>
       </Link>
       <Menu>
         <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
