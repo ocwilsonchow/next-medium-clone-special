@@ -3,18 +3,18 @@ import { SessionProvider } from "next-auth/react";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import Layout from "../components/layout/Layout";
-import { UserProvider } from "../context/UserContext";
+import { ChatProvider } from "../context/ChatContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <UserProvider>
+      <ChatProvider>
         <ChakraProvider>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </ChakraProvider>
-      </UserProvider>
+      </ChatProvider>
     </SessionProvider>
   );
 }

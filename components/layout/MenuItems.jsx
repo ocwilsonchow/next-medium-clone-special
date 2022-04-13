@@ -1,16 +1,15 @@
 import {
   Text,
-  VStack,
-  IconButton,
-  Avatar,
   Button,
   Tooltip,
   Flex,
   MenuItem,
-  Image,
-  Icon
+  Menu,
+  MenuButton,
+  MenuList,
+  Box,
 } from "@chakra-ui/react";
-
+import { HamburgerIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import {
   AiFillHome,
@@ -27,7 +26,7 @@ import {
   AiOutlineTrophy,
   AiOutlineFire,
 } from "react-icons/ai";
-const Menu = () => {
+const MenuComponent = () => {
   const menuItems = [
     {
       name: "Home",
@@ -62,18 +61,23 @@ const Menu = () => {
   ];
 
   return (
-    <Flex flexDir="column" spacing={6} justifyContent="center">
-      {menuItems.map((item, i) => (
-        <Link key={i} href={item.link}>
-          <MenuItem>
-            <Button my={1} p={2} variant="link">
-              {item.name}
-            </Button>
-          </MenuItem>
-        </Link>
-      ))}
-    </Flex>
+    <Menu>
+      <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
+        <Text>Menu</Text>
+      </MenuButton>
+      <MenuList>
+        {menuItems.map((item, i) => (
+          <Link key={i} href={item.link}>
+            <MenuItem>
+              <Box my={1} p={2} variant="link">
+                {item.name}
+              </Box>
+            </MenuItem>
+          </Link>
+        ))}
+      </MenuList>
+    </Menu>
   );
 };
 
-export default Menu;
+export default MenuComponent;

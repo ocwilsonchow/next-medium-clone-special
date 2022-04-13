@@ -9,6 +9,8 @@ import author from "./author";
 import user from "./user";
 import account from "./account";
 import comment from "./comment"
+import chatroom from "./chatroom"
+import chatMessage from "./chatMessage";
 
 export default createSchema({
   name: "default",
@@ -19,6 +21,8 @@ export default createSchema({
     blockContent,
     user,
     account,
-    comment
+    comment,
+    chatroom,
+    chatMessage
   ]),
 });

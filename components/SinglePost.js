@@ -36,8 +36,8 @@ const SinglePost = ({ post }) => {
                 objectFit="cover"
                 alt=""
               />
-              <Text fontSize="sm">{post?.author}</Text>
-              <Text fontSize="xs" color="gray.500">
+              <Text fontSize="sm" isTruncated>{post?.author}</Text>
+              <Text fontSize="xs" color="gray.500" isTruncated>
                 {moment(post.publishedAt).calendar()}
               </Text>
             </HStack>
@@ -56,15 +56,15 @@ const SinglePost = ({ post }) => {
             >
               <PortableText value={post.body} />
             </Text>
-            <HStack mt={3}>
+            <Flex flexWrap="wrap" mt={3}>
               {post.tags?.map((tag, i) => (
-                <Tag key={i} borderRadius="full" fontWeight="light" fontSize="xs">{tag.label}</Tag>
+                <Tag my={1} key={i} borderRadius="full" fontWeight="light" fontSize="xs" mr={2}> {tag.label}</Tag>
               ))}
-            </HStack>
+            </Flex>
           </Flex>
           <Img
             src={post?.mainImage?.asset?.url}
-            boxSize={["100px", "100px", "130px", "150px"]}
+            boxSize={["0px", "100px", "130px", "150px"]}
             objectFit="cover"
             alt=""
             borderRadius="md"

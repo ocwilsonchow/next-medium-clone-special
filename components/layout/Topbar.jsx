@@ -10,24 +10,15 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
 import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";
 
 const Topbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
-
   return (
     <Flex
-      borderBottomWidth="1px"
+      borderBottomWidth="0.5px"
       w="full"
       px={5}
       py={4}
@@ -35,18 +26,17 @@ const Topbar = () => {
       alignItems="center"
     >
       <Link href="/">
-        <Code bg="none" fontWeight="black" fontSize="xl" cursor="pointer" _hover={{color: 'cyan.400'}}>
+        <Code
+          bg="none"
+          fontWeight="black"
+          fontSize="xl"
+          cursor="pointer"
+          _hover={{ color: "cyan.400" }}
+        >
           wilson_dev
         </Code>
       </Link>
-      <Menu>
-        <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
-          Menu
-        </MenuButton>
-        <MenuList>
-          <MenuItems />
-        </MenuList>
-      </Menu>
+      <MenuItems />
     </Flex>
   );
 };

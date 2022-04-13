@@ -33,7 +33,6 @@ const Slider = () => {
   const boxBg = useColorModeValue("cyan.100", "gray.700");
 
   useEffect(() => {
-    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, []);
 
