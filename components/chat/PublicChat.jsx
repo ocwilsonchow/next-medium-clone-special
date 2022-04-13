@@ -15,7 +15,6 @@ import moment from "moment";
 const PublicChat = () => {
   const { publicMessages } = useChat();
   const { data: session } = useSession();
-  const chatBgColor = useColorModeValue("cyan.400", "cyan.500");
 
   // console.log(session, publicMessages);
 
@@ -24,22 +23,45 @@ const PublicChat = () => {
       {session && <Text></Text>}
       {publicMessages?.map((msg) => (
         <Box key={msg._id} py={2}>
-          <HStack>
-            <Avatar src={msg.userImage} boxSize="40px" />
-            <Box>
-              <HStack mb={1}>
-                <Text fontSize="xs" fontWeight="medium">{msg.username}</Text>
+          <HStack
+            flexDir={
+              (session.user.email === msg.userEmail && "row-reverse") || "row"
+            }
+          >
+            <Avatar src={msg.userImage} alt="" boxSize="40px" />
+            <Box px={1}>
+              <HStack
+                mb={1}
+                justifyContent={
+                  (session.user.email === msg.userEmail && "flex-end") ||
+                  "flex-start"
+                }
+              >
+                <Text fontSize="xs" fontWeight="medium">
+                  {msg.username}
+                </Text>
                 <Text fontSize="10px">{moment(msg.createdAt).calendar()}</Text>
               </HStack>
-              <Tag
-                colorScheme="twitter"
-                px={3}
-                py={2}
-                borderRadius="xl"
-                fontSize="sm"
+              <Flex
+                w="full"
+                justifyContent={
+                  (session.user.email === msg.userEmail && "flex-end") ||
+                  "flex-start"
+                }
               >
-                {msg.message}
-              </Tag>
+                <Tag
+                  colorScheme={
+                  (session.user.email === msg.userEmail && "green") ||
+                  "twitter"
+                }
+                  px={3}
+                  py={2}
+                  borderRadius="xl"
+                  fontSize="sm"
+                >
+                  {msg.message}
+                </Tag>
+              </Flex>
             </Box>
           </HStack>
         </Box>
