@@ -1,5 +1,13 @@
 import { useContext, useState } from "react";
-import { Avatar, Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Flex,
+  HStack,
+  Tag,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useChat } from "../../context/ChatContext";
 import { useSession } from "next-auth/react";
 import moment from "moment";
@@ -7,20 +15,31 @@ import moment from "moment";
 const PublicChat = () => {
   const { publicMessages } = useChat();
   const { data: session } = useSession();
-  console.log(session);
+  const chatBgColor = useColorModeValue("cyan.400", "cyan.500");
 
-  console.log(publicMessages);
+  // console.log(session, publicMessages);
 
   return (
-    <Flex flexDir="column" py={4}>
+    <Flex flexDir="column" py={2}>
       {session && <Text></Text>}
       {publicMessages?.map((msg) => (
-        <Box key={msg._id} borderWidth="0.5px" my={1} p={2}>
+        <Box key={msg._id} py={2}>
           <HStack>
-            <Avatar src={msg.userImage} size="sm" />
+            <Avatar src={msg.userImage} boxSize="40px" />
             <Box>
-              <Text>{msg.message}</Text>
-              <Text fontSize="xs">{moment(msg.createdAt).calendar()}</Text>
+              <HStack mb={1}>
+                <Text fontSize="xs" fontWeight="medium">{msg.username}</Text>
+                <Text fontSize="10px">{moment(msg.createdAt).calendar()}</Text>
+              </HStack>
+              <Tag
+                colorScheme="twitter"
+                px={3}
+                py={2}
+                borderRadius="xl"
+                fontSize="sm"
+              >
+                {msg.message}
+              </Tag>
             </Box>
           </HStack>
         </Box>

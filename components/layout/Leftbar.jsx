@@ -21,7 +21,8 @@ import {
   AiTwotoneMail,
   AiOutlineMail,
   AiOutlineTrophy,
-  AiOutlineFire,
+  AiOutlineSetting,
+  AiFillSetting
 } from "react-icons/ai";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
@@ -56,6 +57,12 @@ const Leftbar = () => {
       fillIcon: <AiTwotoneMail />,
       outlineIcon: <AiOutlineMail />,
       link: "/contact-wilson",
+    },
+     {
+      name: "Settings",
+      fillIcon: <AiFillSetting />,
+      outlineIcon: <AiOutlineSetting />,
+      link: "/settings",
     },
   ];
 
