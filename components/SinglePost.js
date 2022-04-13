@@ -1,4 +1,4 @@
-import { Img, Flex, Text, LinkBox, HStack, Tag } from "@chakra-ui/react";
+import { Img, Flex, Text, LinkBox, HStack, Tag, Box } from "@chakra-ui/react";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import moment from "moment";
@@ -48,14 +48,14 @@ const SinglePost = ({ post }) => {
             >
               {post.title}
             </Text>
-            <Text
+            <Box
               noOfLines="3"
               my={2}
               fontWeight="light"
               fontSize={["sm", "sm", "md", "md"]}
             >
               <PortableText value={post.body} />
-            </Text>
+            </Box>
             <Flex flexWrap="wrap" mt={3}>
               {post.tags?.map((tag, i) => (
                 <Tag my={1} key={i} borderRadius="full" fontWeight="light" fontSize="xs" mr={2}> {tag.label}</Tag>

@@ -1,9 +1,7 @@
-// user - required
-
 export default {
   name: 'user',
-  title: 'User',
   type: 'document',
+  title: 'User',
   fields: [
     {
       name: 'name',
@@ -20,11 +18,5 @@ export default {
       title: 'Image',
       type: 'url'
     },
-    {
-      // this is only if you use credentials provider
-      name: 'password',
-      type: 'string',
-      hidden: true
-    }
   ]
 };

@@ -1,4 +1,3 @@
-import { CommentIcon } from "@sanity/icons";
 
 export default {
   name: "chatMessage",
@@ -15,16 +14,24 @@ export default {
       type: "text",
     },
     {
-      name: "sender",
-      title: 'Sender',
-      type: "reference",
-      to: { type: "user" },
-    },
-    {
       name: "chatroom",
       type: "reference",
-      to: {type: "chatroom"}
-    }
+      to: [{ type: "chatroom" }],
+    },
+    {
+      name: "userEmail",
+      title: "User Email",
+      type: "email",
+    },
+    {
+      name: 'userImage',
+      title: 'User Image',
+      type: 'url'
+    },
+      {
+      name: 'username',
+      title: 'Username',
+      type: 'string'
+    },
   ],
-
 };

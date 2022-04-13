@@ -1,5 +1,3 @@
-
-
 export default {
   name: "chatroom",
   type: "document",
@@ -20,10 +18,6 @@ export default {
       type: "boolean",
       initialValue: false
     },
-    {
-      name: "user",
-      type: "reference",
-      to: [{ type: "user" }],
-    },
+
   ],
 };

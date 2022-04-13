@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   Flex,
   Input,
@@ -9,6 +8,7 @@ import {
   InputLeftElement,
   Avatar,
   HStack,
+  Box
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -18,19 +18,21 @@ const Rightbar = () => {
   const { data: session } = useSession();
 
   return (
-    <VStack borderLeftWidth="0.5px" p={8} spacing={6} w="300px">
+    <VStack borderLeftWidth="0.5px" p={2} spacing={6} w="350px">
       <Flex h="100%" flexDir="column" justifyContent="space-between" w="full">
-        <Flex flexDir="column">
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <SearchIcon />
-            </InputLeftElement>
-            /
-            <Input type="tel" placeholder="Search" />
-          </InputGroup>
+        <Box>
+          <Flex flexDir="column" px={4} pt={4}>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <SearchIcon />
+              </InputLeftElement>
+              /
+              <Input type="tel" placeholder="Search" />
+            </InputGroup>
+          </Flex>
           <ChatContainer />
-        </Flex>
-        <Flex flexDir="column">
+        </Box>
+        <Flex flexDir="column" p={4}>
           {session && (
             <>
               <HStack py={4}>

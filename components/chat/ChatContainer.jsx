@@ -12,7 +12,7 @@ import PublicChat from "./PublicChat";
 
 const ChatContainer = () => {
   return (
-    <Flex py={4}>
+    <Flex py={4} w="full">
       <Tabs w="full">
         <TabList>
           <Tab>Public</Tab>
