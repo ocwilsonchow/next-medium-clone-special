@@ -25,7 +25,7 @@ const PublicChat = () => {
         <Box key={msg._id} py={2}>
           <HStack
             flexDir={
-              (session.user.email === msg.userEmail && "row-reverse") || "row"
+              (session?.user.email === msg.userEmail && "row-reverse") || "row"
             }
           >
             <Avatar src={msg.userImage} alt="" boxSize="40px" />
@@ -33,7 +33,7 @@ const PublicChat = () => {
               <HStack
                 mb={1}
                 justifyContent={
-                  (session.user.email === msg.userEmail && "flex-end") ||
+                  (session?.user.email === msg.userEmail && "flex-end") ||
                   "flex-start"
                 }
               >
@@ -45,13 +45,13 @@ const PublicChat = () => {
               <Flex
                 w="full"
                 justifyContent={
-                  (session.user.email === msg.userEmail && "flex-end") ||
+                  (session?.user.email === msg.userEmail && "flex-end") ||
                   "flex-start"
                 }
               >
                 <Tag
                   colorScheme={
-                  (session.user.email === msg.userEmail && "green") ||
+                  (session?.user.email === msg.userEmail && "green") ||
                   "twitter"
                 }
                   px={3}
