@@ -18,7 +18,13 @@ const Layout = ({ children }) => {
           overflow="auto"
           position="relative"
         >
-          <Flex w="full" position="sticky" top="0px" backdropFilter="blur(20px)">
+          <Flex
+            w="full"
+            position="sticky"
+            top="0px"
+            backdropFilter="blur(20px)"
+            zIndex={2}
+          >
             <Topbar />
           </Flex>
           <Flex p={4} w="85%">
