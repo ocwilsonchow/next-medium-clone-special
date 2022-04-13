@@ -43,7 +43,7 @@ export default function Home() {
           Bear with me, I am still building the site out!
         </Code>
       </Center>
-      <Box py="12%" w="full" h="450px" >
+      <Box py="12%" w="full" h="450px">
         <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
           Hello 👋🏻
         </Text>
@@ -53,13 +53,13 @@ export default function Home() {
         <Typewritter />
       </Box>
 
-      <Box py="50px" w="full" h="300px" >
+      <Box py="50px" w="full" h="300px">
         <Link href="/me/about">
           <Button mb={2} colorScheme="twitter" size="lg">
             My Story 🌍
           </Button>
         </Link>
-        <HStack py={20}  spacing={3}>
+        <HStack py={20} spacing={3}>
           <a
             href="https://github.com/ocwilsonchow/next-medium-clone-special"
             target="_blank"
@@ -148,6 +148,9 @@ export default function Home() {
           ))}
         </Flex>
       </Box>
+      <Center p={10} fontSize="sm" bottom="0%">
+        Built in 🇭🇰 by Wilson Chow
+      </Center>
     </Flex>
   );
 }

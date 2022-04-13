@@ -3,20 +3,23 @@ import {
   Code,
   HStack,
   Text,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   Flex,
   useDisclosure,
   Button,
   IconButton,
+   Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { HamburgerIcon } from "@chakra-ui/icons";
+import MenuItems from '../layout/MenuItems'
 import React, { useRef } from "react";
+import Link from "next/link";
 
 const Topbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -24,31 +27,26 @@ const Topbar = () => {
 
   return (
     <Flex
-      borderBottomWidth="0.5px"
+      borderBottomWidth="1px"
       w="full"
       px={5}
       py={4}
       justifyContent="space-between"
       alignItems="center"
     >
-      <Code bg="none" fontWeight="black" fontSize="xl">
+      <Link href="/" >
+        <Code bg="none" fontWeight="black" fontSize="xl">
         wilson_dev
       </Code>
-      <>
-        <IconButton ref={btnRef} icon={<HamburgerIcon />} variant="ghost" fontSize="lg" onClick={onOpen} display={{base: 'block', md: 'none'}}  />
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent backdropFilter="blur(10px)">
-            <DrawerCloseButton />
-            <DrawerBody></DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </>
+      </Link>
+      <Menu>
+        <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
+          Menu
+        </MenuButton>
+        <MenuList>
+          <MenuItems />
+        </MenuList>
+      </Menu>
     </Flex>
   );
 };

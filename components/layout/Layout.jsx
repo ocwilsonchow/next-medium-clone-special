@@ -1,4 +1,12 @@
-import { Box, Flex, Grid, GridItem, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Grid,
+  GridItem,
+  HStack,
+  VStack,
+} from "@chakra-ui/react";
 import Leftbar from "./Leftbar";
 import Rightbar from "./Rightbar";
 import Topbar from "./Topbar";
@@ -27,7 +35,7 @@ const Layout = ({ children }) => {
           >
             <Topbar />
           </Flex>
-          <Flex p={4} w="85%">
+          <Flex flexDir='column' p={4} w="85%" >
             {children}
           </Flex>
         </Flex>

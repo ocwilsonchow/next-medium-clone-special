@@ -5,9 +5,13 @@ import {
   Avatar,
   Button,
   Tooltip,
+  Flex,
+  MenuItem,
+  Image,
+  Icon
 } from "@chakra-ui/react";
+
 import Link from "next/link";
-import React from "react";
 import {
   AiFillHome,
   AiOutlineHome,
@@ -23,21 +27,13 @@ import {
   AiOutlineTrophy,
   AiOutlineFire,
 } from "react-icons/ai";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
-
-const Leftbar = () => {
+const Menu = () => {
   const menuItems = [
     {
       name: "Home",
       fillIcon: <AiFillHome />,
       outlineIcon: <AiOutlineHome />,
       link: "/",
-    },
-    {
-      name: "About",
-      fillIcon: <AiOutlineTrophy />,
-      outlineIcon: <AiOutlineTrophy />,
-      link: "/me/about",
     },
     {
       name: "Blog",
@@ -57,33 +53,27 @@ const Leftbar = () => {
       outlineIcon: <AiOutlineMail />,
       link: "/contact-wilson",
     },
+    {
+      name: "About",
+      fillIcon: <AiOutlineTrophy />,
+      outlineIcon: <AiOutlineTrophy />,
+      link: "/me/about",
+    },
   ];
 
   return (
-    <VStack
-      borderRightWidth="0.5px"
-      p={2}
-      h="100vh"
-      justifyContent="space-evenly"
-      spacing={6}
-      w="100px"
-    >
-      <VStack spacing={6}>
-        {menuItems.map((item, i) => (
-          <Link key={i} href={item.link}>
-            <IconButton
-              icon={item.outlineIcon}
-              variant="ghost"
-              fontSize="20px"
-            />
-          </Link>
-        ))}
-      </VStack>
-      <VStack>
-        <ColorModeSwitcher />
-      </VStack>
-    </VStack>
+    <Flex flexDir="column" spacing={6} justifyContent="center">
+      {menuItems.map((item, i) => (
+        <Link key={i} href={item.link}>
+          <MenuItem>
+            <Button my={1} p={2} variant="link">
+              {item.name}
+            </Button>
+          </MenuItem>
+        </Link>
+      ))}
+    </Flex>
   );
 };
 
-export default Leftbar;
+export default Menu;
