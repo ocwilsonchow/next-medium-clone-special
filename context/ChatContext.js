@@ -19,7 +19,15 @@ export function ChatProvider({ children }) {
   const [chatPageMounted, setChatPageMounted] = useState(false)
 
   useEffect(() => {
-    // Generate an anonymous ID if not signed in
+
+
+    getPublicMessages();
+    listenToChat();
+    return setPublicMessages([]);
+  }, []);
+
+  useEffect(() => {
+// Generate an anonymous ID if not signed in
     if (!session && !anonymousId) {
       setAnonymousId(uuidv4());
       console.log('generated uuid')
@@ -29,11 +37,7 @@ export function ChatProvider({ children }) {
     if (session && anonymousId) {
       setAnonymousId();
     }
-
-    getPublicMessages();
-    listenToChat();
-    return setPublicMessages([]);
-  }, []);
+  }, [session])
 
   useEffect(() => {
     setPublicMessages([...publicMessages, newPublicMessage]);

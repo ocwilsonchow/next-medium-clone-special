@@ -8,23 +8,26 @@ const Message = ({ msg }) => {
   const { data: session } = useSession();
   const { anonymousId } = useChat();
 
-  const isSender = session?.user.email || anonymousId === msg?.userEmail;
+  console.log(`anonymousId: ${anonymousId}, session: ${session?.user?.email}  `)
+
+  const isSender = session?.user?.email  === msg?.userEmail
+  const isAnonymousSender  = anonymousId === msg?.userEmail
 
   return (
     <Box py={2} cursor={isSender && "pointer"}>
       <Flex
-        flexDir={(isSender && "row-reverse") || "row"}
+        flexDir={(isSender && "row-reverse") || (isAnonymousSender && "row-reverse") || "row"}
         w="full"
         alignItems="center"
         justifyContent='space-between'
 
       >
-        <HStack flexDir={(isSender && "row-reverse") || "row"}>
+        <HStack flexDir={(isSender && "row-reverse")|| (isAnonymousSender && "row-reverse") || "row"}>
           <Avatar src={msg?.userImage} alt="" boxSize="42px" />
           <Box px={1}>
             <HStack
               mb={1}
-              justifyContent={(isSender && "flex-end") || "flex-start"}
+              justifyContent={(isSender  && "flex-end")|| (isAnonymousSender && "flex-end") || "flex-start"}
             >
               <Text fontSize="xs" fontWeight="medium">
                 {msg?.username}
@@ -33,10 +36,10 @@ const Message = ({ msg }) => {
             </HStack>
             <Flex
               w="full"
-              justifyContent={(isSender && "flex-end") || "flex-start"}
+              justifyContent={(isSender && "flex-end")|| (isAnonymousSender && "flex-end") || "flex-start"}
             >
               <Tag
-                colorScheme={(isSender && "green") || "twitter"}
+                colorScheme={(isSender  && "green")|| (isAnonymousSender && "green") || "twitter"}
                 _hover={{ color: 'cyan' }}
                 px={3}
                 py={2}
@@ -50,7 +53,7 @@ const Message = ({ msg }) => {
             </Flex>
           </Box>
         </HStack>
-        <IconButton hidden={!isSender} size="xs" icon={<BiDotsHorizontalRounded size='20px'/>} m={1} />
+        <IconButton hidden={!isSender || !isAnonymousSender} size="xs" icon={<BiDotsHorizontalRounded size='20px'/>} m={1} />
 
 
       </Flex>

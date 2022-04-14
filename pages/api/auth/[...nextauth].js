@@ -3,7 +3,7 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { SanityAdapter, SanityCredentials } from 'next-auth-sanity';
 
-import { client } from "../../../lib/sanity";
+import { writeClient } from "../../../lib/sanity";
 
 const options = {
   providers: [
@@ -27,7 +27,7 @@ const options = {
   session: {
         strategy: 'jwt'
     },
-  adapter: SanityAdapter(client),
+  adapter: SanityAdapter(writeClient),
 };
 
 export default NextAuth(options);

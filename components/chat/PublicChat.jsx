@@ -35,6 +35,7 @@ const PublicChat = () => {
   }, [publicMessages]);
 
   const handleSubmit = () => {
+    console.log('submitted')
     createPublicMessage();
   };
   return (
@@ -53,7 +54,7 @@ const PublicChat = () => {
       ))}
       <div ref={dummyRef}></div>
     </Flex>
-    <FormControl pt={4}>
+    <FormControl pt={4} onSubmit={()=> handleSubmit()}>
         <InputGroup>
           <InputRightElement>
             <IconButton
