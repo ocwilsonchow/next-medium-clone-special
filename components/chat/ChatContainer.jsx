@@ -29,12 +29,12 @@ const ChatContainer = () => {
   };
 
   return (
-    <Flex flexDir="column" justifyContent="space-between" >
+    <Flex flexDir="column" justifyContent="space-between">
+     <SearchBar/>
       <Tabs>
         <TabList>
           <Tab>Public</Tab>
           <Tab>Private</Tab>
-          <Tab>Search</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -42,9 +42,6 @@ const ChatContainer = () => {
           </TabPanel>
           <TabPanel>
             <PrivateChat />
-          </TabPanel>
-          <TabPanel>
-            <SearchBar />
           </TabPanel>
         </TabPanels>
       </Tabs>

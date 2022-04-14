@@ -36,7 +36,7 @@ const PublicChat = () => {
   };
   return (
     <Box>
-      <Flex flexDir="column" h="85vh" overflow="auto">
+      <Flex flexDir="column" h="79vh" overflow="auto">
         {publicMessages?.map((msg, i) => (
           <Fade in key={msg?._id}>
             <Message msg={msg} />

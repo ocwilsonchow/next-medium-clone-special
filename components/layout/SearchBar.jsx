@@ -1,10 +1,10 @@
-import { FormControl, InputGroup, InputLeftElement, Input} from '@chakra-ui/react'
+import { FormControl, InputGroup, InputLeftElement, Input, Box} from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
 const SearchBar = () => {
   return (
-    <div>
-      <FormControl px={2}>
+    <Box p={2}>
+      <FormControl>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
             <SearchIcon />
@@ -12,7 +12,7 @@ const SearchBar = () => {
           <Input type="tel" placeholder="Search" />
         </InputGroup>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 
