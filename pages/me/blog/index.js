@@ -8,6 +8,7 @@ import {
   Text,
   Alert,
   VStack,
+  Fade,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import SinglePost from "../../../components/SinglePost";
@@ -23,7 +24,9 @@ export default function PageBlogIndex({ posts }) {
       )}
       <Flex flexDir="column" alignItems="center">
         {posts?.map((post, i) => (
-          <SinglePost post={post} key={i} />
+          <Fade key={i} in>
+            <SinglePost post={post} />
+          </Fade>
         ))}
       </Flex>
     </Flex>

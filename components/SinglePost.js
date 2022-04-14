@@ -1,4 +1,4 @@
-import { Img, Flex, Text, LinkBox, HStack, Tag, Box } from "@chakra-ui/react";
+import { Img, Flex, Text, LinkBox, HStack, Tag, Box, Fade } from "@chakra-ui/react";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import moment from "moment";
@@ -14,7 +14,8 @@ function urlFor(source) {
 
 const SinglePost = ({ post }) => {
   return (
-    <LinkBox
+   <Fade in>
+      <LinkBox
       my={2}
       borderBottomWidth="1px"
       maxW="800px"
@@ -70,6 +71,7 @@ const SinglePost = ({ post }) => {
         </HStack>
       </Link>
     </LinkBox>
+   </Fade>
   );
 };
 

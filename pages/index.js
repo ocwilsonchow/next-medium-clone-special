@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   Code,
+  Fade,
   Flex,
   HStack,
   IconButton,
