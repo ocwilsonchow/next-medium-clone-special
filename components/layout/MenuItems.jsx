@@ -30,8 +30,8 @@ import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
 
 const MenuComponent = (props) => {
   const { toggleColorMode } = useColorMode();
-const text = useColorModeValue('🌙 Dark', '☀️ Light');
-  const Mode = useColorModeValue('🌙 Dark Mode', '☀️ Light Mode');
+  const text = useColorModeValue("🌙 Dark", "☀️ Light");
+  const Mode = useColorModeValue("🌙 Dark Mode", "☀️ Light Mode");
 
   const menuItems = [
     {
@@ -89,19 +89,19 @@ const text = useColorModeValue('🌙 Dark', '☀️ Light');
           </Link>
         ))}
 
-        <Box
-          display={{ base: "flex", md: "none" }}
-          my={1}
+        <MenuItem
+
           px={5}
-          py={2}
+          py={4}
           variant="link"
           aria-label={`Switch to ${text} mode`}
           onClick={toggleColorMode}
           {...props}
           transition="all ease 0.2s"
+          cursor='pointer'
         >
           {Mode}
-        </Box>
+        </MenuItem>
       </MenuList>
     </Menu>
   );
