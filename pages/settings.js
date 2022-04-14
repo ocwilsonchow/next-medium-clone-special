@@ -1,10 +1,11 @@
-import { Flex, Text, HStack, Avatar, Button, Box } from "@chakra-ui/react";
+import { Flex, Text, HStack, Avatar, Button, Box, Fade } from "@chakra-ui/react";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 const PageSettings = () => {
   const { data: session } = useSession();
   return (
-    <Flex flexDir="column" py={6} maxW="800px">
+    <Fade in>
+      <Flex flexDir="column" py={6} maxW="800px">
       <Text fontWeight="bold" fontSize="4xl">
         Settings
       </Text>
@@ -26,6 +27,7 @@ const PageSettings = () => {
         </Box>
       )}
     </Flex>
+    </Fade>
   );
 };
 

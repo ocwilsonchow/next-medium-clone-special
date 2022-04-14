@@ -27,42 +27,45 @@ import {
   AiOutlineSetting,
   AiFillSetting,
 } from "react-icons/ai";
+import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
+
 const MenuComponent = () => {
   const menuItems = [
     {
-      name: "Home",
+      name: "🏠 Home",
       fillIcon: <AiFillHome />,
       outlineIcon: <AiOutlineHome />,
       link: "/",
     },
     {
-      name: "Blog",
-      fillIcon: <AiFillFileText />,
-      outlineIcon: <AiOutlineFileText />,
-      link: "/me/blog",
-    },
-    {
-      name: "Notifications",
-      fillIcon: <AiFillNotification />,
-      outlineIcon: <AiOutlineNotification />,
-      link: "/me/notifications",
-    },
-    {
-      name: "Favorites",
-      fillIcon: <AiTwotoneMail />,
-      outlineIcon: <AiOutlineMail />,
-      link: "/contact-wilson",
-    },
-    {
-      name: "About",
+      name: "👋🏻 About",
       fillIcon: <AiOutlineTrophy />,
       outlineIcon: <AiOutlineTrophy />,
       link: "/me/about",
     },
     {
-      name: "Settings",
+      name: "📖 Blog",
+      fillIcon: <AiFillFileText />,
+      outlineIcon: <AiOutlineFileText />,
+      link: "/me/blog",
+    },
+    {
+      name: "💬 Chat",
+      fillIcon: <BsChatDotsFill />,
+      outlineIcon: <BsChatDots />,
+      link: "/me/chat",
+    },
+    {
+      name: "📩 Contact",
+      fillIcon: <AiTwotoneMail />,
+      outlineIcon: <AiOutlineMail />,
+      link: "/contact-wilson",
+    },
+
+    {
+      name: "⚙️ Settings",
       fillIcon: <AiFillSetting />,
-      outlineIcon: <AiOutlineSetting/>,
+      outlineIcon: <AiOutlineSetting />,
       link: "/settings",
     },
   ];
