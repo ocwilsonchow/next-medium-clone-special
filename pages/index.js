@@ -81,7 +81,7 @@ export default function Home() {
                 href="https://github.com/ocwilsonchow/next-medium-clone-special"
                 target="_blank"
                 rel="noreferrer"
-                passHref
+
               >
                 <IconButton
                   icon={<AiOutlineGithub />}
@@ -94,7 +94,7 @@ export default function Home() {
                 href="https://www.facebook.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
-                passHref
+
               >
                 <IconButton
                   fontSize="lg"
@@ -108,7 +108,7 @@ export default function Home() {
                 href="https://www.instagram.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
-                passHref
+
               >
                 <IconButton
                   fontSize="lg"
@@ -121,7 +121,7 @@ export default function Home() {
                 href="https://www.youtube.com/c/SLCHOW/featured"
                 target="_blank"
                 rel="noreferrer"
-                passHref
+
               >
                 <IconButton
                   fontSize="lg"
