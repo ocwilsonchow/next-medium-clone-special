@@ -7,24 +7,16 @@ const Message = ({ msg }) => {
   const { data: session } = useSession();
   const { anonymousId } = useChat();
 
+  const isSender = session?.user.email || anonymousId === msg?.userEmail;
+
   return (
-    <Box py={2}>
-      <HStack
-        flexDir={
-          session?.user.email ||
-          (anonymousId === msg?.userEmail && "row-reverse") ||
-          "row"
-        }
-      >
+    <Box py={2} _hover={{ colorScheme: "pink" }} cursor={isSender && "pointer"}>
+      <HStack flexDir={(isSender && "row-reverse") || "row"}>
         <Avatar src={msg?.userImage} alt="" boxSize="42px" />
         <Box px={1}>
           <HStack
             mb={1}
-            justifyContent={
-              session?.user.email ||
-              (anonymousId === msg?.userEmail && "flex-end") ||
-              "flex-start"
-            }
+            justifyContent={(isSender && "flex-end") || "flex-start"}
           >
             <Text fontSize="xs" fontWeight="medium">
               {msg?.username}
@@ -33,18 +25,10 @@ const Message = ({ msg }) => {
           </HStack>
           <Flex
             w="full"
-            justifyContent={
-              session?.user.email ||
-              (anonymousId === msg?.userEmail && "flex-end") ||
-              "flex-start"
-            }
+            justifyContent={(isSender && "flex-end") || "flex-start"}
           >
             <Tag
-              colorScheme={
-                session?.user.email ||
-                (anonymousId === msg?.userEmail && "green") ||
-                "twitter"
-              }
+              colorScheme={(isSender && "green") || "twitter"}
               px={3}
               py={2}
               borderRadius="xl"
