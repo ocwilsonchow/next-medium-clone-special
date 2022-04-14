@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { apiCreateInboxMessage } from "../pages/api/inbox";
+import Rockhand from "../images/Rockhand.png";
+import Image from "next/image";
 
 const PageContactWilson = () => {
   const {
@@ -35,21 +37,21 @@ const PageContactWilson = () => {
     try {
       await apiCreateInboxMessage(inboxMessageDoc);
       toast({
-          title: 'Message sent',
-          description: "Wilson will get back to you very soon 😊",
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        })
-        reset()
+        title: "Message sent",
+        description: "Wilson will get back to you very soon 😊",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      reset();
     } catch (error) {
-       toast({
-          title: 'Error',
-          description: `${error}`,
-          status: 'error',
-          duration: 4000,
-          isClosable: true,
-        })
+      toast({
+        title: "Error",
+        description: `${error}`,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
     }
   };
 
@@ -65,11 +67,17 @@ const PageContactWilson = () => {
               <Flex flexDir={{ base: "column", md: "row" }} columnGap={2}>
                 <FormControl isInvalid={errors.name} mb={6}>
                   <FormLabel htmlFor="firstName">First name</FormLabel>
-                  <Input {...register("firstName", { required: true })}  placeholder="First Name" />
+                  <Input
+                    {...register("firstName", { required: true })}
+                    placeholder="First Name"
+                  />
                 </FormControl>
                 <FormControl isInvalid={errors.name} mb={6}>
                   <FormLabel htmlFor="lastName">Last name</FormLabel>
-                  <Input {...register("lastName", { required: true })} placeholder="Last Name" />
+                  <Input
+                    {...register("lastName", { required: true })}
+                    placeholder="Last Name"
+                  />
                 </FormControl>
               </Flex>
               <FormControl isInvalid={errors.name} mb={6}>
@@ -100,7 +108,10 @@ const PageContactWilson = () => {
               </Flex>
               <FormControl isInvalid={errors.name} mb={6}>
                 <FormLabel htmlFor="message">Message</FormLabel>
-                <Textarea placeholder="Your message" {...register("message", { required: true })} />
+                <Textarea
+                  placeholder="Your message"
+                  {...register("message", { required: true })}
+                />
               </FormControl>
 
               <Button
@@ -109,9 +120,10 @@ const PageContactWilson = () => {
                 isLoading={isSubmitting}
                 type="submit"
               >
-                Submit
+                Submit 😄
               </Button>
             </form>
+
           </Box>
         </Flex>
       </VStack>
