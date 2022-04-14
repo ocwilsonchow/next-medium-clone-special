@@ -38,15 +38,15 @@ const PublicChat = () => {
     createPublicMessage();
   };
   return (
-   <Flex flexDir="column">
-      <Flex flexDir="column" maxH="70vh" overflow="auto">
+   <Flex flexDir="column" bg='salmon'>
+      <Flex flexDir="column" maxH="60vh" w='full' overflow="auto" bg='salmon'>
       {publicMessages.length === 0 && (
         <Center p={4}>
           <Text>Loading...</Text>
           <Spinner />
         </Center>
       )}
-      {publicMessages?.map((msg) => (
+      {publicMessages.length !== 0 && publicMessages?.map((msg) => (
         <Fade in key={msg?._id}>
           <Message msg={msg} />
         </Fade>

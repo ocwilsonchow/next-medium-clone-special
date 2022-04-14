@@ -13,7 +13,7 @@ import LgPublicChat from "../../components/chat/PublicChat";
 import PrivateChat from "../../components/chat/PrivateChat";
 
 const PageChatroom = () => {
-  const { chatPageMounted, setChatPageMounted } = useChat();
+  const { setChatPageMounted } = useChat();
 
   useEffect(() => {
     setChatPageMounted(true);
@@ -24,10 +24,6 @@ const PageChatroom = () => {
 
   return (
     <Tabs>
-      <TabList>
-        <Tab>Public</Tab>
-        <Tab>Private</Tab>
-      </TabList>
       <TabPanels>
         <TabPanel>
           <LgPublicChat />

@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
           >
             <Topbar />
           </Flex>
-          <Flex flexDir='column' p={4} w="85%" >
+          <Flex flexDir='column' p={4} w="85%">
             {children}
           </Flex>
         </Flex>
