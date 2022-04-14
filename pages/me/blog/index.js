@@ -14,7 +14,6 @@ import SinglePost from "../../../components/SinglePost";
 import { apiGetBlogPosts } from "../../../lib/blog";
 
 export default function PageBlogIndex({ posts }) {
-  console.log(posts);
   return (
     <Flex flexDir="column" justifyContent="center" w="full">
       {!posts && (

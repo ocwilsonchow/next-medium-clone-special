@@ -13,8 +13,6 @@ function urlFor(source) {
 }
 
 const SinglePost = ({ post }) => {
-  console.log(post);
-
   return (
     <LinkBox
       my={2}

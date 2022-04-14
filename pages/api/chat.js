@@ -17,6 +17,6 @@ export const apiGetPublicChatMessages = async (req, res) => {
     res.status(200).send(sanityResponse);
   } catch (error) {
     console.error(error);
-    res.status(500).send("⚠️", error);
+    res.status(500).send(error);
   }
 };

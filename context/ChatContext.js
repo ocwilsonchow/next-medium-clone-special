@@ -12,7 +12,7 @@ export function ChatProvider({ children }) {
   const [publicMessages, setPublicMessages] = useState();
   const [messageInput, setMessageInput] = useState();
   const { data: session } = useSession();
-
+  console.log(publicMessages);
   useEffect(() => {
     getPublicMessages();
   }, []);
@@ -31,14 +31,17 @@ export function ChatProvider({ children }) {
   const createPublicMessage = async () => {
     const chatMessageDoc = {
       _type: "chatMessage",
-      createdAt: new Date().getTime(),
+      message: messageInput,
+      createdAt: new Date().toISOString(),
       userEmail: session?.user.email || "",
-      userImage: session?.user.image || "",
+      userImage:
+        session?.user.image ||
+        "https://lab-restful-api.s3.ap-northeast-2.amazonaws.com/profile.jpeg",
       username: session?.user.name || "anonymous",
       chatroom: {
-        _id: "b1c0ca9b-3e12-4c3d-9fc0-6f4fe3a154f5",
-        _rev: "rmGZbB6yU0nzOcD31dQlag",
-        _type: "chatroom",
+
+        _ref: "b1c0ca9b-3e12-4c3d-9fc0-6f4fe3a154f5",
+        _type: "reference",
       },
     };
 

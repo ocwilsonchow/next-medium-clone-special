@@ -43,7 +43,7 @@ const Rightbar = () => {
                   variant="ghost"
                   icon={<AiOutlineSend />}
                   onClick={createPublicMessage}
-                  disabled={!messageInput }
+                  disabled={messageInput?.length == 0 }
                 />
               </InputRightElement>
               <Input
