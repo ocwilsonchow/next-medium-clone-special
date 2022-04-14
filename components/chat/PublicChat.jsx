@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import {
   Flex,
   Tabs,
@@ -21,14 +21,17 @@ import { useChat } from "../../context/ChatContext";
 import Message from "./Message";
 
 const PublicChat = () => {
+  const dummyRef = useRef();
   const { publicMessages, createPublicMessage, setMessageInput, messageInput } =
     useChat();
-  const dummy = useRef();
+
+    useEffect(() => {
+      dummyRef.current.scrollIntoView({ behavior: "smooth" });
+
+    }, [publicMessages])
 
   const handleSubmit = () => {
     createPublicMessage();
-
-    dummy.current.scrollIntoView({ behaviour: "smooth" });
   };
   return (
     <Flex flexDir="column" h="100%">
@@ -37,7 +40,7 @@ const PublicChat = () => {
           {publicMessages?.map((msg, i) => (
             <Message msg={msg} key={i} />
           ))}
-          <div ref={dummy}></div>
+          <div ref={dummyRef}></div>
         </Box>
         <FormControl py={3}>
           <InputGroup>

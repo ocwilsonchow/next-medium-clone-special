@@ -23,7 +23,6 @@ const Rightbar = () => {
           <Input type="tel" placeholder="Search" />
         </InputGroup>
       </FormControl>
-
       <ChatContainer />
     </Flex>
   );

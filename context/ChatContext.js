@@ -6,6 +6,7 @@ import {
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
+import { v4 as uuidv4 } from "uuid";
 
 const ChatContext = createContext();
 
@@ -14,8 +15,19 @@ export function ChatProvider({ children }) {
   const [newPublicMessage, setNewPublicMessage] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const { data: session } = useSession();
+  const [anonymousId, setAnonymousId] = useState();
+
+  console.log(anonymousId)
 
   useEffect(() => {
+    if (!session && !anonymousId) {
+      setAnonymousId(uuidv4());
+    }
+
+    if (session && anonymousId) {
+      setAnonymousId();
+    }
+
     getPublicMessages();
     listenToChat();
     return setPublicMessages([]);
