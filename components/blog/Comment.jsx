@@ -17,7 +17,7 @@ const Comments = ({ comments }) => {
         Comments
       </Text>
       {comments?.length == 0 && (
-        <Text fontWeight="thin">No comment on this post yet.</Text>
+        <Text>No comment on this post yet.</Text>
       )}
       {comments?.map((comment, i) => (
         <Flex key={i} flexDir="column" borderWidth="0.5px" borderRadius="md" p={4} my={1}>

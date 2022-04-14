@@ -14,15 +14,13 @@ import ChatContainer from "../chat/ChatContainer";
 
 const Rightbar = () => {
   return (
-    <Flex flexDir="column" borderLeftWidth="0.5px" p={2} h="100vh" w="350px">
-      <FormControl pt={2} px={2}>
-        <InputGroup>
-          <InputLeftElement pointerEvents="none">
-            <SearchIcon />
-          </InputLeftElement>
-          <Input type="tel" placeholder="Search" />
-        </InputGroup>
-      </FormControl>
+    <Flex
+      flexDir="column"
+      borderLeftWidth="0.5px"
+      p={2}
+      w="350px"
+      overflow="auto"
+    >
       <ChatContainer />
     </Flex>
   );

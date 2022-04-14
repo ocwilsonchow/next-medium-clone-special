@@ -24,7 +24,8 @@ import {
   AiTwotoneMail,
   AiOutlineMail,
   AiOutlineTrophy,
-  AiOutlineFire,
+  AiOutlineSetting,
+  AiFillSetting,
 } from "react-icons/ai";
 const MenuComponent = () => {
   const menuItems = [
@@ -57,6 +58,12 @@ const MenuComponent = () => {
       fillIcon: <AiOutlineTrophy />,
       outlineIcon: <AiOutlineTrophy />,
       link: "/me/about",
+    },
+    {
+      name: "Settings",
+      fillIcon: <AiFillSetting />,
+      outlineIcon: <AiOutlineSetting/>,
+      link: "/settings",
     },
   ];
 

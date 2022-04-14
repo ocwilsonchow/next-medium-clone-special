@@ -1,24 +1,19 @@
-import { useContext, useState } from "react";
-import {
-  Avatar,
-  Box,
-  Flex,
-  HStack,
-  Tag,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-
+import { Avatar, Box, Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import { useChat } from "../../context/ChatContext";
 import { useSession } from "next-auth/react";
 import moment from "moment";
 
-const Message = ({msg}) => {
+const Message = ({ msg }) => {
   const { data: session } = useSession();
+  const { anonymousId } = useChat();
+
   return (
-    <Box key={msg?._id} py={2}>
+    <Box py={2}>
       <HStack
         flexDir={
-          (session?.user.email === msg?.userEmail && "row-reverse") || "row"
+          session?.user.email ||
+          (anonymousId === msg?.userEmail && "row-reverse") ||
+          "row"
         }
       >
         <Avatar src={msg?.userImage} alt="" boxSize="42px" />
@@ -26,7 +21,8 @@ const Message = ({msg}) => {
           <HStack
             mb={1}
             justifyContent={
-              (session?.user.email === msg?.userEmail && "flex-end") ||
+              session?.user.email ||
+              (anonymousId === msg?.userEmail && "flex-end") ||
               "flex-start"
             }
           >
@@ -38,13 +34,16 @@ const Message = ({msg}) => {
           <Flex
             w="full"
             justifyContent={
-              (session?.user.email === msg?.userEmail && "flex-end") ||
+              session?.user.email ||
+              (anonymousId === msg?.userEmail && "flex-end") ||
               "flex-start"
             }
           >
             <Tag
               colorScheme={
-                (session?.user.email === msg?.userEmail && "green") || "twitter"
+                session?.user.email ||
+                (anonymousId === msg?.userEmail && "green") ||
+                "twitter"
               }
               px={3}
               py={2}

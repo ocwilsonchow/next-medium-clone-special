@@ -17,13 +17,14 @@ export function ChatProvider({ children }) {
   const { data: session } = useSession();
   const [anonymousId, setAnonymousId] = useState();
 
-  console.log(anonymousId)
-
   useEffect(() => {
+    // Generate an anonymous ID if not signed in
     if (!session && !anonymousId) {
       setAnonymousId(uuidv4());
+      console.log('generated uuid')
     }
 
+    // If signed in, clear the anonymous ID
     if (session && anonymousId) {
       setAnonymousId();
     }
@@ -69,7 +70,7 @@ export function ChatProvider({ children }) {
       _type: "chatMessage",
       message: messageInput,
       createdAt: new Date().toISOString(),
-      userEmail: session?.user.email || "",
+      userEmail: session?.user.email || anonymousId,
       userImage:
         session?.user.image ||
         "https://lab-restful-api.s3.ap-northeast-2.amazonaws.com/profile.jpeg",
@@ -95,6 +96,7 @@ export function ChatProvider({ children }) {
     createPublicMessage,
     setMessageInput,
     messageInput,
+    anonymousId
   };
 
   return (

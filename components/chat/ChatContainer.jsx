@@ -19,6 +19,7 @@ import PrivateChat from "./PrivateChat";
 import PublicChat from "./PublicChat";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
+import SearchBar from "../layout/SearchBar";
 
 const ChatContainer = () => {
   const { createPublicMessage, setMessageInput, messageInput } = useChat();
@@ -28,19 +29,22 @@ const ChatContainer = () => {
   };
 
   return (
-    <Flex flexDir="column" justifyContent="space-between" h="100%">
-      <Tabs display="flex" flexDir="column" h="100%">
+    <Flex flexDir="column" justifyContent="space-between" >
+      <Tabs>
         <TabList>
           <Tab>Public</Tab>
           <Tab>Private</Tab>
+          <Tab>Search</Tab>
         </TabList>
-
-        <TabPanels h="100%">
-          <TabPanel h="100%" >
+        <TabPanels>
+          <TabPanel>
             <PublicChat />
           </TabPanel>
           <TabPanel>
             <PrivateChat />
+          </TabPanel>
+          <TabPanel>
+            <SearchBar />
           </TabPanel>
         </TabPanels>
       </Tabs>

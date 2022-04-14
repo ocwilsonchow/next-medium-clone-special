@@ -63,6 +63,8 @@ export default function PageShowBlogPost({ post, posts }) {
         </Text>
         <Img
           src={post?.mainImage?.asset?.url}
+          maxH="500px"
+          w="100%"
           objectFit="cover"
           alt=""
           py={4}
