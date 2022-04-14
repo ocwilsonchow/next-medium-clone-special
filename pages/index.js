@@ -45,105 +45,108 @@ export default function Home() {
   return (
     <Fade in>
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
-
         <Center p={2}>
-          <Code bg='none' fontSize="sm" textAlign='center'>
+          <Code bg="none" fontSize="sm" textAlign="center">
             Bear with me, web development still in progress!
           </Code>
         </Center>
 
-        <Box py="12%" w="80%" h="450px" position="relative">
-          <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
-            Hello 👋🏻
-          </Text>
-          <Text
-            fontWeight="bold"
-            fontSize={["5xl", "5xl", "5xl", "6xl"]}
-            mb={6}
-          >
-            I am Wilson
-          </Text>
-          <Typewritter />
-        </Box>
-
-        <Box py="50px" w="full" h="300px">
-          <Link href="/me/about">
-            <Button mb={2} colorScheme="twitter" size="lg">
-              My Story 🌍
-            </Button>
-          </Link>
-
-          <HStack py={20} spacing={3}>
-            <a
-              href="https://github.com/ocwilsonchow/next-medium-clone-special"
-              target="_blank"
-              rel="noreferrer"
+        <SlideFade in offsetX="-100px" >
+          <Box py="12%" w="80%" h="450px">
+            <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
+              Hello 👋🏻
+            </Text>
+            <Text
+              fontWeight="bold"
+              fontSize={["5xl", "5xl", "5xl", "6xl"]}
+              mb={6}
             >
-              <IconButton
-                icon={<AiOutlineGithub />}
-                fontSize="lg"
-                variant="outline"
-                borderRadius="full"
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/ocwilsonchow/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <IconButton
-                fontSize="lg"
-                variant="outline"
-                rounded="full"
-                icon={<AiFillFacebook />}
-              />
-            </a>
+              I am Wilson
+            </Text>
+            <Typewritter />
+          </Box>
+        </SlideFade>
 
-            <a
-              href="https://www.instagram.com/ocwilsonchow/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <IconButton
-                fontSize="lg"
-                variant="outline"
-                rounded="full"
-                icon={<AiFillInstagram />}
-              />
-            </a>
-            <a
-              href="https://www.youtube.com/c/SLCHOW/featured"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <IconButton
-                fontSize="lg"
-                variant="outline"
-                rounded="full"
-                icon={<AiFillYoutube />}
-              />
-            </a>
-
-            <IconButton
-              fontSize="lg"
-              variant="outline"
-              rounded="full"
-              icon={<AiTwotoneMail />}
-            />
-          </HStack>
-        </Box>
-        <Box pb={20}>
-          <Text fontWeight="bold" fontSize="3xl" mb={4}>
-            Skills
-          </Text>
-          <Flex flexWrap="wrap">
-            {skills.map((skill, i) => (
-              <Button key={i} p={4} mr={3} my={1} bg="none" variant="outline">
-                {skill}
+        <SlideFade in offsetX='100px'>
+          <Box py="50px" w="full" h="300px">
+            <Link href="/me/about">
+              <Button mb={2} colorScheme="twitter" size="lg">
+                My Story 🌍
               </Button>
-            ))}
-          </Flex>
-        </Box>
+            </Link>
+
+            <HStack py={20} spacing={3}>
+              <a
+                href="https://github.com/ocwilsonchow/next-medium-clone-special"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  icon={<AiOutlineGithub />}
+                  fontSize="lg"
+                  variant="outline"
+                  borderRadius="full"
+                />
+              </a>
+              <a
+                href="https://www.facebook.com/ocwilsonchow/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  fontSize="lg"
+                  variant="outline"
+                  rounded="full"
+                  icon={<AiFillFacebook />}
+                />
+              </a>
+
+              <a
+                href="https://www.instagram.com/ocwilsonchow/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  fontSize="lg"
+                  variant="outline"
+                  rounded="full"
+                  icon={<AiFillInstagram />}
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/c/SLCHOW/featured"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  fontSize="lg"
+                  variant="outline"
+                  rounded="full"
+                  icon={<AiFillYoutube />}
+                />
+              </a>
+
+              <IconButton
+                fontSize="lg"
+                variant="outline"
+                rounded="full"
+                icon={<AiTwotoneMail />}
+              />
+            </HStack>
+          </Box>
+          <Box pb={20}>
+            <Text fontWeight="bold" fontSize="3xl" mb={4}>
+              Skills
+            </Text>
+            <Flex flexWrap="wrap">
+              {skills.map((skill, i) => (
+                <Button key={i} p={4} mr={3} my={1} bg="none" variant="outline">
+                  {skill}
+                </Button>
+              ))}
+            </Flex>
+          </Box>
+        </SlideFade>
         <Box pb={20}>
           <Text fontWeight="bold" fontSize="3xl" mb={4}>
             My favorite libraries
