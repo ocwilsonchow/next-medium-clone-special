@@ -2,25 +2,50 @@ import { useState, createContext, useContext, useEffect } from "react";
 import {
   apiCreatePublicChatMessages,
   apiGetPublicChatMessages,
+  apiListenPublicChatMessages,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
+import { readClient } from "../lib/sanity";
 
 const ChatContext = createContext();
 
 export function ChatProvider({ children }) {
-  const [publicMessages, setPublicMessages] = useState();
-  const [messageInput, setMessageInput] = useState('');
+  const [publicMessages, setPublicMessages] = useState([]);
+  const [newPublicMessage, setNewPublicMessage] = useState("");
+  const [messageInput, setMessageInput] = useState("");
   const { data: session } = useSession();
-  console.log(publicMessages);
+
   useEffect(() => {
     getPublicMessages();
+    listenToChat();
+    return setPublicMessages([]);
   }, []);
 
   useEffect(() => {
-    console.log(messageInput);
-  }, [messageInput]);
+    setPublicMessages([...publicMessages, newPublicMessage]);
+  }, [newPublicMessage]);
 
-  // Create user in Sanity
+  const listenToChat = () => {
+    const query = `
+    *[_type == "chatMessage" ] {
+      chatroom->,
+      chatroom,
+      message,
+      createdAt,
+      _id,
+      username,
+      userEmail,
+      userImage
+    }
+  `;
+
+    const subscription = readClient.listen(query).subscribe((update) => {
+      const message = update.result;
+      setNewPublicMessage(message);
+    });
+  };
+
+  // Get public messages from Sanity
   const getPublicMessages = async () => {
     const data = await apiGetPublicChatMessages();
     setPublicMessages(data);
@@ -44,10 +69,10 @@ export function ChatProvider({ children }) {
     };
 
     try {
-      setMessageInput('');
+      setMessageInput("");
       await apiCreatePublicChatMessages(chatMessageDoc);
     } catch (error) {
-      setMessageInput('');
+      setMessageInput("");
       console.error(error);
     }
   };

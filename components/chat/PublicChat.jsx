@@ -1,73 +1,62 @@
-import { useContext, useState } from "react";
+import { useRef } from "react";
 import {
-  Avatar,
-  Box,
   Flex,
-  HStack,
-  Tag,
-  Text,
-  useColorModeValue,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  FormControl,
+  Button,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  IconButton,
+  Box,
+  Input,
 } from "@chakra-ui/react";
+import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
-import { useSession } from "next-auth/react";
-import moment from "moment";
+
+import Message from "./Message";
 
 const PublicChat = () => {
-  const { publicMessages } = useChat();
-  const { data: session } = useSession();
+  const { publicMessages, createPublicMessage, setMessageInput, messageInput } =
+    useChat();
+  const dummy = useRef();
 
-  // console.log(publicMessages);
+  const handleSubmit = () => {
+    createPublicMessage();
 
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
+  };
   return (
-    <Flex flexDir="column" py={2} overflow="auto">
-      {session && <Text></Text>}
-      {publicMessages?.map((msg) => (
-        <Box key={msg._id} py={3}>
-          <HStack
-            flexDir={
-              (session?.user.email === msg.userEmail && "row-reverse") || "row"
-            }
-          >
-            <Avatar src={msg.userImage} alt="" boxSize="42px" />
-            <Box px={1}>
-              <HStack
-                mb={1}
-                justifyContent={
-                  (session?.user.email === msg.userEmail && "flex-end") ||
-                  "flex-start"
-                }
-              >
-                <Text fontSize="xs" fontWeight="medium">
-                  {msg.username}
-                </Text>
-                <Text fontSize="10px">{moment(msg.createdAt).calendar()}</Text>
-              </HStack>
-              <Flex
-                w="full"
-                justifyContent={
-                  (session?.user.email === msg.userEmail && "flex-end") ||
-                  "flex-start"
-                }
-              >
-                <Tag
-                  colorScheme={
-                  (session?.user.email === msg.userEmail && "green") ||
-                  "twitter"
-                }
-                  px={3}
-                  py={2}
-                  borderRadius="xl"
-                  fontSize="sm"
-                  display="flex"
-                  flexWrap='wrap'
-                >
-                  {msg.message}
-                </Tag>
-              </Flex>
-            </Box>
-          </HStack>
+    <Flex flexDir="column" h="100%">
+      <Flex flexDir="column" h="100%" justifyContent="space-between">
+        <Box maxH="80vh" overflow="auto">
+          {publicMessages?.map((msg, i) => (
+            <Message msg={msg} key={i} />
+          ))}
+          <div ref={dummy}></div>
         </Box>
-      ))}
+        <FormControl py={3}>
+          <InputGroup>
+            <InputRightElement>
+              <IconButton
+                variant="ghost"
+                icon={<AiOutlineSend />}
+                onClick={() => handleSubmit()}
+                disabled={messageInput == ""}
+              />
+            </InputRightElement>
+            <Input
+              value={messageInput}
+              placeholder="Message"
+              onChange={(e) => setMessageInput(e.target.value)}
+            />
+          </InputGroup>
+        </FormControl>
+      </Flex>
     </Flex>
   );
 };
