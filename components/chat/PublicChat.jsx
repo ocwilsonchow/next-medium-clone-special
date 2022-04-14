@@ -15,7 +15,9 @@ import {
   Box,
   Input,
   Fade,
-  Collapse,
+  Spinner,
+  Text,
+  Center,
 } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
@@ -37,9 +39,15 @@ const PublicChat = () => {
   return (
     <Box>
       <Flex flexDir="column" h="79vh" overflow="auto">
-        {publicMessages?.map((msg, i) => (
+        {publicMessages.length === 0 && (
+          <Center p={4}>
+            <Text>Loading...</Text>
+            <Spinner />
+          </Center>
+        )}
+        {publicMessages?.map((msg) => (
           <Fade in key={msg?._id}>
-            <Message msg={msg} />
+            <Message msg={msg}/>
           </Fade>
         ))}
         <div ref={dummyRef}></div>

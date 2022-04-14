@@ -1,6 +1,7 @@
-import { Avatar, Box, Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import { Avatar, Box, Flex, HStack, IconButton, Tag, Text } from "@chakra-ui/react";
 import { useChat } from "../../context/ChatContext";
 import { useSession } from "next-auth/react";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 import moment from "moment";
 
 const Message = ({ msg }) => {
@@ -10,37 +11,49 @@ const Message = ({ msg }) => {
   const isSender = session?.user.email || anonymousId === msg?.userEmail;
 
   return (
-    <Box py={2} _hover={{ colorScheme: "pink" }} cursor={isSender && "pointer"}>
-      <HStack flexDir={(isSender && "row-reverse") || "row"}>
-        <Avatar src={msg?.userImage} alt="" boxSize="42px" />
-        <Box px={1}>
-          <HStack
-            mb={1}
-            justifyContent={(isSender && "flex-end") || "flex-start"}
-          >
-            <Text fontSize="xs" fontWeight="medium">
-              {msg?.username}
-            </Text>
-            <Text fontSize="10px">{moment(msg?.createdAt).calendar()}</Text>
-          </HStack>
-          <Flex
-            w="full"
-            justifyContent={(isSender && "flex-end") || "flex-start"}
-          >
-            <Tag
-              colorScheme={(isSender && "green") || "twitter"}
-              px={3}
-              py={2}
-              borderRadius="xl"
-              fontSize="sm"
-              display="flex"
-              flexWrap="wrap"
+    <Box py={2} cursor={isSender && "pointer"}>
+      <Flex
+        flexDir={(isSender && "row-reverse") || "row"}
+        w="full"
+        alignItems="center"
+        justifyContent='space-between'
+
+      >
+        <HStack flexDir={(isSender && "row-reverse") || "row"}>
+          <Avatar src={msg?.userImage} alt="" boxSize="42px" />
+          <Box px={1}>
+            <HStack
+              mb={1}
+              justifyContent={(isSender && "flex-end") || "flex-start"}
             >
-              {msg?.message}
-            </Tag>
-          </Flex>
-        </Box>
-      </HStack>
+              <Text fontSize="xs" fontWeight="medium">
+                {msg?.username}
+              </Text>
+              <Text fontSize="10px">{moment(msg?.createdAt).calendar()}</Text>
+            </HStack>
+            <Flex
+              w="full"
+              justifyContent={(isSender && "flex-end") || "flex-start"}
+            >
+              <Tag
+                colorScheme={(isSender && "green") || "twitter"}
+                _hover={{ color: 'cyan' }}
+                px={3}
+                py={2}
+                borderRadius="xl"
+                fontSize="sm"
+                display="flex"
+                flexWrap="wrap"
+              >
+                {msg?.message}
+              </Tag>
+            </Flex>
+          </Box>
+        </HStack>
+        <IconButton hidden={!isSender} size="xs" icon={<BiDotsHorizontalRounded size='20px'/>} m={1} />
+
+
+      </Flex>
     </Box>
   );
 };
