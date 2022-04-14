@@ -24,6 +24,7 @@ import {
   AiOutlineSetting,
   AiFillSetting
 } from "react-icons/ai";
+import { BsChatDots, BsChatDotsFill } from 'react-icons/bs'
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
 const Leftbar = () => {
@@ -47,10 +48,10 @@ const Leftbar = () => {
       link: "/me/blog",
     },
     {
-      name: "Notifications",
-      fillIcon: <AiFillNotification />,
-      outlineIcon: <AiOutlineNotification />,
-      link: "/me/notifications",
+      name: "Chat",
+      fillIcon: <BsChatDotsFill />,
+      outlineIcon: <BsChatDots />,
+      link: "/me/chat",
     },
     {
       name: "Favorites",

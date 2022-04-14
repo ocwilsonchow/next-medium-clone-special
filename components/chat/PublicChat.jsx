@@ -18,6 +18,7 @@ import {
   Spinner,
   Text,
   Center,
+  VStack,
 } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
@@ -37,22 +38,22 @@ const PublicChat = () => {
     createPublicMessage();
   };
   return (
-    <Box>
-      <Flex flexDir="column" h="79vh" overflow="auto">
-        {publicMessages.length === 0 && (
-          <Center p={4}>
-            <Text>Loading...</Text>
-            <Spinner />
-          </Center>
-        )}
-        {publicMessages?.map((msg) => (
-          <Fade in key={msg?._id}>
-            <Message msg={msg}/>
-          </Fade>
-        ))}
-        <div ref={dummyRef}></div>
-      </Flex>
-      <FormControl pt={4}>
+   <Flex flexDir="column">
+      <Flex flexDir="column" maxH="77vh" overflow="auto">
+      {publicMessages.length === 0 && (
+        <Center p={4}>
+          <Text>Loading...</Text>
+          <Spinner />
+        </Center>
+      )}
+      {publicMessages?.map((msg) => (
+        <Fade in key={msg?._id}>
+          <Message msg={msg} />
+        </Fade>
+      ))}
+      <div ref={dummyRef}></div>
+    </Flex>
+    <FormControl pt={4}>
         <InputGroup>
           <InputRightElement>
             <IconButton
@@ -69,7 +70,7 @@ const PublicChat = () => {
           />
         </InputGroup>
       </FormControl>
-    </Box>
+   </Flex>
   );
 };
 

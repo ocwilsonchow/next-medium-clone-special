@@ -16,6 +16,7 @@ export function ChatProvider({ children }) {
   const [messageInput, setMessageInput] = useState("");
   const { data: session } = useSession();
   const [anonymousId, setAnonymousId] = useState();
+  const [chatPageMounted, setChatPageMounted] = useState(false)
 
   useEffect(() => {
     // Generate an anonymous ID if not signed in
@@ -96,7 +97,9 @@ export function ChatProvider({ children }) {
     createPublicMessage,
     setMessageInput,
     messageInput,
-    anonymousId
+    anonymousId,
+    chatPageMounted,
+    setChatPageMounted
   };
 
   return (
