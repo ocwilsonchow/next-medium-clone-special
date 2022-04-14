@@ -39,9 +39,9 @@ export default function Home() {
   return (
     <Flex flexDir="column" w="full" justifyContent="space-evenly">
       <Center p={4}>
-        <Code colorScheme="teal">
+        <Tag colorScheme="black">
           Bear with me, I am still building the site out!
-        </Code>
+        </Tag>
       </Center>
       <Box py="12%" w="full" h="450px">
         <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
@@ -59,6 +59,7 @@ export default function Home() {
             My Story 🌍
           </Button>
         </Link>
+
         <HStack py={20} spacing={3}>
           <a
             href="https://github.com/ocwilsonchow/next-medium-clone-special"

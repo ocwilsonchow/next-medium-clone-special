@@ -10,19 +10,16 @@ import {
   InputRightElement,
   IconButton,
   Box,
+  FormControl,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { useSession, signIn, signOut } from "next-auth/react";
 import ChatContainer from "../chat/ChatContainer";
 import { AiOutlineSend } from "react-icons/ai";
+import { useChat } from "../../context/ChatContext"
 
 const Rightbar = () => {
-  const { data: session } = useSession();
-  const [messageInput, setMessageInput] = useState("");
+  const { createPublicMessage, setMessageInput, messageInput } = useChat()
 
-  useEffect(() => {
-    console.log(messageInput);
-  }, [messageInput]);
 
   return (
     <VStack borderLeftWidth="0.5px" p={2} spacing={6} w="350px">
@@ -39,16 +36,23 @@ const Rightbar = () => {
           <ChatContainer />
         </Box>
         <Flex flexDir="column" p={4}>
-          <InputGroup>
-            <InputRightElement>
-              <IconButton variant="ghost" icon={<AiOutlineSend />} />
-            </InputRightElement>
-            <Input
-              type="tel"
-              placeholder="Message"
-              onChange={(e) => setMessageInput(e.target.value)}
-            />
-          </InputGroup>
+          <FormControl>
+            <InputGroup>
+              <InputRightElement>
+                <IconButton
+                  variant="ghost"
+                  icon={<AiOutlineSend />}
+                  onClick={createPublicMessage}
+                  disabled={!messageInput }
+                />
+              </InputRightElement>
+              <Input
+                type="tel"
+                placeholder="Message"
+                onChange={(e) => setMessageInput(e.target.value)}
+              />
+            </InputGroup>
+          </FormControl>
         </Flex>
       </Flex>
     </VStack>

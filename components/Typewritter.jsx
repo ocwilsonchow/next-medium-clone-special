@@ -6,7 +6,7 @@ const Typewritter = () => {
       textStyle={{
         fontFamily: "Poppins",
         fontWeight: "bold",
-        fontSize: "25px",
+        fontSize: "30px",
       }}
       startDelay={500}
       cursorColor="cyan"
@@ -16,7 +16,7 @@ const Typewritter = () => {
         "This website is built with Next.js and Sanity",
         "Please reach out to me anytime!",
         "Check out my website! ",
-        "I am a full stack web developer. Love frontend engineering"
+        "I am a full stack web developer. I Love frontend engineering!"
       ]}
       typeSpeed={100}
     />

@@ -16,19 +16,19 @@ const PublicChat = () => {
   const { publicMessages } = useChat();
   const { data: session } = useSession();
 
-  // console.log(session, publicMessages);
+  // console.log(publicMessages);
 
   return (
-    <Flex flexDir="column" py={2}>
+    <Flex flexDir="column" py={2} overflow="auto">
       {session && <Text></Text>}
       {publicMessages?.map((msg) => (
-        <Box key={msg._id} py={2}>
+        <Box key={msg._id} py={3}>
           <HStack
             flexDir={
               (session?.user.email === msg.userEmail && "row-reverse") || "row"
             }
           >
-            <Avatar src={msg.userImage} alt="" boxSize="40px" />
+            <Avatar src={msg.userImage} alt="" boxSize="42px" />
             <Box px={1}>
               <HStack
                 mb={1}
@@ -58,6 +58,8 @@ const PublicChat = () => {
                   py={2}
                   borderRadius="xl"
                   fontSize="sm"
+                  display="flex"
+                  flexWrap='wrap'
                 >
                   {msg.message}
                 </Tag>

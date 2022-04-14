@@ -30,7 +30,6 @@ const Layout = ({ children }) => {
             w="full"
             position="sticky"
             top="0px"
-            backdropFilter="blur(20px)"
             zIndex={2}
           >
             <Topbar />

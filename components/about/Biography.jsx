@@ -4,7 +4,7 @@ import React from "react";
 const Biography = () => {
   return (
     <Flex flexDir="column" py={10} fontWeight="light">
-      <Text mb={6} fontSize="lg">
+      <Text mb={6} fontSize="md">
         Since I was a child, I started <strong className="text-blue-400">building</strong> things. At first I built all
         sort of toys and models with legos. Then I started learning
         drawing, I particularly liked drawing architecture. After I entered high
