@@ -1,8 +1,6 @@
 import {
   Text,
   Button,
-  Tooltip,
-  Flex,
   MenuItem,
   Menu,
   MenuButton,
@@ -28,9 +26,7 @@ import {
   AiFillSetting,
 } from "react-icons/ai";
 import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
-import { FaMoon, FaSun } from "react-icons/fa";
 
 const MenuComponent = (props) => {
   const { toggleColorMode } = useColorMode();

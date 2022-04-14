@@ -46,7 +46,7 @@ const PublicChat = () => {
           <Spinner />
         </Center>
       )}
-      {publicMessages?.map((msg) => (
+      {publicMessages.length !==0 && publicMessages?.map((msg) => (
         <Fade in key={msg?._id}>
           <Message msg={msg} />
         </Fade>
