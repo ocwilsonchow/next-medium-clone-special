@@ -8,8 +8,6 @@ const Message = ({ msg }) => {
   const { data: session } = useSession();
   const { anonymousId } = useChat();
 
-  console.log(`anonymousId: ${anonymousId}, session: ${session?.user?.email}  `)
-
   const isSender = session?.user?.email  === msg?.userEmail
   const isAnonymousSender  = anonymousId === msg?.userEmail
 
