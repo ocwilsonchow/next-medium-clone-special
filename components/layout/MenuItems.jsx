@@ -28,8 +28,15 @@ import {
   AiFillSetting,
 } from "react-icons/ai";
 import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
-const MenuComponent = () => {
+const MenuComponent = (props) => {
+  const { toggleColorMode } = useColorMode();
+const text = useColorModeValue('🌙 Dark', '☀️ Light');
+  const Mode = useColorModeValue('🌙 Dark Mode', '☀️ Light Mode');
+
   const menuItems = [
     {
       name: "🏠 Home",
@@ -85,6 +92,20 @@ const MenuComponent = () => {
             </MenuItem>
           </Link>
         ))}
+
+        <Box
+          display={{ base: "flex", md: "none" }}
+          my={1}
+          px={5}
+          py={2}
+          variant="link"
+          aria-label={`Switch to ${text} mode`}
+          onClick={toggleColorMode}
+          {...props}
+          transition="all ease 0.2s"
+        >
+          {Mode}
+        </Box>
       </MenuList>
     </Menu>
   );

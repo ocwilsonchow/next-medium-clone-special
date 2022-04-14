@@ -1,19 +1,8 @@
-import {
-  Alert,
-  Code,
-  HStack,
-  Text,
-  Flex,
-  useDisclosure,
-  Button,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuList,
-} from "@chakra-ui/react";
+import { Code, HStack, Flex, Box } from "@chakra-ui/react";
 import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";
+
 
 const Topbar = () => {
   return (
@@ -37,7 +26,9 @@ const Topbar = () => {
           wilson_dev
         </Code>
       </Link>
-      <MenuItems />
+      <Flex>
+        <MenuItems />
+      </Flex>
     </Flex>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Flex, Text, Img, HStack, VStack } from "@chakra-ui/react";
+import { Flex, Text, Img, HStack, VStack, Fade } from "@chakra-ui/react";
 import {
   apiGetBlogPost,
   apiGetBlogPostIds,
@@ -39,7 +39,8 @@ export default function PageShowBlogPost({ post, posts }) {
 
   return (
     <Flex justifyContent="center" w="full">
-      <VStack alignItems="start" maxW="800px" py={8} px={[0,0,6,12]}>
+      <Fade in>
+        <VStack alignItems="start" maxW="800px" py={8} px={[0,0,6,12]}>
         <HStack>
           <Img
             src={urlFor(post?.authorImage)}
@@ -74,6 +75,7 @@ export default function PageShowBlogPost({ post, posts }) {
         </VStack>
         <Comments comments={post.relatedComments}/>
       </VStack>
+      </Fade>
     </Flex>
   );
 }
