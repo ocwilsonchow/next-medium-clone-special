@@ -13,10 +13,10 @@ const CallForContact = () => {
       bg="cyan.100"
       borderRadius="xl"
       alignItems="center"
-      justifyContent="space-between"
+      justifyContent="center"
       flexDir={{ base: "column", md: "row" }}
     >
-      <Box mr={4} alignItems="center">
+      <Box w='full' alignItems="center">
         <Text
           color="black"
           fontWeight="bold"
@@ -32,10 +32,10 @@ const CallForContact = () => {
         >
           Get in touch today to explore opportunities for collaborations
         </Text>
-        <Link href='/contact-wilson'>
+        <Link href="/contact-wilson">
           <Button colorScheme="twitter" size="lg">
-          Leave a message
-        </Button>
+            Leave a message
+          </Button>
         </Link>
       </Box>
 

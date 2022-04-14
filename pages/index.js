@@ -52,7 +52,7 @@ export default function Home() {
         </Center>
 
         <SlideFade in offsetX="-100px" >
-          <Box py="12%" w="80%" h="450px">
+          <Box py="12%" w="100%" h="450px">
             <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
               Hello 👋🏻
             </Text>
