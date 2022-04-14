@@ -38,13 +38,14 @@ const Message = ({ msg }) => {
             >
               <Tag
                 colorScheme={(isSender  && "green")|| (isAnonymousSender && "green") || "twitter"}
-                _hover={{ color: 'cyan' }}
+                _hover={{ color: 'teal.500' }}
                 px={3}
                 py={2}
                 borderRadius="xl"
                 fontSize="sm"
                 display="flex"
                 flexWrap="wrap"
+                transition="all ease 0.1s"
               >
                 {msg?.message}
               </Tag>

@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   Code,
+  Collapse,
   Fade,
   Flex,
   HStack,
@@ -38,19 +39,27 @@ const learnings = ["Three.js 🌟", "Redux", "RTK Query", "Graphql"];
 
 export default function Home() {
   return (
-    <Flex flexDir="column" w="full" justifyContent="space-evenly">
+   <Fade in>
+      <Flex flexDir="column" w="full" justifyContent="space-evenly">
       <Center p={4}>
         <Tag colorScheme="black">
           Bear with me, I am still building the site out!
         </Tag>
       </Center>
+
       <Box py="12%" w="full" h="450px">
-        <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
-          Hello 👋🏻
-        </Text>
-        <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]} mb={6}>
-          I am Wilson
-        </Text>
+
+          <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
+            Hello 👋🏻
+          </Text>
+          <Text
+            fontWeight="bold"
+            fontSize={["5xl", "5xl", "5xl", "6xl"]}
+            mb={6}
+          >
+            I am Wilson
+          </Text>
+
         <Typewritter />
       </Box>
 
@@ -154,5 +163,6 @@ export default function Home() {
         Built in 🇭🇰 by Wilson Chow
       </Center>
     </Flex>
+   </Fade>
   );
 }
