@@ -25,6 +25,7 @@ import {
 import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
 import Backhand from "../images/Backhand.png";
+import FeaturedProject from "../components/home/FeaturedProject";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -51,7 +52,7 @@ export default function Home() {
           </Code>
         </Center>
 
-        <SlideFade in offsetX="-100px" >
+        <SlideFade in offsetX="-100px">
           <Box py="12%" w="100%" h="450px">
             <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
               Hello 👋🏻
@@ -67,7 +68,7 @@ export default function Home() {
           </Box>
         </SlideFade>
 
-        <SlideFade in offsetX='100px'>
+        <SlideFade in offsetX="100px">
           <Box py="50px" w="full" h="300px">
             <Link href="/me/about">
               <Button mb={2} colorScheme="twitter" size="lg">
@@ -80,6 +81,7 @@ export default function Home() {
                 href="https://github.com/ocwilsonchow/next-medium-clone-special"
                 target="_blank"
                 rel="noreferrer"
+                passHref
               >
                 <IconButton
                   icon={<AiOutlineGithub />}
@@ -92,6 +94,7 @@ export default function Home() {
                 href="https://www.facebook.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
+                passHref
               >
                 <IconButton
                   fontSize="lg"
@@ -105,6 +108,7 @@ export default function Home() {
                 href="https://www.instagram.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
+                passHref
               >
                 <IconButton
                   fontSize="lg"
@@ -117,6 +121,7 @@ export default function Home() {
                 href="https://www.youtube.com/c/SLCHOW/featured"
                 target="_blank"
                 rel="noreferrer"
+                passHref
               >
                 <IconButton
                   fontSize="lg"
@@ -147,6 +152,7 @@ export default function Home() {
             </Flex>
           </Box>
         </SlideFade>
+        <FeaturedProject />
         <Box pb={20}>
           <Text fontWeight="bold" fontSize="3xl" mb={4}>
             My favorite libraries
