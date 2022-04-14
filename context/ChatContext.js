@@ -4,13 +4,12 @@ import {
   apiGetPublicChatMessages,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
-import { client } from "../lib/sanity";
 
 const ChatContext = createContext();
 
 export function ChatProvider({ children }) {
   const [publicMessages, setPublicMessages] = useState();
-  const [messageInput, setMessageInput] = useState();
+  const [messageInput, setMessageInput] = useState('');
   const { data: session } = useSession();
   console.log(publicMessages);
   useEffect(() => {
@@ -39,15 +38,16 @@ export function ChatProvider({ children }) {
         "https://lab-restful-api.s3.ap-northeast-2.amazonaws.com/profile.jpeg",
       username: session?.user.name || "anonymous",
       chatroom: {
-
         _ref: "b1c0ca9b-3e12-4c3d-9fc0-6f4fe3a154f5",
         _type: "reference",
       },
     };
 
     try {
+      setMessageInput('');
       await apiCreatePublicChatMessages(chatMessageDoc);
     } catch (error) {
+      setMessageInput('');
       console.error(error);
     }
   };

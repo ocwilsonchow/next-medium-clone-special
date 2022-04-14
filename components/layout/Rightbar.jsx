@@ -15,11 +15,10 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import ChatContainer from "../chat/ChatContainer";
 import { AiOutlineSend } from "react-icons/ai";
-import { useChat } from "../../context/ChatContext"
+import { useChat } from "../../context/ChatContext";
 
 const Rightbar = () => {
-  const { createPublicMessage, setMessageInput, messageInput } = useChat()
-
+  const { createPublicMessage, setMessageInput, messageInput } = useChat();
 
   return (
     <VStack borderLeftWidth="0.5px" p={2} spacing={6} w="350px">
@@ -43,11 +42,11 @@ const Rightbar = () => {
                   variant="ghost"
                   icon={<AiOutlineSend />}
                   onClick={createPublicMessage}
-                  disabled={messageInput?.length == 0 }
+                  disabled={messageInput == ""}
                 />
               </InputRightElement>
               <Input
-                type="tel"
+                value={messageInput}
                 placeholder="Message"
                 onChange={(e) => setMessageInput(e.target.value)}
               />
