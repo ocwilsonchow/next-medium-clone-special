@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { Box, Flex, HStack, Text } from "@chakra-ui/layout";
 import Image from "next/image";
 import React from "react";
-import ThumbsUp from "../../images/Thumbs_up.png";
+import ThumbsUp from "../../images/Thumbsup.png";
 
 const CallForContact = () => {
   return (
@@ -29,7 +29,7 @@ const CallForContact = () => {
         <Button colorScheme="twitter" size='lg' >Leave a message</Button>
       </Box>
 
-      <Image src={ThumbsUp} width="250px" height="250px" objectFit="contain" />
+      <Image src={ThumbsUp} alt='thumbs_up' width="250px" height="250px" objectFit="contain" />
     </Flex>
   );
 };
