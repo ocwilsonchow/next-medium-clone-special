@@ -113,7 +113,7 @@ const FeaturedProject = () => {
                     />
                   </Flex>
                   <Link href={item.link}>
-                    <Button my={2} p={4}>
+                    <Button my={2} p={4} variant='outline'>
                       <Text>
                         {(item.remark && item.remark) || "Check it out"}
                       </Text>
