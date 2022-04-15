@@ -11,7 +11,8 @@ import account from "./account";
 import comment from "./comment"
 import chatroom from "./chatroom"
 import chatMessage from "./chatMessage";
-import inboxMessage from "./inboxMessage"
+import inboxMessage from "./inboxMessage";
+import verificationToken from "./verificationToken"
 
 export default createSchema({
   name: "default",
@@ -25,6 +26,7 @@ export default createSchema({
     comment,
     chatroom,
     chatMessage,
-    inboxMessage
+    inboxMessage,
+    verificationToken
   ]),
 });
