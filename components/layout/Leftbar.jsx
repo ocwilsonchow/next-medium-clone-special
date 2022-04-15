@@ -74,7 +74,7 @@ const Leftbar = () => {
       h="100vh"
       justifyContent="space-evenly"
       spacing={6}
-      w="100px"
+      w="80px"
     >
       <VStack spacing={6}>
         {menuItems.map((item, i) => (
