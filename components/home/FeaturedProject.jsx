@@ -54,17 +54,17 @@ const FeaturedProject = () => {
             flexDir="column"
             p={4}
             borderWidth="1px"
-            w="300px"
+            maxW="300px"
             borderRadius="xl"
             _hover={{ color: "cyan.500" }}
+            justifyContent="space-between"
           >
             <Text p={1} fontWeight="bold" fontSize="xl" mb={2}>
               Full Stack Social Media App 💬
             </Text>
             <Box>
               <Text p={1} mb={2}>
-                Built with React, Firestore, Firebase Authentication, Algolia,
-                Stripe Checkout, PayPal and Chakra UI.
+                Built with Node, Express, EJS, JQuery and Prisma.
               </Text>
               <a
                 href="https://serene-garden-37851.herokuapp.com/"
