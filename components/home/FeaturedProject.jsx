@@ -1,3 +1,5 @@
+import React, { useRef, useEffect, useState } from "react";
+
 import {
   Box,
   Button,
@@ -9,80 +11,126 @@ import {
 import Image from "next/image";
 import ecom from "../../images/react_ecom.png";
 import anothergram from "../../images/anothergram.png";
+import oxygen from "../../images/oxygen.png";
+import personal from "../../images/personal.png";
+import uber from "../../images/uberclone.png";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const FeaturedProject = () => {
-  return (
-    <Flex w="full" my={20}>
-      <Flex flexDir="column" w="full">
-        <Text fontWeight="bold" fontSize="3xl" mb={4}>
-          Featured
-        </Text>
-        <Flex columnGap={4} rowGap={4} flexWrap="wrap">
-          <Flex
-            flexDir="column"
-            p={4}
-            borderWidth="1px"
-            maxW="300px"
-            borderRadius="xl"
-            _hover={{ color: "cyan.500" }}
-            justifyContent="space-between"
-          >
-            <Text p={1} fontWeight="bold" fontSize="xl" mb={2}>
-              React E-Commerce 🛒
-            </Text>
-            <Box>
-              <Text p={1} mb={2}>
-                Built with React, Firestore, Firebase Authentication, Algolia,
-                Stripe Checkout, PayPal and Chakra UI.
-              </Text>
-              <a
-                href="https://react-ecommerce-app-tan.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src={ecom}
-                  width={300}
-                  height={200}
-                  objectFit="contain"
-                />
-              </a>
-            </Box>
-          </Flex>
+  const carousel = useRef();
+  const [width, setWidth] = useState(0);
 
-          <Flex
-            flexDir="column"
-            p={4}
-            borderWidth="1px"
-            maxW="300px"
-            borderRadius="xl"
-            _hover={{ color: "cyan.500" }}
-            justifyContent="space-between"
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  }, []);
+
+  const projects = [
+    {
+      title: " Next.js Blog",
+      description:
+        "A blog and portfolio website built with Next, NextAuth, Sanity, Framer Motion, Chakra UI and Tailwind.",
+      image: personal,
+      link: "/",
+      remark: 'See it on Vercel'
+    },
+    {
+      title: " React E-Commerce",
+      description:
+        "An interactive online store built with React, Firestore, Firebase Authentication, Algolia, Stripe Checkout, PayPal and Chakra UI.",
+      image: ecom,
+      link: "https://react-ecommerce-app-tan.vercel.app",
+      remark: 'See it on Vercel'
+    },
+    {
+      title: "Uber Blockchain Clone",
+      description:
+        "A Next.js clone of the Uber app, built with Mapbox, Ethers and Tailwind.",
+      image: uber,
+      link: "https://next-uber-clone-blockchain.vercel.app/",
+      remark: 'See it on Vercel'
+    },
+    {
+      title: "Medicine Library",
+      description:
+        "A responsive Next.js static generation website built with Chakra UI and GraphCMS.",
+      image: oxygen,
+      link: "https://oxygen-pro.vercel.app/",
+      remark: 'See it on Vercel'
+    },
+     {
+      title: "Full Stack Social Media",
+      description:
+        "A full stack CRUD project built with Node, Express, EJS, JQuery, Socket.io and Prisma. Features included: realtime chat, comment and post creation.",
+      image: anothergram,
+      link: "https://serene-garden-37851.herokuapp.com/",
+      remark: 'See it on Heroku*'
+    },
+  ];
+
+  return (
+    <Box mb={20}>
+      <Text p={2} fontSize="3xl" fontWeight="bold" mb={2}>
+        Featured
+      </Text>
+      <Flex w="full">
+        <motion.div
+          ref={carousel}
+          className="carousel cursor-grab overflow-hidden pb-2"
+          whileTap={{ cursor: "grabbing" }}
+        >
+          <motion.div
+            drag="x"
+            dragConstraints={{ right: 0, left: -width }}
+            className="inner-carousel flex"
           >
-            <Text p={1} fontWeight="bold" fontSize="xl" mb={2}>
-              Full Stack Social Media App 💬
-            </Text>
-            <Box>
-              <Text p={1} mb={2}>
-                Built with Node, Express, EJS, JQuery and Prisma.
-              </Text>
-              <a
-                href="https://serene-garden-37851.herokuapp.com/"
-                target="_blank"
-                rel="noreferrer"
+            {projects.map((item, i) => (
+              <motion.div
+                key={i}
+                className="mr-1 p-1"
+                whileHover={{ scale: 0.99 }}
               >
-                <Image
-                  src={anothergram}
-                  width={300}
-                  height={200}
-                  objectFit="contain"
-                />
-              </a>
-            </Box>
-          </Flex>
-        </Flex>
+                <Flex
+                  flexDir="column"
+                  p={4}
+                  borderWidth="1px"
+                  w="300px"
+                  h="100%"
+                  borderRadius="xl"
+                  justifyContent="space-between"
+                >
+                  <Text p={2} fontWeight="bold" fontSize="xl" mb={2}>
+                    {item.title}
+                  </Text>
+
+                  <Flex
+                    flexDir="column"
+                    h="100%"
+                    mb={4}
+                    justifyContent="space-between"
+                  >
+                    <Text p={2} mb={2}>
+                      {item.description}
+                    </Text>
+                    <Image
+                      src={item.image}
+                      width={310}
+                      height={200}
+                      objectFit="contain"
+                    />
+                  </Flex>
+                  <Link href={item.link}>
+                    <Button my={2} p={4} >
+                       <Text>{item.remark && item.remark || 'Check it out'}</Text>
+                    </Button>
+                  </Link>
+                </Flex>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 

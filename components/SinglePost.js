@@ -22,7 +22,7 @@ function urlFor(source) {
 }
 
 const SinglePost = ({ post }) => {
-  console.log(post.body)
+  console.log(post.body);
 
   return (
     <Fade in>
@@ -78,7 +78,6 @@ const SinglePost = ({ post }) => {
                     fontSize="xs"
                     mr={2}
                   >
-                    {" "}
                     {tag.label}
                   </Tag>
                 ))}

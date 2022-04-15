@@ -63,7 +63,7 @@ export default function Home() {
                 className="inline-flex"
                 transition={{ delay: 0.5 }}
               >
-                👋🏻
+                <Text>👋🏻</Text>
               </motion.div>
             </Text>
             <Text
@@ -83,92 +83,90 @@ export default function Home() {
           viewport={{ once: false }}
           transition={{ delay: 0.1 }}
         >
-          <SlideFade in offsetX="100px">
-            <Box py="50px" w="full" h="300px">
-              <Link href="/me/about">
-                <Button mb={2} colorScheme="twitter" size="lg">
-                  My Story 🌍
-                </Button>
-              </Link>
+          <Box py="50px" w="full" h="300px">
+            <Link href="/me/about">
+              <Button mb={2} colorScheme="twitter" size="lg">
+                My Story 🌍
+              </Button>
+            </Link>
 
-              <HStack py={20} spacing={3}>
-                <a
-                  href="https://github.com/ocwilsonchow/next-medium-clone-special"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton
-                    icon={<AiOutlineGithub />}
-                    fontSize="lg"
-                    variant="outline"
-                    borderRadius="full"
-                  />
-                </a>
-                <a
-                  href="https://www.facebook.com/ocwilsonchow/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton
-                    fontSize="lg"
-                    variant="outline"
-                    rounded="full"
-                    icon={<AiFillFacebook />}
-                  />
-                </a>
-
-                <a
-                  href="https://www.instagram.com/ocwilsonchow/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton
-                    fontSize="lg"
-                    variant="outline"
-                    rounded="full"
-                    icon={<AiFillInstagram />}
-                  />
-                </a>
-                <a
-                  href="https://www.youtube.com/c/SLCHOW/featured"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton
-                    fontSize="lg"
-                    variant="outline"
-                    rounded="full"
-                    icon={<AiFillYoutube />}
-                  />
-                </a>
-
+            <HStack py={20} spacing={3}>
+              <a
+                href="https://github.com/ocwilsonchow/next-medium-clone-special"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  icon={<AiOutlineGithub />}
+                  fontSize="lg"
+                  variant="outline"
+                  borderRadius="full"
+                />
+              </a>
+              <a
+                href="https://www.facebook.com/ocwilsonchow/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <IconButton
                   fontSize="lg"
                   variant="outline"
                   rounded="full"
-                  icon={<AiTwotoneMail />}
+                  icon={<AiFillFacebook />}
                 />
-              </HStack>
-            </Box>
-            <Box pb={20}>
-              <Text fontWeight="bold" fontSize="3xl" mb={4}>
-                Skills
-              </Text>
-              <Flex flexWrap="wrap">
-                {skills.map((skill, i) => (
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key={i}
-                  >
-                    <Button p={4} mr={3} my={1} bg="none" variant="outline">
-                      {skill}
-                    </Button>
-                  </motion.div>
-                ))}
-              </Flex>
-            </Box>
-          </SlideFade>
+              </a>
+
+              <a
+                href="https://www.instagram.com/ocwilsonchow/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  fontSize="lg"
+                  variant="outline"
+                  rounded="full"
+                  icon={<AiFillInstagram />}
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/c/SLCHOW/featured"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconButton
+                  fontSize="lg"
+                  variant="outline"
+                  rounded="full"
+                  icon={<AiFillYoutube />}
+                />
+              </a>
+
+              <IconButton
+                fontSize="lg"
+                variant="outline"
+                rounded="full"
+                icon={<AiTwotoneMail />}
+              />
+            </HStack>
+          </Box>
+          <Box pb={20}>
+            <Text fontWeight="bold" fontSize="3xl" mb={4}>
+              Skills
+            </Text>
+            <Flex flexWrap="wrap">
+              {skills.map((skill, i) => (
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  key={i}
+                >
+                  <Button p={4} mr={3} my={1} bg="none" variant="outline">
+                    {skill}
+                  </Button>
+                </motion.div>
+              ))}
+            </Flex>
+          </Box>
         </motion.div>
 
         <motion.div
@@ -219,7 +217,6 @@ export default function Home() {
           viewport={{ once: false }}
           transition={{ delay: 0.1 }}
         >
-          {" "}
           <CallForContact />
         </motion.div>
 

@@ -2,15 +2,9 @@ import {
   Button,
   Center,
   Flex,
-  Grid,
-  GridItem,
   Spinner,
-  Text,
-  Alert,
-  VStack,
   Fade,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import SinglePost from "../../../components/SinglePost";
 import { apiGetBlogPosts } from "../../../lib/blog";
 
