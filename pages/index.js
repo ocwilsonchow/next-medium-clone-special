@@ -155,15 +155,9 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  key={i}
                 >
-                  <Button
-                    key={i}
-                    p={4}
-                    mr={3}
-                    my={1}
-                    bg="none"
-                    variant="outline"
-                  >
+                  <Button p={4} mr={3} my={1} bg="none" variant="outline">
                     {skill}
                   </Button>
                 </motion.div>
