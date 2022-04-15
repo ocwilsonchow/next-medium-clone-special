@@ -32,7 +32,7 @@ const CallForContact = () => {
         >
           Get in touch today to explore opportunities for collaborations
         </Text>
-        <Link href="/contact-wilson">
+        <Link href="/contactWilson">
           <Button colorScheme="twitter" size="lg">
             Leave a message
           </Button>

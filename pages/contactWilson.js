@@ -14,7 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { apiCreateInboxMessage } from "../pages/api/inbox";
+import { apiCreateInboxMessage } from "./api/inbox";
 import Rockhand from "../images/Rockhand.png";
 import Image from "next/image";
 
