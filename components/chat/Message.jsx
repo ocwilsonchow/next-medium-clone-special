@@ -20,6 +20,8 @@ const Message = ({ msg }) => {
   const isSender = session?.user?.email === msg?.userEmail;
   const isAnonymousSender = anonymousId === msg?.userEmail;
 
+  if (!msg) return null
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,7 +29,6 @@ const Message = ({ msg }) => {
       viewport={{ once: false }}
 
     >
-      {" "}
       <Box py={2} cursor={isSender && "pointer"}>
         <Flex
           flexDir={

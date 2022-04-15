@@ -61,8 +61,6 @@ export default function Home() {
                 initial={{ rotate: 0 }}
                 whileInView={{ rotate: [20, 0, 20, 0, 20] }}
                 className="inline-flex"
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                whileTap={{ scale: 0.9 }}
                 transition={{ delay: 0.5 }}
               >
                 👋🏻
