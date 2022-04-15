@@ -8,7 +8,7 @@ const Typewritter = () => {
         fontWeight: "bold",
         fontSize: "30px",
       }}
-      startDelay={500}
+      startDelay={1500}
       cursorColor="cyan"
       multiText={[
         "I love building beautiful and interactive web applications",

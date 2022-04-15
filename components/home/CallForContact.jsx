@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { Box, Flex, HStack, Text } from "@chakra-ui/layout";
 import { Fade } from "@chakra-ui/transition";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,7 +17,7 @@ const CallForContact = () => {
       justifyContent="center"
       flexDir={{ base: "column", md: "row" }}
     >
-      <Box w='full' alignItems="center">
+      <Box w="full" alignItems="center">
         <Text
           color="black"
           fontWeight="bold"
@@ -39,13 +40,15 @@ const CallForContact = () => {
         </Link>
       </Box>
 
-      <Image
-        src={ThumbsUp}
-        alt="thumbs_up"
-        width="250px"
-        height="250px"
-        objectFit="contain"
-      />
+      <motion.div  whileHover={{ scale: 1.1, rotate: -10 }} whileTap={{ scale: 0.9 }}>
+        <Image
+          src={ThumbsUp}
+          alt="thumbs_up"
+          width="250px"
+          height="250px"
+          objectFit="contain"
+        />
+      </motion.div>
     </Flex>
   );
 };

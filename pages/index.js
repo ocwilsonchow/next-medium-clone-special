@@ -26,6 +26,7 @@ import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
 import Backhand from "../images/Backhand.png";
 import FeaturedProject from "../components/home/FeaturedProject";
+import { motion } from "framer-motion";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -54,12 +55,22 @@ export default function Home() {
 
         <SlideFade in offsetX="-100px">
           <Box py="12%" w="100%" h="450px">
-            <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "6xl"]}>
-              Hello 👋🏻
+            <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "7xl"]}>
+              Hello{" "}
+              <motion.div
+                initial={{ rotate: 0 }}
+                whileInView={{ rotate: [20, 0, 20, 0, 20] }}
+                className="inline-flex"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ delay: 0.5 }}
+              >
+                👋🏻
+              </motion.div>
             </Text>
             <Text
               fontWeight="bold"
-              fontSize={["5xl", "5xl", "5xl", "6xl"]}
+              fontSize={["5xl", "5xl", "5xl", "7xl"]}
               mb={6}
             >
               I am Wilson
@@ -81,7 +92,6 @@ export default function Home() {
                 href="https://github.com/ocwilsonchow/next-medium-clone-special"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <IconButton
                   icon={<AiOutlineGithub />}
@@ -94,7 +104,6 @@ export default function Home() {
                 href="https://www.facebook.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <IconButton
                   fontSize="lg"
@@ -108,7 +117,6 @@ export default function Home() {
                 href="https://www.instagram.com/ocwilsonchow/"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <IconButton
                   fontSize="lg"
@@ -121,7 +129,6 @@ export default function Home() {
                 href="https://www.youtube.com/c/SLCHOW/featured"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <IconButton
                   fontSize="lg"
@@ -145,14 +152,32 @@ export default function Home() {
             </Text>
             <Flex flexWrap="wrap">
               {skills.map((skill, i) => (
-                <Button key={i} p={4} mr={3} my={1} bg="none" variant="outline">
-                  {skill}
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button
+                    key={i}
+                    p={4}
+                    mr={3}
+                    my={1}
+                    bg="none"
+                    variant="outline"
+                  >
+                    {skill}
+                  </Button>
+                </motion.div>
               ))}
             </Flex>
           </Box>
         </SlideFade>
-        <FeaturedProject />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+        >
+          <FeaturedProject />
+        </motion.div>
         <Box pb={20}>
           <Text fontWeight="bold" fontSize="3xl" mb={4}>
             My favorite libraries
