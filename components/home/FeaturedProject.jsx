@@ -1,13 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import {
-  Box,
-  Button,
-  Flex,
-  LinkBox,
-  LinkOverlay,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import ecom from "../../images/react_ecom.png";
 import anothergram from "../../images/anothergram.png";
@@ -32,7 +25,7 @@ const FeaturedProject = () => {
         "A blog and portfolio website built with Next, NextAuth, Sanity, Framer Motion, Chakra UI and Tailwind.",
       image: personal,
       link: "/",
-      remark: 'See it on Vercel'
+      remark: "See it on Vercel",
     },
     {
       title: " React E-Commerce",
@@ -40,7 +33,7 @@ const FeaturedProject = () => {
         "An interactive online store built with React, Firestore, Firebase Authentication, Algolia, Stripe Checkout, PayPal and Chakra UI.",
       image: ecom,
       link: "https://react-ecommerce-app-tan.vercel.app",
-      remark: 'See it on Vercel'
+      remark: "See it on Vercel",
     },
     {
       title: "Uber Blockchain Clone",
@@ -48,7 +41,7 @@ const FeaturedProject = () => {
         "A Next.js clone of the Uber app, built with Mapbox, Ethers and Tailwind.",
       image: uber,
       link: "https://next-uber-clone-blockchain.vercel.app/",
-      remark: 'See it on Vercel'
+      remark: "See it on Vercel",
     },
     {
       title: "Medicine Library",
@@ -56,15 +49,15 @@ const FeaturedProject = () => {
         "A responsive Next.js static generation website built with Chakra UI and GraphCMS.",
       image: oxygen,
       link: "https://oxygen-pro.vercel.app/",
-      remark: 'See it on Vercel'
+      remark: "See it on Vercel",
     },
-     {
+    {
       title: "Full Stack Social Media",
       description:
         "A full stack CRUD project built with Node, Express, EJS, JQuery, Socket.io and Prisma. Features included: realtime chat, comment and post creation.",
       image: anothergram,
       link: "https://serene-garden-37851.herokuapp.com/",
-      remark: 'See it on Heroku*'
+      remark: "See it on Heroku*",
     },
   ];
 
@@ -120,14 +113,19 @@ const FeaturedProject = () => {
                     />
                   </Flex>
                   <Link href={item.link}>
-                    <Button my={2} p={4} >
-                       <Text>{item.remark && item.remark || 'Check it out'}</Text>
+                    <Button my={2} p={4}>
+                      <Text>
+                        {(item.remark && item.remark) || "Check it out"}
+                      </Text>
                     </Button>
                   </Link>
                 </Flex>
               </motion.div>
             ))}
           </motion.div>
+          <Text p={2} fontSize="xs">
+            *It may take longer to load on Heroku server
+          </Text>
         </motion.div>
       </Flex>
     </Box>
