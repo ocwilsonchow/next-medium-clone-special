@@ -13,20 +13,13 @@ const options = {
     }),
     GoogleProvider({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET
     }),
   ],
   secret: 'any-secret-word',
-  session: {
-        strategy: 'jwt'
-    },
+  // session: {
+  //   strategy: 'jwt'
+  // },
   adapter: SanityAdapter(writeClient),
 };
 
