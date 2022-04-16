@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { Box, Flex, HStack, Text } from "@chakra-ui/layout";
+import { Box, Flex, useColorModeValue, Text } from "@chakra-ui/react";
 import { Fade } from "@chakra-ui/transition";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,10 +8,12 @@ import React from "react";
 import ThumbsUp from "../../images/Thumbsup.png";
 
 const CallForContact = () => {
+  const boxColor = useColorModeValue("gray.50", 'gray.900')
+
   return (
     <Flex
       p={10}
-      bg="cyan.100"
+      bg={boxColor}
       borderRadius="xl"
       alignItems="center"
       justifyContent="center"
@@ -19,7 +21,6 @@ const CallForContact = () => {
     >
       <Box w="full" alignItems="center">
         <Text
-          color="black"
           fontWeight="bold"
           fontSize={["3xl", "3xl", "3xl", "4xl"]}
           mb={5}
@@ -27,7 +28,6 @@ const CallForContact = () => {
           Contact Wilson
         </Text>
         <Text
-          color="gray.500"
           mb={[6, 6, 10, 10]}
           fontSize={["md", "md", "lg", "lg"]}
         >

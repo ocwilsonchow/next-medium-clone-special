@@ -18,7 +18,7 @@ const PageAbout = () => {
       <Fade in>
         <Flex justifyContent="space-between" alignItems="center" flexWrap='wrap' >
           <Box mr={10} pb={10}>
-            <Text fontWeight="bold" fontSize={["2xl","2xl","4xl","4xl"]} my={10}>
+            <Text fontWeight="bold" fontSize={["3xl","3xl","5xl","5xl"]} my={10}>
               About Wilson
             </Text>
 

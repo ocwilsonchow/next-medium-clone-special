@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import Image from "next/image";
 import ecom from "../../images/react_ecom.png";
 import anothergram from "../../images/anothergram.png";
@@ -13,6 +12,7 @@ import Link from "next/link";
 const FeaturedProject = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
+  const boxColor = useColorModeValue("gray.50", 'gray.900')
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -85,14 +85,15 @@ const FeaturedProject = () => {
               >
                 <Flex
                   flexDir="column"
-                  p={4}
+                  p={6}
                   borderWidth="1px"
-                  w="300px"
+                  w="350px"
                   h="100%"
                   borderRadius="xl"
                   justifyContent="space-between"
+                  bg={boxColor}
                 >
-                  <Text p={2} fontWeight="bold" fontSize="xl" mb={2}>
+                  <Text p={2} fontWeight="bold" fontSize="2xl" mb={2}>
                     {item.title}
                   </Text>
 
