@@ -44,7 +44,7 @@ const Story = () => {
       <Text mb={20} fontSize="md">
         In summer 2021, I officially completed my five-year pharmacy education.
         I decided to come back to Hong Kong to learn web development. I joined H
-        Academy's <strong className="text-blue-400">full stack web development bootcamp</strong>. Since then I started becoming more familiar
+        Academy <strong className="text-blue-400">full stack web development bootcamp</strong>. Since then I started becoming more familiar
         with Javascript and a wide variety of web technologies and libraries.
       </Text>
     </motion.div>
