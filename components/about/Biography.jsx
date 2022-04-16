@@ -16,7 +16,7 @@ import ReactCode from "../../components/home/ReactCode";
 const Biography = () => {
   return (
     <Flex flexDir="column" py={10} fontWeight="light">
-      <Tabs variant="enclosed" colorScheme="green">
+      <Tabs variant="enclosed" >
         <TabList>
           <Tab>Background Story</Tab>
           <Tab>Education and Training</Tab>

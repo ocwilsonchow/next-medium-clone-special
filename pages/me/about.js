@@ -18,7 +18,7 @@ const PageAbout = () => {
       <Fade in>
         <Flex justifyContent="space-between" alignItems="center" flexWrap='wrap' >
           <Box mr={10} pb={10}>
-            <Text fontWeight="bold" fontSize={["2xl","2xl","4xl","4xl"]} mb={10}>
+            <Text fontWeight="bold" fontSize={["2xl","2xl","4xl","4xl"]} my={10}>
               About Wilson
             </Text>
 
@@ -28,7 +28,7 @@ const PageAbout = () => {
             <Text mb={5} fontSize={["sm","md","lg","lg"]}>sinlongchow@gmail.com</Text>
             <SocialLinks />
           </Box>
-          <Box boxSize={{ base: "150px", md: "250px" }} pb={10}>
+          <Box boxSize={{ base: "150px", md: "200px" }} pb={10}>
             <Image src={me} width={250} height={250} objectFit="cover" />
           </Box>
         </Flex>

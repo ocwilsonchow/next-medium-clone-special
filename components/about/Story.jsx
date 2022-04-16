@@ -22,7 +22,7 @@ const Story = () => {
         integrated master degree of{" "}
         <strong className="text-blue-400">pharmacy</strong>. I graduated with a
         first class honour, and worked as a trainee pharmacist. After 5 years of
-        education, I finally became a registered pharmacist.
+        education, I finally became a <strong className="text-blue-400">registered pharmacist</strong>.
       </Text>
       <Text mb={6} fontSize="md">
         My working experience in pharmacy sparked my interest in software
@@ -41,10 +41,10 @@ const Story = () => {
         taught by Angela Yu. Then I started to build projects following Youtube
         tutorials.
       </Text>
-      <Text mb={6} fontSize="md">
+      <Text mb={20} fontSize="md">
         In summer 2021, I officially completed my five-year pharmacy education.
         I decided to come back to Hong Kong to learn web development. I joined H
-        Academy coding bootcamp. Since then I started becoming more familiar
+        Academy's <strong className="text-blue-400">full stack web development bootcamp</strong>. Since then I started becoming more familiar
         with Javascript and a wide variety of web technologies and libraries.
       </Text>
     </motion.div>
