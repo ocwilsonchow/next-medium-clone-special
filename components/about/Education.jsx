@@ -12,6 +12,7 @@ const Education = () => {
       organization: "H Academy",
       place: "Hong Kong",
       description: [""],
+      year: "2022 January to May",
     },
     {
       image:
@@ -21,6 +22,7 @@ const Education = () => {
       organization: "General Pharmaceutical Council",
       place: "United Kingdom",
       description: [""],
+      year: "2022 January",
     },
     {
       image:
@@ -30,6 +32,7 @@ const Education = () => {
       organization: "Boots",
       place: "United Kingdom",
       description: [""],
+      year: "2021 to 2022",
     },
     {
       image:
@@ -39,6 +42,7 @@ const Education = () => {
       organization: "University College London",
       place: "United Kingdom",
       description: ["First Class Honours (GPA = ~3.9)"],
+      year: "2016 to 2020",
     },
   ];
 
@@ -51,7 +55,7 @@ const Education = () => {
       <Flex flexDir="column">
         {educations?.map((education, i) => (
           <Flex
-            alignItems="center"
+
             borderWidth="1px"
             borderRadius="md"
             mb={3}
@@ -73,15 +77,16 @@ const Education = () => {
                 alt=""
               />
             </Box>
-            <Flex flexDir="column">
+            <Flex flexDir="column" h="full">
+              <Text>{education.year}</Text>
               <Text fontWeight="extrabold">{education.name}</Text>
-              <Text fontWeight="light">{education.title}</Text>
+              <Text fontWeight="extrabold" color='blue.400'>{education.title}</Text>
               <Text fontWeight="light">
                 {education.organization}, {education.place}
               </Text>
               <Flex>
                 {education?.description?.map((item, i) => (
-                  <Text key={i} fontWeight="light">
+                  <Text key={i} fontWeight="light" fontStyle="italic">
                     {item}
                   </Text>
                 ))}

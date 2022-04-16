@@ -19,6 +19,7 @@ import CallForContact from "../components/home/CallForContact";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/about/SocialLinks";
+import CallForRead from "../components/home/CallForRead";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -81,15 +82,21 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
           transition={{ delay: 0.1 }}
+          className="my-20"
         >
-          <Box py="50px" w="full" h="300px">
-            <Link href="/me/about">
-              <Button mb={20} colorScheme="twitter" size="lg">
-                My Story 🌍
-              </Button>
-            </Link>
-            <SocialLinks />
-          </Box>
+            <Link href="/contactWilson">
+          <Button colorScheme="twitter" size="lg" mb={2}>
+            Read More 🌍
+          </Button>
+        </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.1 }}
+        >
           <Box pb={20}>
             <Text fontWeight="bold" fontSize="3xl" mb={4}>
               Skills

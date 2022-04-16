@@ -22,12 +22,14 @@ import {
   AiOutlineMail,
   AiOutlineTrophy,
   AiOutlineSetting,
-  AiFillSetting
+  AiFillSetting,
 } from "react-icons/ai";
-import { BsChatDots, BsChatDotsFill } from 'react-icons/bs'
+import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { useSession } from "next-auth/react";
 
 const Leftbar = () => {
+  const { data: session, status } = useSession();
   const menuItems = [
     {
       name: "Home",
@@ -59,7 +61,7 @@ const Leftbar = () => {
       outlineIcon: <AiOutlineMail />,
       link: "/contactWilson",
     },
-     {
+    {
       name: "Settings",
       fillIcon: <AiFillSetting />,
       outlineIcon: <AiOutlineSetting />,
@@ -77,6 +79,7 @@ const Leftbar = () => {
       w="80px"
     >
       <VStack spacing={6}>
+        {session && <Avatar src={session?.user.image} size="sm" />}
         {menuItems.map((item, i) => (
           <Link key={i} href={item.link}>
             <IconButton

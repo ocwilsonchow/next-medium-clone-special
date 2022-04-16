@@ -116,11 +116,11 @@ const PageContactWilson = () => {
 
               <Button
                 mt={4}
-                colorScheme="teal"
+                colorScheme="twitter"
                 isLoading={isSubmitting}
                 type="submit"
               >
-                Submit 😄
+                Submit
               </Button>
             </form>
 

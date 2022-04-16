@@ -73,7 +73,7 @@ export default function PageShowBlogPost({ post, posts }) {
         <VStack spacing={6}>
           <PortableText value={post.body} components={components} />
         </VStack>
-        <Comments comments={post.relatedComments}/>
+        <Comments comments={post.relatedComments} slug={post.slug.current}/>
       </VStack>
       </Fade>
     </Flex>
