@@ -84,7 +84,7 @@ export default function Home() {
           transition={{ delay: 0.1 }}
           className="my-20"
         >
-            <Link href="/contactWilson">
+            <Link href="/me/about">
           <Button colorScheme="twitter" size="lg" mb={2}>
             Read More 🌍
           </Button>
