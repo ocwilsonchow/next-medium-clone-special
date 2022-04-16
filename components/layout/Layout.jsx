@@ -26,15 +26,10 @@ const Layout = ({ children }) => {
           overflow="auto"
           position="relative"
         >
-          <Flex
-            w="full"
-            position="sticky"
-            top="0px"
-            zIndex={2}
-          >
+          <Flex w="full" position="sticky" top="0px" zIndex={2}>
             <Topbar />
           </Flex>
-          <Flex flexDir='column' p={4} w="85%">
+          <Flex flexDir="column" p={4} maxW="1000px" w="95%">
             {children}
           </Flex>
         </Flex>

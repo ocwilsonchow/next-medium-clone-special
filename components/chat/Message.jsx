@@ -57,10 +57,10 @@ const Message = ({ msg }) => {
                   "flex-start"
                 }
               >
-                <Text fontSize="xs" fontWeight="medium">
+                <Text fontSize="xs" fontWeight="medium" isTruncated>
                   {msg?.username}
                 </Text>
-                <Text fontSize="10px">{moment(msg?.createdAt).calendar()}</Text>
+                <Text fontSize="10px" isTruncated>{moment(msg?.createdAt).calendar()}</Text>
               </HStack>
               <Flex
                 w="full"

@@ -13,7 +13,7 @@ const PageSettings = () => {
         <Box>
           <HStack py={4}>
             <Avatar src={session.user.image} />
-            <Text py={4} fontSize="sm" isTruncated>
+            <Text py={8} fontSize="sm" isTruncated>
               Signed in as {session.user.email}
             </Text>
           </HStack>
@@ -22,7 +22,7 @@ const PageSettings = () => {
       )}
       {!session && (
         <Box>
-          <Text py={4}>Not signed in</Text>
+          <Text py={8}>Not signed in</Text>
           <Button colorScheme="twitter" onClick={() => signIn()}>Sign in</Button>
         </Box>
       )}
