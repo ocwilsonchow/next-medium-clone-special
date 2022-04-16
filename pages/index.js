@@ -13,20 +13,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
-import {
-  AiOutlineGithub,
-  AiFillFacebook,
-  AiFillYoutube,
-  AiTwotoneMail,
-  AiFillInstagram,
-} from "react-icons/ai";
 import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
-import Backhand from "../images/Backhand.png";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
+import SocialLinks from "../components/about/SocialLinks";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -41,7 +33,14 @@ const skills = [
   "UI Design 👀",
   "Tailwind 💨",
 ];
-const learnings = ["Three.js 🌟", "Redux", "RTK Query", "Graphql"];
+const learnings = [
+  "Three.js",
+  "Redux",
+  "RTK Query",
+  "Graphql",
+  "Typescript",
+  "Motion Framer",
+];
 
 export default function Home() {
   return (
@@ -85,69 +84,11 @@ export default function Home() {
         >
           <Box py="50px" w="full" h="300px">
             <Link href="/me/about">
-              <Button mb={2} colorScheme="twitter" size="lg">
+              <Button mb={20} colorScheme="twitter" size="lg">
                 My Story 🌍
               </Button>
             </Link>
-
-            <HStack py={20} spacing={3}>
-              <a
-                href="https://github.com/ocwilsonchow/next-medium-clone-special"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton
-                  icon={<AiOutlineGithub />}
-                  fontSize="lg"
-                  variant="outline"
-                  borderRadius="full"
-                />
-              </a>
-              <a
-                href="https://www.facebook.com/ocwilsonchow/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton
-                  fontSize="lg"
-                  variant="outline"
-                  rounded="full"
-                  icon={<AiFillFacebook />}
-                />
-              </a>
-
-              <a
-                href="https://www.instagram.com/ocwilsonchow/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton
-                  fontSize="lg"
-                  variant="outline"
-                  rounded="full"
-                  icon={<AiFillInstagram />}
-                />
-              </a>
-              <a
-                href="https://www.youtube.com/c/SLCHOW/featured"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconButton
-                  fontSize="lg"
-                  variant="outline"
-                  rounded="full"
-                  icon={<AiFillYoutube />}
-                />
-              </a>
-
-              <IconButton
-                fontSize="lg"
-                variant="outline"
-                rounded="full"
-                icon={<AiTwotoneMail />}
-              />
-            </HStack>
+            <SocialLinks />
           </Box>
           <Box pb={20}>
             <Text fontWeight="bold" fontSize="3xl" mb={4}>
