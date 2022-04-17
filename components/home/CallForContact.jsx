@@ -12,7 +12,7 @@ const CallForContact = () => {
 
   return (
     <Flex
-      p={10}
+      p={8}
       bg={boxColor}
       borderRadius="xl"
       alignItems="center"

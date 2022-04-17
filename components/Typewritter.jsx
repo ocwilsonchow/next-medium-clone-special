@@ -6,17 +6,15 @@ const Typewritter = () => {
       textStyle={{
         fontFamily: "Poppins",
         fontWeight: "bold",
-        fontSize: "30px",
+        fontSize: "25px",
       }}
       startDelay={1500}
       cursorColor="cyan"
       multiText={[
         "I love building beautiful and interactive web applications",
-        "React.js and Next.js are one of my favorite technologies",
-        "This website is built with Next.js and Sanity",
-        "Please reach out to me anytime!",
-        "Check out my website! ",
-        "I am a full stack web developer. I Love frontend engineering!"
+        "React.js and Next.js are two of my favorite technologies",
+        "Please reach out to me any time!",
+        "I am a full stack web developer. I love building beautiful and interactive web applications"
       ]}
       typeSpeed={100}
     />

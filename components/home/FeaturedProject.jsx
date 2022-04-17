@@ -85,7 +85,7 @@ const FeaturedProject = () => {
               >
                 <Flex
                   flexDir="column"
-                  p={6}
+                  p={5}
                   borderWidth="1px"
                   w="350px"
                   h="100%"
@@ -114,7 +114,7 @@ const FeaturedProject = () => {
                     />
                   </Flex>
                   <Link href={item.link}>
-                    <Button my={2} p={4} variant='outline'>
+                    <Button mt={2} p={4} variant='outline'>
                       <Text>
                         {(item.remark && item.remark) || "Check it out"}
                       </Text>

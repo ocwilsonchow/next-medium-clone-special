@@ -18,8 +18,6 @@ import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
-import SocialLinks from "../components/about/SocialLinks";
-import CallForRead from "../components/home/CallForRead";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -47,14 +45,10 @@ export default function Home() {
   return (
     <Fade in>
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
-        <Center p={2}>
-          <Code bg="none" fontSize="sm" textAlign="center">
-            Bear with me, web development still in progress!
-          </Code>
-        </Center>
+
 
         <SlideFade in offsetX="-100px">
-          <Box py="12%" w="100%" h="450px">
+          <Box py="14%" w="100%" h="450px">
             <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "7xl"]}>
               Hello{" "}
               <motion.div
