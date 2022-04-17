@@ -11,12 +11,16 @@ import {
 
 const Slider = () => {
   const libraries = [
-    "SWR",
-    "Sanity",
     "Chakra UI",
     "Firebase",
+    "Supabase",
     "Algolia",
     "Prisma",
+    "Tailwind",
+    "Motion Framer",
+
+    "SWR",
+    "Sanity",
     "NextAuth",
     "Socket.io",
     "GraphCMS",
@@ -25,7 +29,6 @@ const Slider = () => {
     "Yup",
     "PayPal",
     "Stripe",
-    "Supabase",
   ];
 
   const [width, setWidth] = useState(0);

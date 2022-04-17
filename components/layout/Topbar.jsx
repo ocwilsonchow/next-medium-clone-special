@@ -11,6 +11,7 @@ const Topbar = () => {
       w="full"
       px={6}
       py={4}
+      mx={0.5}
       justifyContent="space-between"
       alignItems="center"
       backdropFilter="blur(20px)"

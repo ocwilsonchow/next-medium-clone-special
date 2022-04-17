@@ -6,6 +6,7 @@ import {
   HStack,
   VStack,
   Avatar,
+  Code,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import Biography from "../../components/about/Biography";
@@ -19,7 +20,7 @@ const PageAbout = () => {
         <Flex justifyContent="space-between" alignItems="center" flexWrap='wrap' >
           <Box mr={10} pb={10}>
             <Text fontWeight="bold" fontSize={["3xl","3xl","5xl","5xl"]} my={10}>
-              About Wilson
+              Hi, I am <Code fontSize={["3xl","3xl","5xl","5xl"]} colorScheme="cyan"> wilson</Code>
             </Text>
 
             <Text mb={2} fontWeight="bold" fontSize={["sm","md","lg","lg"]}>

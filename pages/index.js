@@ -127,7 +127,7 @@ export default function Home() {
         >
           <Box pb={20}>
             <Text fontWeight="bold" fontSize="3xl" mb={4}>
-              My favorite libraries
+              Libraries that I use
             </Text>
             <Slider />
           </Box>
