@@ -49,7 +49,7 @@ export default function Home() {
 
         <SlideFade in offsetX="-100px">
           <Box py="14%" w="100%" h="450px">
-            <Text fontWeight="bold" fontSize={["5xl", "5xl", "5xl", "7xl"]}>
+            <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
               Hello{" "}
               <motion.div
                 initial={{ rotate: 0 }}
@@ -62,7 +62,7 @@ export default function Home() {
             </Text>
             <Text
               fontWeight="bold"
-              fontSize={["5xl", "5xl", "5xl", "7xl"]}
+              fontSize={["6xl", "6xl", "6xl", "7xl"]}
               mb={6}
             >
               I am Wilson
