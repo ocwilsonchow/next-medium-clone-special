@@ -5,7 +5,7 @@ const Typewritter = () => {
     <TypeWriterEffect
       textStyle={{
         fontFamily: "Poppins",
-        fontWeight: "bold",
+        fontWeight: "",
         fontSize: "25px",
       }}
       startDelay={1500}
@@ -14,7 +14,7 @@ const Typewritter = () => {
         "I love building beautiful and interactive web applications",
         "React.js and Next.js are two of my favorite technologies",
         "Please reach out to me any time!",
-        "I am a full stack web developer. I love building beautiful and interactive web applications"
+        "I am a full stack web developer, and I love building beautiful and interactive web applications."
       ]}
       typeSpeed={100}
     />
