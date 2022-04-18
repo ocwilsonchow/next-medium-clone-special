@@ -1,13 +1,10 @@
+import { useEffect } from "react";
 import {
   Box,
   Button,
   Center,
-  Code,
-  Collapse,
   Fade,
   Flex,
-  HStack,
-  IconButton,
   SlideFade,
   Tag,
   Text,
@@ -18,11 +15,11 @@ import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
+import useSWR from "swr";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
 });
-
 const skills = [
   "React.js",
   "Next.js 🔥",
@@ -47,17 +44,21 @@ export default function Home() {
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
         <SlideFade in offsetX="-100px">
           <Box py="14%" w="100%" h="450px">
-            <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
-              Hello{" "}
+            <Flex>
+              <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
+                Hello
+              </Text>
               <motion.div
                 initial={{ rotate: 0 }}
                 whileInView={{ rotate: [20, 0, 20, 0, 20] }}
                 className="inline-flex"
                 transition={{ delay: 0.5 }}
               >
-                <Text>👋🏻</Text>
+                <Text ml={2} fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
+                  👋🏻
+                </Text>
               </motion.div>
-            </Text>
+            </Flex>
             <Text
               fontWeight="bold"
               fontSize={["6xl", "6xl", "6xl", "7xl"]}
@@ -78,7 +79,7 @@ export default function Home() {
         >
           <Flex columnGap={2} rowGap={2} flexWrap="wrap">
             <Link href="/me/about">
-              <Button colorScheme="twitter" size="lg" >
+              <Button colorScheme="twitter" size="lg">
                 My Story 🌍
               </Button>
             </Link>

@@ -1,22 +1,36 @@
-import { client } from "../../lib/sanity";
+import { readClient, writeClient } from "../lib/sanity";
 
 // Get Public Chat Messages
-export const apiGetPublicChatMessages = async (req, res) => {
+export async function apiGetPublicChatMessages() {
   const query = `
-    *[_type == "chatMessage" ] | order(createdAt desc){
+    *[_type == "chatMessage" ] | order(createdAt asc) {
       chatroom->,
-      userReference->,
+      chatroom,
       message,
       createdAt,
-      _id
+      _id,
+      username,
+      userEmail,
+      userImage
     }
   `;
 
   try {
-    const sanityResponse = await client.fetch(query);
-    res.status(200).send(sanityResponse);
+    const sanityResponse = await readClient.fetch(query);
+    return sanityResponse;
   } catch (error) {
     console.error(error);
-    res.status(500).send(error);
   }
-};
+}
+
+// Listen for realtime public chat update
+
+
+// Create Public Chat Messages
+export async function apiCreatePublicChatMessages(doc) {
+  try {
+    await writeClient.create(doc);
+  } catch (error) {
+    console.error(error);
+  }
+}
