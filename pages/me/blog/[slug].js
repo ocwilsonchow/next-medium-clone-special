@@ -21,7 +21,7 @@ function urlFor(source) {
 }
 
 export default function PageShowBlogPost({ post, posts }) {
-  console.log(post);
+  // console.log(post);
   const router = useRouter();
 
   if (router.isFallback) return <div>Loading...</div>;
@@ -73,7 +73,7 @@ export default function PageShowBlogPost({ post, posts }) {
         <VStack spacing={6}>
           <PortableText value={post.body} components={components} />
         </VStack>
-        <Comments comments={post.relatedComments} rev={post._rev}/>
+        <Comments comments={post.relatedComments} postId={post._id} slug={post.slug.current}/>
       </VStack>
       </Fade>
     </Flex>

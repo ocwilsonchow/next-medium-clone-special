@@ -1,40 +1,45 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  FormControl,
-  Input,
-  InputRightElement,
-  Text,
-  InputGroup,
-  IconButton,
-  Tooltip,
-} from "@chakra-ui/react";
+import { Button, Flex, FormControl, Input, Text } from "@chakra-ui/react";
 import moment from "moment";
 import { useSession } from "next-auth/react";
+import { apiCreateBlogComment } from "../../lib/blog";
+import useSWR from "swr";
+import { readClient } from "../../lib/sanity";
+import groq from "groq";
 
-import { AiOutlineSend } from "react-icons/ai";
-
-const Comments = ({ comments, rev }) => {
+const Comments = ({ postId, slug }) => {
   const { data: session, status } = useSession();
   const [commentInput, setCommentInput] = useState("");
+  const [comments, setComments] = useState()
 
-  const handleSubmit = () => {
+  const { data, error } = useSWR(
+    groq`*[_type == "post" && slug.current == "${slug}"] {
+     "relatedComments": *[_type=='comment' && references(^._id)] | order(publishedAt asc) {
+      username,
+      publishedAt,
+      comment,
+    }
+  }`,
+    (query) => readClient.fetch(query)
+  );
+  if (error) return <div>Failed</div>;
+  if (!data) return <div>Loading...</div>;
+
+  const handleSubmit = async () => {
     const commentDoc = {
-      username: session,
+      _type: "comment",
+      username: session.user.name,
       userEmail: session.user.email,
       userImage: session.user.image,
       publishedAt: new Date().toISOString(),
       comment: commentInput,
       post: {
-        _ref: rev,
+        _ref: postId,
         _type: "reference",
       },
-    }
-
-    console.log(commentDoc)
+    };
+    await apiCreateBlogComment(commentDoc, slug);
+    setCommentInput("");
   };
 
   return (
@@ -42,8 +47,8 @@ const Comments = ({ comments, rev }) => {
       <Text fontWeight="bold" fontSize="xl" mt={6} mb={2}>
         Comments
       </Text>
-      {comments?.length == 0 && <Text>No comment on this post yet.</Text>}
-      {comments?.map((comment, i) => (
+      {data[0].relatedComments?.length == 0 && <Text>No comment on this post yet.</Text>}
+      {data[0].relatedComments?.map((comment, i) => (
         <Flex
           key={i}
           flexDir="column"

@@ -4,12 +4,12 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import Layout from "../components/layout/Layout";
 import { ChatProvider } from "../context/ChatContext";
-import { UserProvider } from "../context/UserContext";
+import { BlogProvider } from "../context/BlogContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-
+      <BlogProvider>
         <ChatProvider>
           <ChakraProvider>
             <Layout>
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             </Layout>
           </ChakraProvider>
         </ChatProvider>
-
+      </BlogProvider>
     </SessionProvider>
   );
 }
