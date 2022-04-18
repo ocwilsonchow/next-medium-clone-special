@@ -1,4 +1,4 @@
-import { readClient, writeClient } from "../lib/sanity";
+import { readClient, writeClient } from "../../lib/sanity";
 
 // Get Public Chat Messages
 export async function apiGetPublicChatMessages() {
