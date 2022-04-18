@@ -15,7 +15,7 @@ import Slider from "../components/home/Slider";
 import CallForContact from "../components/home/CallForContact";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
-import useSWR from "swr";
+import SocialLinks from "../components/about/SocialLinks";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -54,7 +54,11 @@ export default function Home() {
                 className="inline-flex"
                 transition={{ delay: 0.5 }}
               >
-                <Text ml={2} fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
+                <Text
+                  ml={2}
+                  fontWeight="bold"
+                  fontSize={["6xl", "6xl", "6xl", "7xl"]}
+                >
                   👋🏻
                 </Text>
               </motion.div>
@@ -75,7 +79,7 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
           transition={{ delay: 0.1 }}
-          className="my-20"
+          className="my-10"
         >
           <Flex columnGap={2} rowGap={2} flexWrap="wrap">
             <Link href="/me/about">
@@ -89,6 +93,16 @@ export default function Home() {
               </Button>
             </Link>
           </Flex>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.1 }}
+          className="pb-20"
+        >
+          <SocialLinks />
         </motion.div>
 
         <motion.div
