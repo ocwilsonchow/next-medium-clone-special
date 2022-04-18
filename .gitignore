@@ -10,6 +10,7 @@
 
 # sanity
 /studio/node_modules
+/start/node_modules
 
 # next.js
 /.next/

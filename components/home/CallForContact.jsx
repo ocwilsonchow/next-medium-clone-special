@@ -34,7 +34,7 @@ const CallForContact = () => {
           Get in touch today to explore opportunities for collaborations
         </Text>
         <Link href="/contactWilson">
-          <Button colorScheme="twitter" size="lg">
+          <Button colorScheme="twitter" size="lg" isTruncated>
             Leave a message
           </Button>
         </Link>

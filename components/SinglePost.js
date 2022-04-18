@@ -22,7 +22,6 @@ function urlFor(source) {
 }
 
 const SinglePost = ({ post }) => {
-  console.log(post.body);
 
   return (
     <Fade in>

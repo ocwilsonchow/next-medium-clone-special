@@ -45,8 +45,6 @@ export default function Home() {
   return (
     <Fade in>
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
-
-
         <SlideFade in offsetX="-100px">
           <Box py="14%" w="100%" h="450px">
             <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
@@ -78,11 +76,18 @@ export default function Home() {
           transition={{ delay: 0.1 }}
           className="my-20"
         >
+          <Flex columnGap={2} rowGap={2} flexWrap="wrap">
             <Link href="/me/about">
-          <Button colorScheme="twitter" size="lg" mb={2}>
-            Read More 🌍
-          </Button>
-        </Link>
+              <Button colorScheme="twitter" size="lg" >
+                My Story 🌍
+              </Button>
+            </Link>
+            <Link href="/contactWilson">
+              <Button variant="outline" size="lg">
+                Contact Me 💬
+              </Button>
+            </Link>
+          </Flex>
         </motion.div>
 
         <motion.div
@@ -162,7 +167,7 @@ export default function Home() {
           <CallForContact />
         </motion.div>
 
-        <Center p={20} mt={10} fontSize="sm" bottom="0%">
+        <Center p={20} mt={10} fontSize="sm" bottom="0%" textAlign="center">
           Built in 🇭🇰 by Wilson Chow
         </Center>
       </Flex>

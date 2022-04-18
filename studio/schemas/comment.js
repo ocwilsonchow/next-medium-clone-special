@@ -11,6 +11,17 @@ export default {
       title: "Username",
       type: "string",
     },
+      {
+      name: "userEmail",
+      title: "User Email",
+      type: "email",
+    },
+    {
+      name: 'userImage',
+      title: 'User Image',
+      type: 'url'
+    },
+
     {
       name: "publishedAt",
       title: "Published at",

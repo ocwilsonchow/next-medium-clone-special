@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 
 const Comments = ({ comments, slug }) => {
   const { data: session, status } = useSession();
+  console.log(slug)
 
   return (
     <Flex flexDir="column" w="full">
