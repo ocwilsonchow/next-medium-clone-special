@@ -54,7 +54,7 @@ const SinglePost = ({ post }) => {
               </HStack>
               <Text
                 fontWeight="bold"
-                fontSize={["xl", "xl", "2xl", "2xl"]}
+                fontSize={["xl", "2xl", "4xl", "4xl"]}
                 my={2}
               >
                 {post.title}

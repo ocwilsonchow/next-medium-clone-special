@@ -19,8 +19,6 @@ export function ChatProvider({ children }) {
   const [chatPageMounted, setChatPageMounted] = useState(false)
 
   useEffect(() => {
-
-
     getPublicMessages();
     listenToChat();
     return setPublicMessages([]);
