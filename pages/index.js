@@ -43,9 +43,9 @@ export default function Home() {
     <Fade in>
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
         <SlideFade in offsetX="-100px">
-          <Box py="16%" w="100%"  pb={20}>
+          <Box py="16%" w="100%" minH="550px" pb={20}>
             <Flex>
-              <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
+              <Text fontWeight="bold" fontSize={["5xl", "6xl", "6xl", "7xl"]}>
                 Hello
               </Text>
               <motion.div
@@ -57,7 +57,7 @@ export default function Home() {
                 <Text
                   ml={2}
                   fontWeight="bold"
-                  fontSize={["6xl", "6xl", "6xl", "7xl"]}
+                  fontSize={["5xl", "6xl", "6xl", "7xl"]}
                 >
                   👋🏻
                 </Text>
@@ -65,7 +65,7 @@ export default function Home() {
             </Flex>
             <Text
               fontWeight="bold"
-              fontSize={["6xl", "6xl", "6xl", "7xl"]}
+              fontSize={["5xl", "6xl", "6xl", "7xl"]}
               mb={6}
             >
               I am Wilson
