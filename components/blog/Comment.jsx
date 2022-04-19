@@ -58,10 +58,11 @@ const Comments = ({ postId, slug }) => {
 
   // Handle submit delete comment
   const handleDelete = async (id, i) => {
-    const comments = data.filter((item) => item[i])
-    console.log(comments)
+    console.log(data)
+    const comments = data.filter((item, index) => index!==i)
+    console.log('optimistic:', comments)
     const options = { optimisticData: comments, rollbackOnError: true}
-    mutate(apiDeleteBlogComment(data, id), options);
+    mutate(apiDeleteBlogComment(comments, id), options);
   };
 
   // so for some reason, the data became null at some point and cause the loading...
