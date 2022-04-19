@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 
 import { ChannelContainer, ChannelListContainer } from '../../components/getstream/index'
 
+
 const apiKey = "93myuqwykf99";
 const client = StreamChat.getInstance(apiKey)
 
@@ -16,11 +17,13 @@ const PageChatHome = () => {
           Welcome to the Big Chatroom!
         </Tag>
       </Center>
-      <Chat client={client} theme="team dark">
+     <Flex>
+        <Chat client={client} theme="team dark">
         <ChannelListContainer />
 
         <ChannelContainer />
       </Chat>
+     </Flex>
     </Flex>
   );
 };
