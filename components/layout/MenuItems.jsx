@@ -62,7 +62,7 @@ const MenuComponent = (props) => {
       name: "📩 Contact",
       fillIcon: <AiTwotoneMail />,
       outlineIcon: <AiOutlineMail />,
-      link: "/contactWilson",
+      link: "/me/contactWilson",
     },
 
     {

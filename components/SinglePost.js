@@ -7,11 +7,14 @@ import {
   Tag,
   Box,
   Fade,
+  Button,
+  IconButton,
 } from "@chakra-ui/react";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import moment from "moment";
 import { PortableText } from "@portabletext/react";
+import { StarIcon } from "@chakra-ui/icons";
 
 const builder = imageUrlBuilder({
   projectId: "zmau43jq",
@@ -21,18 +24,17 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-const SinglePost = ({ post }) => {
-
+const SinglePostPreview = ({ post }) => {
   return (
     <Fade in>
       <LinkBox
         my={2}
         borderBottomWidth="1px"
         maxW="800px"
-        py={8}
+        py={10}
         alignItems="center"
         cursor="pointer"
-        _hover={{ color: "teal.400" }}
+        _hover={{ color: "blue.400" }}
       >
         <Link href={`blog/${post.slug.current}`}>
           <HStack spacing={6}>
@@ -75,11 +77,22 @@ const SinglePost = ({ post }) => {
                     borderRadius="full"
                     fontWeight="light"
                     fontSize="xs"
-                    mr={2}
+                    mr={2.5}
                   >
                     {tag.label}
                   </Tag>
                 ))}
+                <Tag
+                  my={1}
+                  borderRadius="full"
+                  fontSize="xs"
+                   fontWeight="light"
+                  mr={2.5}
+                  variant="subtle"
+
+                >
+                 Like
+                </Tag>
               </Flex>
             </Flex>
             <Img
@@ -96,4 +109,4 @@ const SinglePost = ({ post }) => {
   );
 };
 
-export default SinglePost;
+export default SinglePostPreview;

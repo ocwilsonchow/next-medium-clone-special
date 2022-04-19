@@ -43,7 +43,7 @@ export default function Home() {
     <Fade in>
       <Flex flexDir="column" w="full" justifyContent="space-evenly">
         <SlideFade in offsetX="-100px">
-          <Box py="14%" w="100%" h="450px">
+          <Box py="16%" w="100%"  pb={20}>
             <Flex>
               <Text fontWeight="bold" fontSize={["6xl", "6xl", "6xl", "7xl"]}>
                 Hello
@@ -81,13 +81,13 @@ export default function Home() {
           transition={{ delay: 0.1 }}
           className="my-10"
         >
-          <Flex columnGap={2} rowGap={2} flexWrap="wrap">
+          <Flex columnGap={3} rowGap={3} flexWrap="wrap">
             <Link href="/me/about">
               <Button colorScheme="twitter" size="lg">
                 My Story 🌍
               </Button>
             </Link>
-            <Link href="/contactWilson">
+            <Link href="/me/contactWilson">
               <Button variant="outline" size="lg">
                 Contact Me 💬
               </Button>

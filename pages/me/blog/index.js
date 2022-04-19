@@ -5,7 +5,7 @@ import {
   Spinner,
   Fade,
 } from "@chakra-ui/react";
-import SinglePost from "../../../components/SinglePost";
+import SinglePostPreview from "../../../components/SinglePost";
 import { apiGetBlogPosts } from "../../../lib/blog";
 
 export default function PageBlogIndex({ posts }) {
@@ -19,7 +19,7 @@ export default function PageBlogIndex({ posts }) {
       <Flex flexDir="column" alignItems="center">
         {posts?.map((post, i) => (
           <Fade key={i} in>
-            <SinglePost post={post} />
+            <SinglePostPreview post={post} />
           </Fade>
         ))}
       </Flex>

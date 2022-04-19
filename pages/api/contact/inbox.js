@@ -1,4 +1,4 @@
-import { writeClient } from "../../lib/sanity";
+import { writeClient } from "../../../lib/sanity";
 
 // Create inbox message
 

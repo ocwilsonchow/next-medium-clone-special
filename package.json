@@ -36,6 +36,7 @@
     "stream-chat": "^6.5.0",
     "stream-chat-react": "^8.1.1",
     "swr": "^1.3.0",
+    "universal-cookie": "^4.0.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

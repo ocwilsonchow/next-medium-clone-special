@@ -59,7 +59,7 @@ const Leftbar = () => {
       name: "Favorites",
       fillIcon: <AiTwotoneMail />,
       outlineIcon: <AiOutlineMail />,
-      link: "/contactWilson",
+      link: "/me/contactWilson",
     },
     {
       name: "Settings",
