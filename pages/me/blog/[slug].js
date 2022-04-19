@@ -71,7 +71,7 @@ export default function PageShowBlogPost({ post, posts }) {
           py={4}
         />
         <VStack spacing={6}>
-          {/* <PortableText value={post.body} components={components} /> */}
+          <PortableText value={post.body} components={components} />
         </VStack>
         <Comments comments={post.relatedComments} postId={post._id} slug={post.slug.current}/>
       </VStack>
