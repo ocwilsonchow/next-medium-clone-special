@@ -28,7 +28,6 @@ export function ChatProvider({ children }) {
 // Generate an anonymous ID if not signed in
     if (!session && !anonymousId) {
       setAnonymousId(uuidv4());
-      console.log('generated uuid')
     }
 
     // If signed in, clear the anonymous ID
