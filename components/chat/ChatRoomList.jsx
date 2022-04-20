@@ -7,13 +7,19 @@ import {
   LinkBox,
   Text,
   Tooltip,
+  Spinner
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useChat } from "../../context/ChatContext"
+import { useChat } from "../../context/ChatContext";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const ChatRoomList = () => {
-  const { onPublicChat } = useChat()
+  const { onPublicChat } = useChat();
+  const { data, error, isLoading } = useSWR("/api/prisma/chatRoom/get", fetcher);
 
+  if (isLoading) return <Spinner />;
   return (
     <Fade in>
       <Box p={4}>
@@ -32,23 +38,26 @@ const ChatRoomList = () => {
               _hover={{ color: "blue.500" }}
               cursor="pointer"
             >
-              <Text fontWeight="medium" color={onPublicChat && "green.500"}>Public</Text>
+              <Text fontWeight="medium" color={onPublicChat && "green.500"}>
+                Public
+              </Text>
             </LinkBox>
           </Link>
-           <Link href="/chat/supabaseChat">
-            <LinkBox
-              my={1.5}
-              py={3}
-              px={4}
-              borderWidth="0.5px"
-              borderRadius="base"
-              _hover={{ color: "blue.500" }}
-              cursor="pointer"
-            >
-              <Text fontWeight="medium">Supabase Chat</Text>
-            </LinkBox>
-          </Link>
-
+          {data?.map((room) => (
+            <Link href={`/chat/${room.name}`} key={room.id}>
+              <LinkBox
+                my={1.5}
+                py={3}
+                px={4}
+                borderWidth="0.5px"
+                borderRadius="base"
+                _hover={{ color: "blue.500" }}
+                cursor="pointer"
+              >
+                <Text fontWeight="medium">{room.name}</Text>
+              </LinkBox>
+            </Link>
+          ))}
         </Flex>
 
         <Flex flexDir="column" my={4}>

@@ -59,7 +59,7 @@ const PublicChat = () => {
           <div ref={dummyRef}></div>
         </Flex>
       </Box>
-      <Box position="sticky" bottom={0} pt={4} pb={5}  bg={bgColor}>
+      <Box position="sticky" bottom={0} pt={4} pb={7}  bg={bgColor}>
         <FormControl w="full">
           <InputGroup>
             <InputRightElement>
