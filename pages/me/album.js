@@ -14,6 +14,8 @@ import imageUrlBuilder from "@sanity/image-url";
 const PageAlbum = ({ images }) => {
   const [width, setWidth] = useState(0);
   const carousel = useRef();
+  const boxColor = useColorModeValue("gray.50", 'gray.900')
+
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -50,11 +52,12 @@ const PageAlbum = ({ images }) => {
             <motion.div key={i} className="mr-1 p-1">
               <Flex
                 flexDir="column"
-                p={4}
+                p={6}
                 borderWidth="0.5px"
                 w={["300px","350px","400px","400px"]}
                 borderRadius="base"
                 justifyContent="space-between"
+                bgColor={boxColor}
               >
                 <Img
                   borderRadius="base"
@@ -64,6 +67,7 @@ const PageAlbum = ({ images }) => {
                   objectFit="cover"
                   draggable="false"
                 />
+                <Text pt={4} fontWeight="bold">{img.title}</Text>
                 <Text py={4}>{img.description}</Text>
               </Flex>
             </motion.div>

@@ -12,7 +12,7 @@ import Link from "next/link";
 const FeaturedProject = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
-  const boxColor = useColorModeValue("gray.50", 'gray.900')
+  const boxColor = useColorModeValue("gray.50", "gray.900");
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -111,10 +111,12 @@ const FeaturedProject = () => {
                       width={310}
                       height={200}
                       objectFit="contain"
+                      draggable="false"
+
                     />
                   </Flex>
                   <Link href={item.link}>
-                    <Button mt={2} p={4} variant='outline'>
+                    <Button mt={2} p={4} variant="outline">
                       <Text>
                         {(item.remark && item.remark) || "Check it out"}
                       </Text>
