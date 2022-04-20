@@ -52,7 +52,7 @@ const PageAlbum = ({ images }) => {
                 flexDir="column"
                 p={4}
                 borderWidth="0.5px"
-                w={["300px","300px","400px","500px"]}
+                w={["300px","350px","400px","400px"]}
                 borderRadius="base"
                 justifyContent="space-between"
               >
@@ -60,11 +60,12 @@ const PageAlbum = ({ images }) => {
                   borderRadius="base"
                   src={urlFor(img?.mainImage)}
                   width="full"
+                  h={["3500px","400px","500px","500px"]}
                   objectFit="cover"
                   draggable="false"
                 />
                 <Text py={4}>{img.description}</Text>
-              </Flex>{" "}
+              </Flex>
             </motion.div>
           ))}
         </motion.div>

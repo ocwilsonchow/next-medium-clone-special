@@ -52,6 +52,12 @@ const MenuComponent = (props) => {
       outlineIcon: <AiOutlineFileText />,
       link: "/me/blog",
     },
+     {
+      name: "📷 Album",
+      fillIcon: <AiFillFileText />,
+      outlineIcon: <AiOutlineFileText />,
+      link: "/me/album",
+    },
     {
       name: "💬 Chat",
       fillIcon: <BsChatDotsFill />,
