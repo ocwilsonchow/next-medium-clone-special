@@ -4,13 +4,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import Layout from "../components/layout/Layout";
 import { ChatProvider } from "../context/ChatContext";
-import { ChatEngineProvider } from "../context/ChatEngineContext";
 import { BlogProvider } from "../context/BlogContext";
+import { SupabaseChatProvider } from "../context/SupabaseChatContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <ChatEngineProvider>
+      <SupabaseChatProvider>
         <BlogProvider>
           <ChatProvider>
             <ChakraProvider>
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             </ChakraProvider>
           </ChatProvider>
         </BlogProvider>
-      </ChatEngineProvider>
+      </SupabaseChatProvider>
     </SessionProvider>
   );
 }

@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
     "auth",
+    "chat",
+    "context",
     "editorjs",
     "groq",
     "next",
     "options",
     "rightbar",
+    "supabase",
     "topbar",
     "typewritter"
   ]
