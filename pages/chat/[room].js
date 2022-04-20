@@ -21,8 +21,7 @@ const PageDynamicRoom = () => {
     };
   }, []);
 
-  const roomInfo = data.find((item) => item.id === room);
-  console.log(roomInfo);
+  const roomInfo = data?.find((item) => item.id === room);
 
   return (
     <Flex flexDir="column">
