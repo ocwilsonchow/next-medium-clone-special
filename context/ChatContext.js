@@ -2,7 +2,6 @@ import { useState, createContext, useContext, useEffect } from "react";
 import {
   apiCreatePublicChatMessages,
   apiGetPublicChatMessages,
-  apiListenPublicChatMessages,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
@@ -11,13 +10,13 @@ import { v4 as uuidv4 } from "uuid";
 const ChatContext = createContext();
 
 export function ChatProvider({ children }) {
+  const { data: session } = useSession();
   const [publicMessages, setPublicMessages] = useState([]);
   const [newPublicMessage, setNewPublicMessage] = useState("");
   const [messageInput, setMessageInput] = useState("");
-  const { data: session } = useSession();
   const [anonymousId, setAnonymousId] = useState();
   const [chatPageMounted, setChatPageMounted] = useState(false)
-  const [onPublicChat, setOnPublicChat] = useState(false)
+  const [onPublicChat, setOnPublicChat] = useState()
 
   useEffect(() => {
     getPublicMessages();

@@ -9,7 +9,7 @@ import {
   TabPanels,
 } from "@chakra-ui/react";
 import { useChat } from "../../context/ChatContext";
-import LgPublicChat from "../../components/chat/PublicChat";
+import LgPublicChat from "../../components/chat/LgPublicChat";
 import PrivateChat from "../../components/chat/PrivateChat";
 
 const PagePublicChatroom = () => {
@@ -23,16 +23,9 @@ const PagePublicChatroom = () => {
   }, []);
 
   return (
-    <Tabs>
-      <TabPanels>
-        <TabPanel>
-          <LgPublicChat />
-        </TabPanel>
-        <TabPanel>
-          <PrivateChat />
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+    <>
+      <LgPublicChat />
+    </>
   );
 };
 

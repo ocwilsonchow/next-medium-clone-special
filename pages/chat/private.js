@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { useChat } from "../../context/ChatContext";
 
 const PagePrivateChat = () => {
@@ -11,11 +11,7 @@ const PagePrivateChat = () => {
     };
   }, []);
 
-  return (
-    <div>
-    Private Chat Room
-    </div>
-  )
-}
+  return <div>Private Chat Room</div>;
+};
 
-export default PagePrivateChat
+export default PagePrivateChat;

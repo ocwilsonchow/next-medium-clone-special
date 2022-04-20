@@ -48,7 +48,7 @@ const PublicChat = () => {
       )}
       {publicMessages.length !==0 && publicMessages?.map((msg, i) => (
         <Fade in key={i}>
-          <Message msg={msg} key={msg._id}/>
+          <Message msg={msg} key={msg?._id}/>
         </Fade>
       ))}
       <div ref={dummyRef}></div>
