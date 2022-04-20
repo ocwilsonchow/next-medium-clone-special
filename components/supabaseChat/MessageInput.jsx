@@ -10,14 +10,23 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useSession} from "next-auth/react";
-
-
 import { AiOutlineSend } from "react-icons/ai";
+import useSWR, { mutate } from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+
 const MessageInput = () => {
   const { data: session } = useSession();
   const [messageInput, setMessageInput] = useState("");
 
-  console.log(session)
+  const handleSubmit = () => {
+
+
+
+  }
+
+
   return (
     <FormControl mt={4}>
       <InputGroup>
@@ -29,6 +38,7 @@ const MessageInput = () => {
           placeholder="Message"
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
+          onClick={()=> handleSubmit()}
         />
       </InputGroup>
     </FormControl>

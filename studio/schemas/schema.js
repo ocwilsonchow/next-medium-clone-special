@@ -11,6 +11,7 @@ import comment from "./comment";
 import chatroom from "./chatroom";
 import chatMessage from "./chatMessage";
 import inboxMessage from "./inboxMessage";
+import gallery from "./gallery";
 
 export default createSchema({
   name: "default",
@@ -24,5 +25,6 @@ export default createSchema({
     chatroom,
     chatMessage,
     inboxMessage,
+    gallery
   ]),
 });

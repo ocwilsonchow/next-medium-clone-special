@@ -7,6 +7,10 @@ import { ChatProvider } from "../context/ChatContext";
 import { BlogProvider } from "../context/BlogContext";
 import { SupabaseChatProvider } from "../context/SupabaseChatContext";
 
+import { SWRConfig} from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((response)=>response.json())
+
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
@@ -14,9 +18,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <BlogProvider>
           <ChatProvider>
             <ChakraProvider>
-              <Layout>
+             <SWRConfig value={{fetcher}}>
+                <Layout>
                 <Component {...pageProps} />
               </Layout>
+             </SWRConfig>
             </ChakraProvider>
           </ChatProvider>
         </BlogProvider>

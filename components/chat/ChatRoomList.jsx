@@ -13,11 +13,10 @@ import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
-  const { data, error, isLoading } = useSWR("/api/prisma/chatRoom/get", fetcher);
+  const { data, error, isLoading } = useSWR("/api/prisma/chatRoom");
 
   if (isLoading) return <Spinner />;
   return (
@@ -44,7 +43,7 @@ const ChatRoomList = () => {
             </LinkBox>
           </Link>
           {data?.map((room) => (
-            <Link href={`/chat/${room.name}`} key={room.id}>
+            <Link href={`/chat/${room.id}`} key={room.id}>
               <LinkBox
                 my={1.5}
                 py={3}

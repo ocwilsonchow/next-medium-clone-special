@@ -3,7 +3,6 @@ import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";
 
-
 const Topbar = () => {
   return (
     <Flex
