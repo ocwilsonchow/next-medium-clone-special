@@ -23,12 +23,14 @@ const PageDynamicRoom = () => {
 
   const roomInfo = data?.find((item) => item.id === room);
 
+  if (!roomInfo) return <div>Loading...</div>
+
   return (
     <Flex flexDir="column">
       <Box>
         Welcome to{" "}
         <Text fontWeight="bold" display="inline-block">
-          {roomInfo.name}
+          {roomInfo?.name}
         </Text>
         <Tag mx={2}>#{room}</Tag>
       </Box>
