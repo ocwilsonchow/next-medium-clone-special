@@ -17,6 +17,7 @@ export function ChatProvider({ children }) {
   const { data: session } = useSession();
   const [anonymousId, setAnonymousId] = useState();
   const [chatPageMounted, setChatPageMounted] = useState(false)
+  const [onPublicChat, setOnPublicChat] = useState(false)
 
   useEffect(() => {
     getPublicMessages();
@@ -100,7 +101,9 @@ export function ChatProvider({ children }) {
     messageInput,
     anonymousId,
     chatPageMounted,
-    setChatPageMounted
+    setChatPageMounted,
+    onPublicChat,
+    setOnPublicChat
   };
 
   return (

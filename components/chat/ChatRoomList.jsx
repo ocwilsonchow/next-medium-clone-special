@@ -7,20 +7,47 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import React from "react";
+import Link from "next/link";
 
 const ChatRoomList = () => {
+  let roomId = ["sdjfhks", "sdjfhdf", "sdffhks"];
+
   return (
     <Fade in>
       <Box p={4}>
         <Text fontSize="lg" fontWeight="medium">
           Channels
         </Text>
-        <Box my={4}>
-          <LinkBox py={3} px={4} borderWidth="0.5px" borderRadius="base">
-            <Text fontWeight="medium">Public</Text>
-          </LinkBox>
-        </Box>
+        <Flex flexDir="column" my={4}>
+          <Link href="/chat/public">
+            <LinkBox
+              my={1.5}
+              py={3}
+              px={4}
+              borderWidth="0.5px"
+              borderRadius="base"
+              _hover={{ color: "blue.500" }}
+              cursor="pointer"
+            >
+              <Text fontWeight="medium">Public</Text>
+            </LinkBox>
+          </Link>
+          {roomId?.map((room) => (
+            <Link href={`/chat/${room}`}>
+              <LinkBox
+                my={1.5}
+                py={3}
+                px={4}
+                borderWidth="0.5px"
+                borderRadius="base"
+                _hover={{ color: "blue.500" }}
+                cursor="pointer"
+              >
+                <Text fontWeight="medium">Private #{room}</Text>
+              </LinkBox>
+            </Link>
+          ))}
+        </Flex>
 
         <Flex flexDir="column" my={4}>
           <Tooltip label="Hey! Wilson is still working on this feature...">
