@@ -12,7 +12,7 @@ import { useChat } from "../../context/ChatContext";
 import LgPublicChat from "../../components/chat/PublicChat";
 import PrivateChat from "../../components/chat/PrivateChat";
 
-const PageChatroom = () => {
+const PagePublicChatroom = () => {
   const { setChatPageMounted } = useChat();
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const PageChatroom = () => {
   );
 };
 
-export default PageChatroom;
+export default PagePublicChatroom;

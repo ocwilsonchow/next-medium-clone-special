@@ -56,7 +56,7 @@ const MenuComponent = (props) => {
       name: "💬 Chat",
       fillIcon: <BsChatDotsFill />,
       outlineIcon: <BsChatDots />,
-      link: "/me/chat",
+      link: "/chat/public",
     },
     {
       name: "📩 Contact",

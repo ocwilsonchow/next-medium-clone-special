@@ -53,7 +53,7 @@ const Leftbar = () => {
       name: "Chat",
       fillIcon: <BsChatDotsFill />,
       outlineIcon: <BsChatDots />,
-      link: "/me/chat",
+      link: "/chat/public",
     },
     {
       name: "Favorites",
