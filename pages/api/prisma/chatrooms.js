@@ -1,9 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const users = await prisma.user.findMany();
+  const chatrooms = await prisma.chatRoom.findMany();
 
-  res.status(200).json(users);
+  res.status(200).json(chatrooms);
 }

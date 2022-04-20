@@ -11,5 +11,8 @@
     "supabase",
     "topbar",
     "typewritter"
+  ],
+  "cSpell.ignoreWords": [
+    "chatrooms"
   ]
 }

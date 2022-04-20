@@ -35,7 +35,7 @@ const ChatRoomList = () => {
               <Text fontWeight="medium" color={onPublicChat && "green.500"}>Public</Text>
             </LinkBox>
           </Link>
-           <Link href="/chat/private">
+           <Link href="/chat/supabaseChat">
             <LinkBox
               my={1.5}
               py={3}
@@ -45,7 +45,7 @@ const ChatRoomList = () => {
               _hover={{ color: "blue.500" }}
               cursor="pointer"
             >
-              <Text fontWeight="medium">Private</Text>
+              <Text fontWeight="medium">Supabase Chat</Text>
             </LinkBox>
           </Link>
 

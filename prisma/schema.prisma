@@ -57,18 +57,21 @@ model VerificationToken {
 }
 
 model ChatMessage {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  message   String
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  message    String
+  ChatRoom   ChatRoom? @relation(fields: [chatRoomId], references: [id])
+  chatRoomId String?
 }
 
 model ChatRoom {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+  id        String        @id @default(cuid())
+  createdAt DateTime      @default(now())
   user      User[]
   name      String
-  public    Boolean  @default(false)
+  public    Boolean       @default(false)
+  message   ChatMessage[]
 
 }
