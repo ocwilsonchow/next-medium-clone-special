@@ -31,7 +31,7 @@ const PublicChat = () => {
 
   useEffect(() => {
     setOnPublicChat(true);
-    dummyRef.current.scrollIntoView({ behavior: "smooth" });
+    dummyRef.current.scrollIntoView();
     return () => {
       setOnPublicChat(false);
     };
@@ -42,24 +42,26 @@ const PublicChat = () => {
   };
   return (
     <Flex flexDir="column" position="relative">
-      <Box>
-        <Flex flexDir="column" w="full" overflow="auto">
-          {publicMessages.length === 0 && (
-            <Center p={4}>
-              <Text>Loading...</Text>
-              <Spinner />
-            </Center>
-          )}
-          {publicMessages.length !== 0 &&
-            publicMessages?.map((msg) => (
-              <Fade in key={msg?._id}>
-                <Message msg={msg} />
-              </Fade>
-            ))}
-          <div ref={dummyRef}></div>
-        </Flex>
-      </Box>
-      <Box position="sticky" bottom={0} pt={4} pb={7}  bg={bgColor}>
+
+        <Box p={4}>
+          <Flex flexDir="column" w="full">
+            {publicMessages.length === 0 && (
+              <Center p={4}>
+                <Text>Loading...</Text>
+                <Spinner />
+              </Center>
+            )}
+            {publicMessages.length !== 0 &&
+              publicMessages?.map((msg) => (
+                <Fade in key={msg?._id}>
+                  <Message msg={msg} />
+                </Fade>
+              ))}
+            <div ref={dummyRef}></div>
+          </Flex>
+        </Box>
+
+      <Box position="sticky" bottom={0} pt={4} pb={7} bg={bgColor}>
         <FormControl w="full">
           <InputGroup>
             <InputRightElement>

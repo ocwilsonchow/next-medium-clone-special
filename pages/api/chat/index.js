@@ -1,9 +1,6 @@
 import prisma from "../../../helpers/prisma";
 
 export default async function handler(req, res) {
-  const { chatId } = req.query;
-  console.log(req.body);
-
   if (req.method === "POST") {
     try {
       const createdRoom = await prisma.chat.create({

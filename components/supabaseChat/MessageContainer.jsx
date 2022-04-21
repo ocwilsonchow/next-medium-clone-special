@@ -9,8 +9,6 @@ const Message = ({ msg }) => {
 
   if (!msg) return <Text p={4}>Loading</Text>;
 
-
-
   return (
     <motion.div
       initial={{ opacity: 0 }}

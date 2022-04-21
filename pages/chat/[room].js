@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import ChatContainer from "../../components/supabaseChat/ChatContainer";
 import MessageInput from "../../components/supabaseChat/MessageInput";
 import useSWR from "swr";
-import { supabaseClient } from "../../lib/supabase";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -22,11 +21,8 @@ const PageDynamicRoom = () => {
   // Get cached data that belongs to this room
   const thisRoom = rooms?.find((item) => item.id === room);
 
-  // TODO set up realtime supabase listener
-  console.log(thisRoom?.messages);
   useEffect(() => {
     setChatPageMounted(true);
-
     return () => {
       setChatPageMounted(false);
     };
