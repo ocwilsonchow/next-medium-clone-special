@@ -39,7 +39,7 @@ const PublicChat = () => {
   };
   return (
    <Flex flexDir="column">
-      <Flex flexDir="column" h="calc(100vh - 200px)" overflow="auto">
+      <Flex flexDir="column" h="calc(100vh - 203px)" overflow="auto">
       {publicMessages.length === 0 && (
         <Center p={4}>
           <Text>Loading...</Text>
