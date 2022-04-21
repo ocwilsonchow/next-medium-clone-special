@@ -13,8 +13,6 @@ const ChatRoomList = () => {
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
 
-  console.log(params);
-
   // TODO setup loading skeleton and use
 
   if (!data)

@@ -49,8 +49,6 @@ const CreateRoomBtn = () => {
       });
   };
 
-  console.log(nameInput);
-
   return (
     <Flex flexDir="column" py={4}>
       <FormControl>

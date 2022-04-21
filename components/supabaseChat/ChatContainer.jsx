@@ -4,7 +4,6 @@ import React from "react";
 import MessageContainer from "../../components/supabaseChat/MessageContainer";
 
 const ChatContainer = ({ messages }) => {
-  console.log(messages)
   const dummyRef = useRef();
   useEffect(() => {
     dummyRef.current.scrollIntoView();
