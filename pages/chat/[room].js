@@ -6,13 +6,12 @@ import ChatContainer from "../../components/supabaseChat/ChatContainer";
 import MessageInput from "../../components/supabaseChat/MessageInput";
 import useSWR from "swr";
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 const PageDynamicRoom = () => {
   const { setChatPageMounted } = useChat();
   const router = useRouter();
   const { room } = router.query;
-
-  const { data, error, isLoading } = useSWR("/api/prisma/chatRoom");
-  console.log(data);
 
   useEffect(() => {
     setChatPageMounted(true);
@@ -21,18 +20,11 @@ const PageDynamicRoom = () => {
     };
   }, []);
 
-  const roomInfo = data?.find((item) => item.id === room);
-
-  if (!roomInfo) return <div>Loading...</div>
-
   return (
     <Flex flexDir="column">
       <Box>
-        Welcome to{" "}
-        <Text fontWeight="bold" display="inline-block">
-          {roomInfo?.name}
-        </Text>
-        <Tag mx={2}>#{room}</Tag>
+        Welcome to <Text fontWeight="bold" display="inline-block"></Text>
+        <Tag mx={2}>chatID</Tag>
       </Box>
       <Flex flexDir="column" mt={2}>
         <ChatContainer />

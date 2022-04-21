@@ -7,18 +7,20 @@ import {
   LinkBox,
   Text,
   Tooltip,
-  Spinner
+  Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
-  const { data, error, isLoading } = useSWR("/api/prisma/chatRoom");
+  const { data, error } = useSWR("/api/chat/index", fetcher);
+  console.log(data);
 
-  if (isLoading) return <Spinner />;
+  if (!data) return <div>Loading...</div>
   return (
     <Fade in>
       <Box p={4}>
@@ -42,18 +44,22 @@ const ChatRoomList = () => {
               </Text>
             </LinkBox>
           </Link>
-          {data?.map((room) => (
+
+          {data.map((room) => (
             <Link href={`/chat/${room.id}`} key={room.id}>
               <LinkBox
                 my={1.5}
                 py={3}
                 px={4}
                 borderWidth="0.5px"
+                borderColor={onPublicChat && "green.500"}
                 borderRadius="base"
                 _hover={{ color: "blue.500" }}
                 cursor="pointer"
               >
-                <Text fontWeight="medium">{room.name}</Text>
+                <Text fontWeight="medium" color={onPublicChat && "green.500"}>
+                  {room.name}
+                </Text>
               </LinkBox>
             </Link>
           ))}
