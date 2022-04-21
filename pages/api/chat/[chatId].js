@@ -14,12 +14,6 @@ export default async function handler(req, res) {
       res.status(500).json(error);
     }
   } else {
-    // Handle any other HTTP method
-    try {
-      // const foundMessages = await prisma.chat.findMany();
-      // res.status(200).json(foundChats);
-    } catch (error) {
-      console.log(error);
-    }
+
   }
 }
