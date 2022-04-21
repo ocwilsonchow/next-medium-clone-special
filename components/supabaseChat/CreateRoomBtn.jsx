@@ -39,6 +39,8 @@ const CreateRoomBtn = () => {
     }).then((resp) => {
       mutate();
       setLoading(false);
+    }).catch((err)=> {
+      console.log(error)
     });
   };
 

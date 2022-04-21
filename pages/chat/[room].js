@@ -24,6 +24,8 @@ const PageDynamicRoom = () => {
     };
   }, []);
 
+  if (!thisRoom) return <Text p={4}>Loading...</Text>
+
   return (
     <Flex flexDir="column">
       <Box>
@@ -31,8 +33,8 @@ const PageDynamicRoom = () => {
         <Tag mx={2}>{thisRoom?.name}</Tag>
       </Box>
       <Flex flexDir="column" mt={2}>
-        <ChatContainer />
-        <MessageInput />
+        <ChatContainer messages={thisRoom.messages}/>
+        <MessageInput roomId={thisRoom?.id} />
       </Flex>
     </Flex>
   );
