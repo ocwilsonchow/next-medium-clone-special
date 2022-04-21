@@ -1,22 +1,21 @@
-import {
-  Fade,
-  Flex,
-  LinkBox,
-  Text,
-  Spinner,
-} from "@chakra-ui/react";
+import { Fade, Flex, LinkBox, Text, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
+  const router = useRouter();
+  const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
 
-    // TODO setup loading skeleton and use SWR SSR
+  console.log(params);
+
+  // TODO setup loading skeleton and use
 
   if (!data)
     return (
@@ -61,6 +60,7 @@ const ChatRoomList = () => {
                   borderWidth="0.5px"
                   borderRadius="base"
                   _hover={{ color: "blue.500" }}
+                  borderColor={room.id===params && "green.500"}
                   cursor="pointer"
                 >
                   <Text fontWeight="medium">{room.name}</Text>
