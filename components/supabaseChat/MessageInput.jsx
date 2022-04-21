@@ -22,6 +22,8 @@ const MessageInput = ({ roomId }) => {
   const [messageInput, setMessageInput] = useState("");
   const { data: rooms, error, mutate } = useSWR("/api/chat", fetcher);
 
+  // TODO setup error state
+
   const handleCreateMessage = async () => {
     setLoading(true);
     if (messageInput.length === 0 || !session) return;
@@ -45,11 +47,12 @@ const MessageInput = ({ roomId }) => {
     })
       .then((resp) => {
         mutate();
+        setMessageInput("")
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
-         setLoading(false);
+        setLoading(false);
       });
   };
 
@@ -66,7 +69,7 @@ const MessageInput = ({ roomId }) => {
         </InputRightElement>
         <Input
           boxShadow="base"
-          placeholder="Message"
+            placeholder={(!session && "Sign in first") || "Message"}
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           disabled={!session}

@@ -14,7 +14,10 @@ const PageDynamicRoom = () => {
   const { room } = router.query;
   const { data: rooms, error, mutate } = useSWR("/api/chat", fetcher);
 
+  // Get cached data that belongs to this room
   const thisRoom = rooms?.find((item) => item.id===room)
+
+  // TODO set up realtime supabase listener
 
   console.log(thisRoom)
   useEffect(() => {

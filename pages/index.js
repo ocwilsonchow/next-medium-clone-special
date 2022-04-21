@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   Box,
   Button,
@@ -6,7 +5,6 @@ import {
   Fade,
   Flex,
   SlideFade,
-  Tag,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -16,7 +14,6 @@ import CallForContact from "../components/home/CallForContact";
 import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/about/SocialLinks";
-import AlertComponent from "../components/layout/Alert";
 
 const Typewritter = dynamic(() => import("../components/Typewritter"), {
   ssr: false,
@@ -40,9 +37,15 @@ const learnings = [
 ];
 
 export default function Home() {
+
   return (
     <Fade in>
-      <Flex flexDir="column" w="full" justifyContent="space-evenly" position="relative">
+      <Flex
+        flexDir="column"
+        w="full"
+        justifyContent="space-evenly"
+        position="relative"
+      >
         <SlideFade in offsetX="-100px">
           <Box py="16%" w="100%" minH="550px" pb={20}>
             <Flex>

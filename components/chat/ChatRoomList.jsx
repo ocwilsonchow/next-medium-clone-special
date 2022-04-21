@@ -1,13 +1,9 @@
-import { useState, useEffect, useRef } from "react";
 import {
-  Box,
-  Button,
   Fade,
   Flex,
   LinkBox,
   Text,
-  Tooltip,
-  useDisclosure,
+  Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
@@ -19,9 +15,15 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
   const { data, error } = useSWR("/api/chat", fetcher);
-  console.log(data);
 
-  if (!data) return <Flex p={4}>Loading...</Flex>;
+    // TODO setup loading skeleton and use SWR SSR
+
+  if (!data)
+    return (
+      <Flex p={4} w="full">
+        <Spinner />
+      </Flex>
+    );
   return (
     <Fade in>
       <Flex flexDir="column" justifyContent="space-between" p={4}>

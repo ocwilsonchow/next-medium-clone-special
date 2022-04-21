@@ -21,6 +21,8 @@ const CreateRoomBtn = () => {
   const { data: session, status } = useSession();
   const { data, error, mutate } = useSWR("/api/chat", fetcher);
 
+  // TODO setup error state
+
   const handleCreateRoom = async () => {
     setLoading(true);
     if (nameInput.length === 0) return;
@@ -36,12 +38,15 @@ const CreateRoomBtn = () => {
           },
         },
       },
-    }).then((resp) => {
-      mutate();
-      setLoading(false);
-    }).catch((err)=> {
-      console.log(error)
-    });
+    })
+      .then((resp) => {
+        mutate();
+        setLoading(false);
+        setNameInput("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   console.log(nameInput);
