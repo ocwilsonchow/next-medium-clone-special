@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const Message = ({ msg }) => {
   const { data: session } = useSession();
 
-  if (!msg) return <Text p={4}>Loading</Text>;
-  const isSender = session?.user?.email === msg?.sender.email;
+  if (!msg || !session) return <Text p={4}>Loading</Text>;
 
+  const isSender = session?.user?.email === msg?.sender.email;
   return (
     <motion.div
       initial={{ opacity: 0 }}

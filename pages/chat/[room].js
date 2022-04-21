@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, HStack, Tag, Text } from "@chakra-ui/react";
 import { useChat } from "../../context/ChatContext";
 import { useRouter } from "next/router";
 import ChatContainer from "../../components/supabaseChat/ChatContainer";
@@ -44,9 +44,9 @@ const PageDynamicRoom = () => {
 
   return (
     <Flex flexDir="column" >
-      <Box>
+      <Center>
         <Tag mx={2}>{thisRoom?.name}</Tag>
-      </Box>
+      </Center>
       <Flex flexDir="column" mt={2}>
         <ChatContainer messages={thisRoom.messages} />
         <MessageInput roomId={thisRoom?.id} />
