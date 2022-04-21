@@ -46,6 +46,7 @@ const CreateRoomBtn = () => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   };
 

@@ -38,42 +38,46 @@ const ChatRoomList = () => {
           </Text>
           <CreateRoomBtn />
         </Flex>
-        <Flex flexDir="column" h="100%">
-          <Flex flexDir="column" my={4}>
-            <Link href="/chat/public">
+
+        <Flex flexDir="column" my={4} h="calc(100vh - 220px)"  overflow="auto">
+          <Link href="/chat/public">
+            <LinkBox
+              my={1.5}
+              py={3}
+              px={4}
+              borderWidth="0.5px"
+              borderColor={onPublicChat && "green.500"}
+              borderRadius="base"
+              _hover={{ color: "blue.500" }}
+              cursor="pointer"
+            >
+              <Text fontWeight="medium" color={onPublicChat && "green.500"}>
+                🪐 Sanity Chat
+              </Text>
+            </LinkBox>
+          </Link>
+
+          {data.map((room) => (
+            <Link href={`/chat/${room.id}`} key={room.id}>
               <LinkBox
                 my={1.5}
                 py={3}
                 px={4}
                 borderWidth="0.5px"
-                borderColor={onPublicChat && "green.500"}
                 borderRadius="base"
                 _hover={{ color: "blue.500" }}
+                borderColor={room.id === params && "green.500"}
                 cursor="pointer"
               >
-                <Text fontWeight="medium" color={onPublicChat && "green.500"}>
-                  🪐 Sanity Chat
+                <Text
+                  fontWeight="medium"
+                  color={room.id === params && "green.500"}
+                >
+                  {room.name}
                 </Text>
               </LinkBox>
             </Link>
-
-            {data.map((room) => (
-              <Link href={`/chat/${room.id}`} key={room.id}>
-                <LinkBox
-                  my={1.5}
-                  py={3}
-                  px={4}
-                  borderWidth="0.5px"
-                  borderRadius="base"
-                  _hover={{ color: "blue.500" }}
-                  borderColor={room.id === params && "green.500"}
-                  cursor="pointer"
-                >
-                  <Text fontWeight="medium"  color={room.id === params && "green.500"}>{room.name}</Text>
-                </LinkBox>
-              </Link>
-            ))}
-          </Flex>
+          ))}
         </Flex>
       </Flex>
     </Fade>
