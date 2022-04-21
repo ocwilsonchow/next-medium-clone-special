@@ -22,7 +22,7 @@ const FeaturedProject = () => {
     {
       title: " Next.js Blog",
       description:
-        "A blog and portfolio website built with Next, NextAuth, Sanity, Framer Motion, Chakra UI and Tailwind.",
+        "A blog and portfolio website built with Next, NextAuth, Sanity, Supabase, SWR, Prisma, Framer Motion, and Chakra UI.",
       image: personal,
       link: "/",
       remark: "See it on Vercel",

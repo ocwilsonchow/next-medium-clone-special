@@ -21,6 +21,7 @@ const Typewritter = dynamic(() => import("../components/Typewritter"), {
 const skills = [
   "React.js",
   "Next.js 🔥",
+  "SWR",
   "Blender ⚙️ ",
   "Framer Motion",
   "Chakra UI",
@@ -34,6 +35,7 @@ const learnings = [
   "Graphql",
   "Typescript",
   "Motion Framer",
+  "Immer"
 ];
 
 export default function Home() {

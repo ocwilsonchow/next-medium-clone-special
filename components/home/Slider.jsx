@@ -11,16 +11,15 @@ import {
 
 const Slider = () => {
   const libraries = [
-    "Chakra UI",
     "Firebase",
     "Supabase",
     "Algolia",
     "Prisma",
-    "Tailwind",
-    "Motion Framer",
-
     "SWR",
     "Sanity",
+    "Tailwind",
+    "Chakra UI",
+    "Motion Framer",
     "NextAuth",
     "Socket.io",
     "GraphCMS",

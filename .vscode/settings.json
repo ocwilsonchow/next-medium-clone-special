@@ -5,6 +5,7 @@
     "context",
     "editorjs",
     "groq",
+    "immer",
     "next",
     "options",
     "rightbar",
