@@ -63,7 +63,7 @@ const PageAlbum = ({ images }) => {
                   borderRadius="base"
                   src={urlFor(img?.mainImage)}
                   width="full"
-                  h={["3500px","400px","500px","500px"]}
+                  h={["350px","400px","500px","500px"]}
                   objectFit="cover"
                   draggable="false"
                 />
