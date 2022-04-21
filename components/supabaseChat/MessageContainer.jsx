@@ -1,6 +1,5 @@
 import { Avatar, Box, Center, Flex, HStack, Tag, Text } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-
 import moment from "moment";
 import { motion } from "framer-motion";
 
@@ -8,6 +7,7 @@ const Message = ({ msg }) => {
   const { data: session } = useSession();
 
   if (!msg) return <Text p={4}>Loading</Text>;
+  const isSender = session?.user?.email === msg?.sender.email;
 
   return (
     <motion.div
@@ -16,11 +16,16 @@ const Message = ({ msg }) => {
       viewport={{ once: false }}
     >
       <Box py={2}>
-        <Flex w="full" alignItems="center" justifyContent="space-between">
-          <HStack>
-            <Avatar src={msg?.sender?.image} alt="" boxSize="42px" />
+        <Flex
+          flexDir={(isSender && "row-reverse") || "row"}
+          w="full"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <HStack flexDir={(isSender && "row-reverse") || "row"} >
+            <Avatar src={msg?.sender?.image} alt="" boxSize="42px" mx={1} />
             <Box px={1}>
-              <HStack mb={1}>
+              <HStack mb={1} >
                 <Text fontSize="xs" fontWeight="medium" isTruncated>
                   {msg?.sender.name}
                 </Text>
@@ -28,8 +33,12 @@ const Message = ({ msg }) => {
                   {moment(msg?.createdAt).calendar()}
                 </Text>
               </HStack>
-              <Flex w="full">
+              <Flex
+                w="full"
+                justifyContent={(isSender && "flex-end") || "flex-start"}
+              >
                 <Tag
+                  colorScheme={(isSender && "green") || "twitter"}
                   _hover={{ color: "teal.500" }}
                   px={3}
                   py={2}
