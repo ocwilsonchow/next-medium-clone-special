@@ -59,6 +59,7 @@ model Chat {
   name     String    @unique
   users    User[]
   messages Message[]
+
 }
 
 model Message {

@@ -12,7 +12,11 @@ const PageDynamicRoom = () => {
   const { setChatPageMounted } = useChat();
   const router = useRouter();
   const { room } = router.query;
+  const { data: rooms, error, mutate } = useSWR("/api/chat", fetcher);
 
+  const thisRoom = rooms?.find((item) => item.id===room)
+
+  console.log(thisRoom)
   useEffect(() => {
     setChatPageMounted(true);
     return () => {
@@ -24,7 +28,7 @@ const PageDynamicRoom = () => {
     <Flex flexDir="column">
       <Box>
         Welcome to <Text fontWeight="bold" display="inline-block"></Text>
-        <Tag mx={2}>chatID</Tag>
+        <Tag mx={2}>{thisRoom?.name}</Tag>
       </Box>
       <Flex flexDir="column" mt={2}>
         <ChatContainer />

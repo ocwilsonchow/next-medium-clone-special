@@ -30,6 +30,11 @@ const CreateRoomBtn = () => {
       url: "/api/chat",
       data: {
         name: nameInput.charAt(0).toUpperCase() + nameInput.slice(1),
+        users: {
+          connect: {
+            id: session.user.id,
+          },
+        },
       },
     }).then((resp) => {
       mutate();
@@ -43,7 +48,7 @@ const CreateRoomBtn = () => {
     <Flex flexDir="column" py={4}>
       <FormControl>
         <Input
-          placeholder={!session && "Sign in first" || "Enter new room name" }
+          placeholder={(!session && "Sign in first") || "Enter new room name"}
           value={nameInput}
           onChange={(e) => setNameInput(e.target.value)}
           disabled={!session}
