@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Message = ({ msg }) => {
   const { data: session } = useSession();
 
-  if (!msg || !session) return <Text p={4}>Loading</Text>;
+  if (!msg) return null
 
   const isSender = session?.user?.email === msg?.sender.email;
   return (

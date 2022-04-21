@@ -20,7 +20,7 @@ const Message = ({ msg }) => {
   const isSender = session?.user?.email === msg?.userEmail;
   const isAnonymousSender = anonymousId === msg?.userEmail;
 
-  if (!msg || !session) return <Text p={4}>Loading...</Text>
+  if (!msg ) return null
 
   return (
     <motion.div

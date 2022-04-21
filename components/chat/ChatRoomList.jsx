@@ -52,7 +52,7 @@ const ChatRoomList = () => {
                 cursor="pointer"
               >
                 <Text fontWeight="medium" color={onPublicChat && "green.500"}>
-                  Public
+                  🪐 Sanity Chat
                 </Text>
               </LinkBox>
             </Link>
