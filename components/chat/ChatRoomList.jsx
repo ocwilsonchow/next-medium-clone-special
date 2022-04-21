@@ -1,4 +1,12 @@
-import { Fade, Flex, LinkBox, Text, VStack, Skeleton } from "@chakra-ui/react";
+import {
+  Fade,
+  Flex,
+  LinkBox,
+  Text,
+  VStack,
+  Skeleton,
+  Spinner,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
@@ -17,14 +25,8 @@ const ChatRoomList = () => {
 
   if (!data)
     return (
-      <Flex flexDir="column" w="full" py={20} rowGap={3} >
-        <Skeleton mb={5} borderWidth="1px" h="30px" w="300px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
-        <Skeleton borderWidth="1px" h="40px" w="320px" />
+      <Flex flexDir="column" w="full" p={20}>
+        <Spinner />
       </Flex>
     );
   return (
