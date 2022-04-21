@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
             {children}
           </Flex>
         </Flex>
-        <Box display={{ base: "none", lg: "flex" }}>
+        <Box display={{ base: "none", lg: "flex" }} >
           <Rightbar />
         </Box>
       </Flex>
