@@ -22,7 +22,7 @@ const MessageInput = ({ roomId }) => {
   const [messageInput, setMessageInput] = useState("");
   const { data: rooms, error, mutate } = useSWR("/api/chat", fetcher);
 
-  // TODO setup error state
+  // TODO setup error state | setup validation  with react-hook-form
 
   const handleCreateMessage = async () => {
     setLoading(true);

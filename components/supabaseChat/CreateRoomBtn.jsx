@@ -21,7 +21,7 @@ const CreateRoomBtn = () => {
   const { data: session, status } = useSession();
   const { data, error, mutate } = useSWR("/api/chat", fetcher);
 
-  // TODO setup error state
+  // TODO setup error state | setup validation with react-hook-form
 
   const handleCreateRoom = async () => {
     setLoading(true);
