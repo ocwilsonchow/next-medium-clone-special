@@ -52,14 +52,13 @@ model User {
   sessions      Session[]
   sentMessages  Message[]
   chats         Chat[]
-
 }
 
 model Chat {
-  id      String    @id @default(cuid())
-  name    String
-  users   User[]
-  message Message[]
+  id       String    @id @default(cuid())
+  name     String    @unique
+  users    User[]
+  messages Message[]
 }
 
 model Message {
