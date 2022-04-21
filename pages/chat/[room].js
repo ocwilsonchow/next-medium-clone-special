@@ -32,7 +32,6 @@ const PageDynamicRoom = () => {
     //   console.log("hihiiii")
     // }).subscribe();
 
-
     setChatPageMounted(true);
     return () => {
       setChatPageMounted(false);
@@ -43,12 +42,16 @@ const PageDynamicRoom = () => {
   if (!thisRoom) return <Text p={4}>Loading...</Text>;
 
   return (
-    <Flex flexDir="column" >
-      <Center>
-        <Tag mx={2}>{thisRoom?.name}</Tag>
-      </Center>
-      <Flex flexDir="column" mt={2}>
-        <ChatContainer messages={thisRoom.messages} />
+    <Flex flexDir="column" position="relative">
+      <Box  p={4} flexDir="column" w="full" >
+        <Center>
+          <Tag mx={2}>{thisRoom?.name}</Tag>
+        </Center>
+        <Flex flexDir="column" maxH="calc(100vh - 200px)" overflow="auto">
+          <ChatContainer messages={thisRoom.messages} />
+        </Flex>
+      </Box>
+      <Flex position="sticky" bottom={4}  w="full">
         <MessageInput roomId={thisRoom?.id} />
       </Flex>
     </Flex>

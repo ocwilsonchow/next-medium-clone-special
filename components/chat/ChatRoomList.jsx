@@ -69,7 +69,7 @@ const ChatRoomList = () => {
                   borderColor={room.id === params && "green.500"}
                   cursor="pointer"
                 >
-                  <Text fontWeight="medium">{room.name}</Text>
+                  <Text fontWeight="medium"  color={room.id === params && "green.500"}>{room.name}</Text>
                 </LinkBox>
               </Link>
             ))}

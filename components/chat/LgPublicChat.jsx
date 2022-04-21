@@ -42,9 +42,8 @@ const PublicChat = () => {
   };
   return (
     <Flex flexDir="column" position="relative">
-
         <Box p={4}>
-          <Flex flexDir="column" w="full" h="80vh" overflow="auto">
+          <Flex flexDir="column" w="full" maxH="calc(100vh - 180px)" overflow="auto">
             {publicMessages.length === 0 && (
               <Center p={4}>
                 <Text>Loading...</Text>
@@ -61,7 +60,7 @@ const PublicChat = () => {
           </Flex>
         </Box>
 
-      <Box position="sticky" bottom={0} pt={2} pb={7} bg={bgColor}>
+      <Box position="sticky" bottom={4} >
         <FormControl w="full">
           <InputGroup>
             <InputRightElement>
