@@ -1,4 +1,4 @@
-import { Fade, Flex, LinkBox, Text, Spinner } from "@chakra-ui/react";
+import { Fade, Flex, LinkBox, Text, VStack, Skeleton } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
@@ -17,8 +17,14 @@ const ChatRoomList = () => {
 
   if (!data)
     return (
-      <Flex p={4} w="full">
-        <Spinner />
+      <Flex flexDir="column" w="full" py={20} rowGap={3} >
+        <Skeleton mb={5} borderWidth="1px" h="30px" w="300px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
+        <Skeleton borderWidth="1px" h="40px" w="320px" />
       </Flex>
     );
   return (
@@ -58,7 +64,7 @@ const ChatRoomList = () => {
                   borderWidth="0.5px"
                   borderRadius="base"
                   _hover={{ color: "blue.500" }}
-                  borderColor={room.id===params && "green.500"}
+                  borderColor={room.id === params && "green.500"}
                   cursor="pointer"
                 >
                   <Text fontWeight="medium">{room.name}</Text>

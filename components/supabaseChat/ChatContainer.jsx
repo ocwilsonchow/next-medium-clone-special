@@ -10,7 +10,7 @@ const ChatContainer = ({ messages }) => {
   }, [messages]);
 
   return (
-    <Flex p={4}  h="80vh" overflow="auto">
+    <Flex p={4} h="80vh" overflow="auto" >
       <Flex flexDir="column" w="full">
         {messages.length === 0 && (
           <Center p={2}>There is no message in this room</Center>

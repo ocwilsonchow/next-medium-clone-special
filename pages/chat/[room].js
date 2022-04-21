@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import ChatContainer from "../../components/supabaseChat/ChatContainer";
 import MessageInput from "../../components/supabaseChat/MessageInput";
 import useSWR from "swr";
+import { supabaseClient } from "../../lib/supabase";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -22,18 +23,28 @@ const PageDynamicRoom = () => {
   const thisRoom = rooms?.find((item) => item.id === room);
 
   useEffect(() => {
+    //Listener to chat
+
+    const chatListener = supabaseClient
+    // .from('message')
+    // .on("INSERT", (payload) => {
+    //   const newMessage = payload.new;
+    //   console.log("hihiiii")
+    // }).subscribe();
+
+
     setChatPageMounted(true);
     return () => {
       setChatPageMounted(false);
+      // chatListener.unsubscribe()
     };
   }, []);
 
   if (!thisRoom) return <Text p={4}>Loading...</Text>;
 
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" >
       <Box>
-        Welcome to <Text fontWeight="bold" display="inline-block"></Text>
         <Tag mx={2}>{thisRoom?.name}</Tag>
       </Box>
       <Flex flexDir="column" mt={2}>
