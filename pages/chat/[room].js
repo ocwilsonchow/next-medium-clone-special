@@ -25,7 +25,7 @@ const PageDynamicRoom = () => {
   useEffect(() => {
     //Listener to chat
 
-    const chatListener = supabaseClient
+    // const chatListener = supabaseClient
     // .from('message')
     // .on("INSERT", (payload) => {
     //   const newMessage = payload.new;

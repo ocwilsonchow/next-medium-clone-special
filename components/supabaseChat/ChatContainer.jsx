@@ -7,11 +7,11 @@ import MessageContainer from "../../components/supabaseChat/MessageContainer";
 const ChatContainer = ({ messages }) => {
   const { data: session } = useSession();
   const dummyRef = useRef();
+
   useEffect(() => {
     dummyRef.current.scrollIntoView();
   }, [messages]);
 
-  if (!session) return <Text p={2}>Loading</Text>
 
   return (
     <Flex p={4} h="80vh" overflow="auto">

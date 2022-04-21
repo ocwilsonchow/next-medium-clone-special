@@ -52,6 +52,7 @@ model User {
   sessions      Session[]
   sentMessages  Message[]
   chats         Chat[]
+
 }
 
 model Chat {
@@ -60,6 +61,7 @@ model Chat {
   users     User[]
   messages  Message[]
   createdAt DateTime  @default(now())
+
 }
 
 model Message {
