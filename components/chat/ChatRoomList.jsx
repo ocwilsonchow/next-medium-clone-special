@@ -21,7 +21,7 @@ const ChatRoomList = () => {
   const { data, error } = useSWR("/api/chat", fetcher);
   console.log(data);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <Flex p={4}>Loading...</Flex>;
   return (
     <Fade in>
       <Flex flexDir="column" justifyContent="space-between" p={4}>
