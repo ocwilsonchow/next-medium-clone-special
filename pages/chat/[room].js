@@ -47,7 +47,7 @@ const PageDynamicRoom = () => {
         <Center>
           <Tag mx={2}>{thisRoom?.name}</Tag>
         </Center>
-        <Flex flexDir="column" maxH="calc(100vh - 200px)" overflow="auto">
+        <Flex flexDir="column" h="calc(100vh - 200px)" overflow="auto">
           <ChatContainer messages={thisRoom.messages} />
         </Flex>
       </Box>
