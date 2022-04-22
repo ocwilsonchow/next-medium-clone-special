@@ -14,9 +14,6 @@ export default async function handler(req, res) {
   } else {
     try {
       const foundChats = await prisma.chat.findMany({
-        where: {
-          public: true,
-        },
         include: {
           users: true,
         },
@@ -24,6 +21,7 @@ export default async function handler(req, res) {
       res.status(200).json(foundChats);
     } catch (error) {
       console.log(error);
+      res.status(500).json(error);
     }
   }
 }
