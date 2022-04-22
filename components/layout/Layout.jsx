@@ -2,18 +2,17 @@ import {
   Box,
   Center,
   Flex,
-  Grid,
-  GridItem,
-  HStack,
-  VStack,
+  useColorModeValue
 } from "@chakra-ui/react";
 import Leftbar from "./Leftbar";
 import Rightbar from "./Rightbar";
 import Topbar from "./Topbar";
 
 const Layout = ({ children }) => {
+  const bgColor = useColorModeValue("white", "#17181f")
+
   return (
-    <Flex justifyContent="center">
+    <Flex justifyContent="center" >
       <Flex maxW="1500px" justifyContent="space-between" w="full">
         <Box display={{ base: "none", md: "flex" }}>
           <Leftbar />

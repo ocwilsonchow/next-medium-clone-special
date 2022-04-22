@@ -31,7 +31,7 @@ const PageAlbum = ({ images }) => {
         </Text>
       </Box>
 
-      <Flex flexWrap="wrap">
+      <Flex flexWrap="wrap" justifyContent="center" pb={6}>
         {images.map((img, i) => (
           <motion.div key={i} className="mr-1 p-1">
             <Flex
@@ -39,14 +39,13 @@ const PageAlbum = ({ images }) => {
               p={6}
               borderWidth="0.5px"
               borderRadius="base"
-              justifyContent="space-between"
               bgColor={boxColor}
             >
               <Tooltip fontSize="md" label={img.description}>
                 <Img
                   borderRadius="base"
                   src={urlFor(img?.mainImage)}
-                  boxSize="250px"
+                  boxSize={{ base: 'full' , md: "250px"}}
                   objectFit="cover"
                   draggable="false"
                 />
