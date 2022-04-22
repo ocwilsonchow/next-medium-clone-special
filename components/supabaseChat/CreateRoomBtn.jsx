@@ -25,7 +25,7 @@ const CreateRoomBtn = () => {
 
   const handleCreateRoom = async () => {
     setLoading(true);
-    if (nameInput.length === 0) return;
+    if (nameInput.length === 0) return  setLoading(false)
 
     await axios({
       method: "POST",
@@ -64,7 +64,7 @@ const CreateRoomBtn = () => {
             icon={<AddIcon />}
             variant="ghost"
             onClick={handleCreateRoom}
-            disabled={!session || loading}
+            disabled={!session || loading || (nameInput.length === 0) }
           />
         </InputRightElement>
       </FormControl>

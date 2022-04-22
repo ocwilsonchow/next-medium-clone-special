@@ -13,6 +13,23 @@ export default async function handler(req, res) {
       res.status(500).json(error);
     }
   } else {
-
+    try {
+      const foundChats = await prisma.chat.findUnique({
+        where: {
+          id: chatId,
+        },
+        include: {
+          messages: {
+            include: {
+              sender: true,
+            },
+          },
+          users: true,
+        },
+      });
+      res.status(200).json(foundChats);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

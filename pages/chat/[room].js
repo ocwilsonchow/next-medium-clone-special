@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Center, Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, HStack, Spinner, Tag, Text } from "@chakra-ui/react";
 import { useChat } from "../../context/ChatContext";
 import { useRouter } from "next/router";
 import ChatContainer from "../../components/supabaseChat/ChatContainer";
@@ -14,13 +14,12 @@ const PageDynamicRoom = () => {
   const router = useRouter();
   const { room } = router.query;
   const {
-    data: rooms,
+    data: thisRoom,
     error,
     mutate,
-  } = useSWR("/api/chat", fetcher, { refreshInterval: 500 });
+  } = useSWR(`/api/chat/${room}`, fetcher, { refreshInterval: 500 });
 
   // Get cached data that belongs to this room
-  const thisRoom = rooms?.find((item) => item.id === room);
 
   useEffect(() => {
     //Listener to chat
@@ -39,16 +38,15 @@ const PageDynamicRoom = () => {
     };
   }, []);
 
-  if (!thisRoom) return <Text p={4}>Loading...</Text>;
-
   return (
     <Flex flexDir="column" position="relative">
       <Box  p={4} flexDir="column" w="full" >
         <Center>
-          <Tag mx={2}>{thisRoom?.name}</Tag>
+        {thisRoom &&   <Tag mx={2}>{thisRoom?.name}</Tag>}
         </Center>
         <Flex flexDir="column" h="calc(100vh - 200px)" overflow="auto">
-          <ChatContainer messages={thisRoom.messages} />
+          {thisRoom && <ChatContainer messages={thisRoom.messages} />}
+           {!thisRoom && <Center p={4}><Spinner /></Center>}
         </Flex>
       </Box>
       <Flex position="sticky" bottom={4}  w="full">
