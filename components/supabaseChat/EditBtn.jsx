@@ -54,6 +54,7 @@ const EditBtn = ({ messageId }) => {
           variant="ghost"
           as={Button}
           rightIcon={<BsThreeDots />}
+          _focus={{outline: 0 }}
         />
         <MenuList boxShadow="none" p={0}>
           <>

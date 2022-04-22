@@ -52,7 +52,7 @@ const PublicChat = () => {
               <Message msg={msg} key={msg?._id} />
             </Fade>
           ))}
-        <div ref={dummyRef}></div>
+        <Flex pb={2} ref={dummyRef}></Flex>
       </Flex>
       <FormControl pt={4}>
         <InputGroup>
