@@ -29,8 +29,6 @@ const PageAlbum = ({ images }) => {
     return builder.image(source);
   }
 
-  console.log(images);
-
   return (
     <>
       <Box py={4}>

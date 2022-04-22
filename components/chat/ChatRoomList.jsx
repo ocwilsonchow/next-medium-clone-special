@@ -23,27 +23,28 @@ const ChatRoomList = () => {
 
   console.log(onlineUsers);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   setStatusInterval(
+  //     setInterval(() => {
+  //       if (!session) return;
+  //       axios({
+  //         method: "PUT",
+  //         url: `/api/chat/status/${session?.user.id}`,
+  //         data: { isOnline: true },
+  //       });
+  //     }, 5000)
+  //   );
 
-    setStatusInterval(
-      setInterval(() => {
-        axios({
-          method: "PUT",
-          url: `/api/chat/status/${session?.user.id}`,
-          data: { isOnline: true },
-        });
-      }, 5000)
-    );
-
-    return () => {
-      clearInterval(statusInterval);
-      axios({
-        method: "PUT",
-        url: `/api/chat/status/${session?.user.id}`,
-        data: { isOnline: false },
-      });
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(statusInterval);
+  //     if (!session) return;
+  //     axios({
+  //       method: "PUT",
+  //       url: `/api/chat/status/${session?.user.id}`,
+  //       data: { isOnline: false },
+  //     });
+  //   };
+  // }, []);
 
   if (!data)
     return (
