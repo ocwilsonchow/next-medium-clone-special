@@ -16,12 +16,12 @@ const ChatRoomList = () => {
   const { data: session } = useSession();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
-  const [statusInterval, setStatusInterval] = useState("");
-  const { data: onlineUsers } = useSWR("/api/chat/status", fetcher, {
-    refreshInterval: 1000,
-  });
+  // const [statusInterval, setStatusInterval] = useState("");
+  // const { data: onlineUsers } = useSWR("/api/chat/status", fetcher, {
+  //   refreshInterval: 1000,
+  // });
 
-  console.log(onlineUsers);
+  console.log(data);
 
   // useEffect(() => {
   //   setStatusInterval(
@@ -80,7 +80,7 @@ const ChatRoomList = () => {
             </LinkBox>
           </Link>
 
-          {data.map((room) => (
+          {data?.map((room) => (
             <Link href={`/chat/${room.id}`} key={room.id}>
               <LinkBox
                 my={1.5}
