@@ -1,32 +1,23 @@
-import { useState, useEffect } from "react";
 import {
   Fade,
   Flex,
   LinkBox,
   Text,
   Spinner,
-  Avatar,
-  AvatarBadge,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
-import { useSession, signIn, signOut } from "next-auth/react";
-import axios from "axios";
-import StatusBar from "../supabaseChat/StatusBar";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
   const router = useRouter();
-  const { data: session } = useSession();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
-
-  let userId = session?.user?.id
 
   if (!data)
     return (

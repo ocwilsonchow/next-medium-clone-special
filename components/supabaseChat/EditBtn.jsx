@@ -31,7 +31,7 @@ const EditBtn = ({ messageId }) => {
   });
 
   const handleDelete = async () => {
-      setLoading(true);
+    setLoading(true);
     await axios({
       method: "DELETE",
       url: `/api/chat/message/${messageId}`,
@@ -68,7 +68,12 @@ const EditBtn = ({ messageId }) => {
                   <Button variant="outline" mr={3} onClick={onClose}>
                     Close
                   </Button>
-                  <Button variant="outline" onClick={handleDelete} isLoading={loading} colorScheme="red">
+                  <Button
+                    variant="outline"
+                    onClick={handleDelete}
+                    isLoading={loading}
+                    colorScheme="red"
+                  >
                     Delete
                   </Button>
                 </ModalFooter>
