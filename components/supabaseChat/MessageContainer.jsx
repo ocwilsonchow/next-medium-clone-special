@@ -1,4 +1,13 @@
-import { Avatar, Box, Center, Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Center,
+  Flex,
+  HStack,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import moment from "moment";
 import { motion } from "framer-motion";
@@ -6,9 +15,10 @@ import { motion } from "framer-motion";
 const Message = ({ msg }) => {
   const { data: session } = useSession();
 
-  if (!msg) return null
+  if (!msg) return null;
 
   const isSender = session?.user?.email === msg?.sender.email;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -22,10 +32,10 @@ const Message = ({ msg }) => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <HStack flexDir={(isSender && "row-reverse") || "row"} >
+          <HStack flexDir={(isSender && "row-reverse") || "row"}>
             <Avatar src={msg?.sender?.image} alt="" boxSize="42px" mx={1} />
             <Box px={1}>
-              <HStack mb={1} >
+              <HStack mb={1}>
                 <Text fontSize="xs" fontWeight="medium" isTruncated>
                   {msg?.sender.name}
                 </Text>
@@ -37,19 +47,22 @@ const Message = ({ msg }) => {
                 w="full"
                 justifyContent={(isSender && "flex-end") || "flex-start"}
               >
-                <Tag
-                  colorScheme={(isSender && "green") || "twitter"}
-                  _hover={{ color: "teal.500" }}
-                  px={3}
-                  py={2}
-                  borderRadius="xl"
-                  fontSize="sm"
-                  display="flex"
-                  flexWrap="wrap"
-                  transition="all ease 0.1s"
-                >
-                  {msg?.text}
-                </Tag>
+                <Flex alignItems="center" columnGap={2} flexDir={(isSender && "row-reverse") || "row" }>
+                  <Tag
+                    colorScheme={(isSender && "green") || "twitter"}
+                    _hover={{ color: "teal.500" }}
+                    px={3}
+                    py={2}
+                    borderRadius="xl"
+                    fontSize="sm"
+                    display="flex"
+                    flexWrap="wrap"
+                    transition="all ease 0.1s"
+                  >
+                    {msg?.text}
+                  </Tag>
+                 {/* {isSender&& <Button size="xs" >Edit</Button>} */}
+                </Flex>
               </Flex>
             </Box>
           </HStack>

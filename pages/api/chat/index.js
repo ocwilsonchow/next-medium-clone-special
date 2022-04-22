@@ -1,5 +1,6 @@
 import prisma from "../../../helpers/prisma";
 
+
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
@@ -13,6 +14,9 @@ export default async function handler(req, res) {
   } else {
     try {
       const foundChats = await prisma.chat.findMany({
+        where: {
+          public: true,
+        },
         include: {
           users: true,
         },

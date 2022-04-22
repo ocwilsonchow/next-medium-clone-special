@@ -7,7 +7,7 @@ import {
   Flex,
   FormControl,
   Input,
-  Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { AiOutlineSend } from "react-icons/ai";
@@ -16,17 +16,28 @@ import axios from "axios";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const MessageInput = ({ roomId }) => {
+const MessageInput = ({ roomId}) => {
   const { data: session } = useSession();
+  const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [messageInput, setMessageInput] = useState("");
-  const { data: rooms, error, mutate } = useSWR("/api/chat", fetcher);
+  const { data: thisRoom, mutate } = useSWR(`/api/chat/${roomId}`, fetcher);
 
   // TODO setup error state | setup validation  with react-hook-form
-
   const handleCreateMessage = async () => {
     setLoading(true);
-    if (messageInput.length === 0 || !session) return;
+    if (messageInput.length === 0 || !session) return setLoading(false);
+    if (messageInput.length > 50) {
+      toast({
+        title: "Error",
+        description: "Message cannot be more than 50 characters",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoading(false);
+      return;
+    }
 
     await axios({
       method: "POST",
@@ -47,7 +58,7 @@ const MessageInput = ({ roomId }) => {
     })
       .then((resp) => {
         mutate();
-        setMessageInput("")
+        setMessageInput("");
         setLoading(false);
       })
       .catch((err) => {
@@ -55,7 +66,6 @@ const MessageInput = ({ roomId }) => {
         setLoading(false);
       });
   };
-
   return (
     <FormControl mt={4}>
       <InputGroup>
@@ -69,7 +79,7 @@ const MessageInput = ({ roomId }) => {
         </InputRightElement>
         <Input
           boxShadow="base"
-            placeholder={(!session && "Sign in first") || "Message"}
+          placeholder={(!session && "Sign in first") || "Message"}
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           disabled={!session}

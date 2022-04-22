@@ -52,6 +52,7 @@ model User {
   sessions      Session[]
   sentMessages  Message[]
   chats         Chat[]
+  isOnline      Boolean   @default(false)
 
 }
 
@@ -62,7 +63,6 @@ model Chat {
   messages  Message[]
   createdAt DateTime  @default(now())
   public    Boolean   @default(true)
-
 }
 
 model Message {
@@ -73,4 +73,5 @@ model Message {
   sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
   senderId  String
   createdAt DateTime @default(now())
+
 }

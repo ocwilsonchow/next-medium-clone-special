@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  Box,
-  Button,
   Flex,
   FormControl,
+  HStack,
   IconButton,
   Input,
   InputRightElement,
+  Switch,
+  Text,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import axios from "axios";
@@ -19,13 +20,17 @@ const CreateRoomBtn = () => {
   const [nameInput, setNameInput] = useState("");
   const [loading, setLoading] = useState(false);
   const { data: session, status } = useSession();
-  const { data, error, mutate } = useSWR("/api/chat", fetcher);
+  const { data, error, mutate } = useSWR("/api/chat", session, fetcher);
+  const [isPrivate, setIsPrivate] = useState(false)
 
-  // TODO setup error state | setup validation with react-hook-form
+  // const toggleIsPrivate = () => {
+  //   setIsPrivate(prev => prev ==true ? false : true)
+  // }
+
 
   const handleCreateRoom = async () => {
     setLoading(true);
-    if (nameInput.length === 0) return  setLoading(false)
+    if (nameInput.length === 0) return setLoading(false);
 
     await axios({
       method: "POST",
@@ -51,7 +56,7 @@ const CreateRoomBtn = () => {
   };
 
   return (
-    <Flex flexDir="column" py={4}>
+    <Flex flexDir="column" py={4} rowGap={4}>
       <FormControl>
         <Input
           placeholder={(!session && "Sign in first") || "Enter new room name"}
@@ -64,9 +69,13 @@ const CreateRoomBtn = () => {
             icon={<AddIcon />}
             variant="ghost"
             onClick={handleCreateRoom}
-            disabled={!session || loading || (nameInput.length === 0) }
+            disabled={!session || loading || nameInput.length === 0}
           />
         </InputRightElement>
+        {/* <HStack p={2}>
+          <Text>Private</Text>
+          <Switch onChange={()=>toggleIsPrivate()} />
+        </HStack> */}
       </FormControl>
     </Flex>
   );

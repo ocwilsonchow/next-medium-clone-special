@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const { chatId } = req.query;
 
   if (req.method === "POST") {
+
     try {
       const createMessage = await prisma.message.create({
         data: req.body,
@@ -20,6 +21,7 @@ export default async function handler(req, res) {
         },
         include: {
           messages: {
+            take: 1000,
             include: {
               sender: true,
             },

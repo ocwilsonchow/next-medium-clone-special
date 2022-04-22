@@ -1,27 +1,49 @@
-import {
-  Fade,
-  Flex,
-  LinkBox,
-  Text,
-  VStack,
-  Skeleton,
-  Spinner,
-} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { Fade, Flex, LinkBox, Text, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
+import { useSession, signIn, signOut } from "next-auth/react";
+import axios from "axios";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ChatRoomList = () => {
   const { onPublicChat } = useChat();
   const router = useRouter();
+  const { data: session } = useSession();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
+  const [statusInterval, setStatusInterval] = useState("");
+  const { data: onlineUsers } = useSWR("/api/chat/status", fetcher, {
+    refreshInterval: 1000,
+  });
 
-  // TODO setup loading skeleton and use
+  console.log(onlineUsers);
+
+  useEffect(() => {
+
+    setStatusInterval(
+      setInterval(() => {
+        axios({
+          method: "PUT",
+          url: `/api/chat/status/${session?.user.id}`,
+          data: { isOnline: true },
+        });
+      }, 5000)
+    );
+
+    return () => {
+      clearInterval(statusInterval);
+      axios({
+        method: "PUT",
+        url: `/api/chat/status/${session?.user.id}`,
+        data: { isOnline: false },
+      });
+    };
+  }, []);
 
   if (!data)
     return (
@@ -34,12 +56,12 @@ const ChatRoomList = () => {
       <Flex flexDir="column" justifyContent="space-between" p={4}>
         <Flex flexDir="column" my={4}>
           <Text fontSize="lg" fontWeight="medium">
-            Channels
+            Public Channels
           </Text>
           <CreateRoomBtn />
         </Flex>
 
-        <Flex flexDir="column" my={4} h="calc(100vh - 220px)"  overflow="auto">
+        <Flex flexDir="column" my={4} h="calc(100vh - 255px)" overflow="auto">
           <Link href="/chat/public">
             <LinkBox
               my={1.5}
