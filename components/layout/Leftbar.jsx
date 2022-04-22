@@ -24,7 +24,7 @@ import {
   AiOutlineSetting,
   AiFillSetting,
   AiFillCamera,
-  AiOutlineCamera
+  AiOutlineCamera,
 } from "react-icons/ai";
 import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
@@ -51,7 +51,7 @@ const Leftbar = () => {
       outlineIcon: <AiOutlineFileText />,
       link: "/me/blog",
     },
-      {
+    {
       name: "Album",
       fillIcon: <AiFillCamera />,
       outlineIcon: <AiOutlineCamera />,

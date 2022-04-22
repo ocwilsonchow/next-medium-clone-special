@@ -6,7 +6,7 @@ import ChatRoomList from "../chat/ChatRoomList";
 const Rightbar = () => {
   const { chatPageMounted, setChatPageMounted } = useChat();
   return (
-    <Flex flexDir="column" borderLeftWidth="0.5px" p={2} w="350px">
+    <Flex flexDir="column" p={2} w="350px" borderLeftWidth="0.5px"  >
       {!chatPageMounted && <ChatContainer />}
       {chatPageMounted && <ChatRoomList />}
     </Flex>

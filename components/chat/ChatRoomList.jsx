@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { Fade, Flex, LinkBox, Text, Spinner } from "@chakra-ui/react";
+import {
+  Fade,
+  Flex,
+  LinkBox,
+  Text,
+  Spinner,
+  Avatar,
+  AvatarBadge,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import useSWR from "swr";
@@ -7,6 +15,7 @@ import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
 import { useSession, signIn, signOut } from "next-auth/react";
 import axios from "axios";
+import StatusBar from "../supabaseChat/StatusBar";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -16,35 +25,8 @@ const ChatRoomList = () => {
   const { data: session } = useSession();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
-  // const [statusInterval, setStatusInterval] = useState("");
-  // const { data: onlineUsers } = useSWR("/api/chat/status", fetcher, {
-  //   refreshInterval: 1000,
-  // });
 
-  console.log(data);
-
-  // useEffect(() => {
-  //   setStatusInterval(
-  //     setInterval(() => {
-  //       if (!session) return;
-  //       axios({
-  //         method: "PUT",
-  //         url: `/api/chat/status/${session?.user.id}`,
-  //         data: { isOnline: true },
-  //       });
-  //     }, 5000)
-  //   );
-
-  //   return () => {
-  //     clearInterval(statusInterval);
-  //     if (!session) return;
-  //     axios({
-  //       method: "PUT",
-  //       url: `/api/chat/status/${session?.user.id}`,
-  //       data: { isOnline: false },
-  //     });
-  //   };
-  // }, []);
+  let userId = session?.user?.id
 
   if (!data)
     return (
@@ -60,9 +42,10 @@ const ChatRoomList = () => {
             Public Channels
           </Text>
           <CreateRoomBtn />
+
         </Flex>
 
-        <Flex flexDir="column" my={4} h="calc(100vh - 255px)" overflow="auto">
+        <Flex flexDir="column" my={4} h="calc(100vh - 270px)" overflow="auto">
           <Link href="/chat/public">
             <LinkBox
               my={1.5}

@@ -14,6 +14,7 @@ const Topbar = () => {
       justifyContent="space-between"
       alignItems="center"
       backdropFilter="blur(20px)"
+
     >
       <Link href="/">
         <Code

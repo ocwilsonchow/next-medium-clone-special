@@ -11,6 +11,7 @@ import {
 import { useSession } from "next-auth/react";
 import moment from "moment";
 import { motion } from "framer-motion";
+import EditBtn from "./EditBtn";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
@@ -47,7 +48,12 @@ const Message = ({ msg }) => {
                 w="full"
                 justifyContent={(isSender && "flex-end") || "flex-start"}
               >
-                <Flex alignItems="center" columnGap={2} flexDir={(isSender && "row-reverse") || "row" }>
+                <Flex
+                  alignItems="center"
+                  columnGap={2}
+                  flexDir={(isSender && "row-reverse") || "row"}
+                  position="relative"
+                >
                   <Tag
                     colorScheme={(isSender && "green") || "twitter"}
                     _hover={{ color: "teal.500" }}
@@ -61,7 +67,7 @@ const Message = ({ msg }) => {
                   >
                     {msg?.text}
                   </Tag>
-                 {/* {isSender&& <Button size="xs" >Edit</Button>} */}
+                  {isSender && <EditBtn messageId={msg?.id} />}
                 </Flex>
               </Flex>
             </Box>

@@ -6,15 +6,15 @@ export default async function handler(req, res) {
 
   if (req.method === "PUT") {
     try {
-      await prisma.user.update({
+      const user = await prisma.user.update({
         where: {
           id: userId,
         },
         data: req.body,
       });
-      res.status(201)
+      res.status(200).json(user)
     } catch (error) {
-      res.status(501);
+      console.log(error);
     }
   }
 }

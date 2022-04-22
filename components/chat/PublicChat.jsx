@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
-
+import { useSWR } from "swr";
 import Message from "./Message";
 
 const PublicChat = () => {
@@ -38,22 +38,23 @@ const PublicChat = () => {
     createPublicMessage();
   };
   return (
-   <Flex flexDir="column">
+    <Flex flexDir="column">
       <Flex flexDir="column" h="calc(100vh - 203px)" overflow="auto">
-      {publicMessages.length === 0 && (
-        <Center p={4}>
-          <Text>Loading...</Text>
-          <Spinner />
-        </Center>
-      )}
-      {publicMessages.length !==0 && publicMessages?.map((msg, i) => (
-        <Fade in key={i}>
-          <Message msg={msg} key={msg?._id}/>
-        </Fade>
-      ))}
-      <div ref={dummyRef}></div>
-    </Flex>
-    <FormControl pt={4}>
+        {publicMessages.length === 0 && (
+          <Center p={4}>
+            <Text>Loading...</Text>
+            <Spinner />
+          </Center>
+        )}
+        {publicMessages.length !== 0 &&
+          publicMessages?.map((msg, i) => (
+            <Fade in key={i}>
+              <Message msg={msg} key={msg?._id} />
+            </Fade>
+          ))}
+        <div ref={dummyRef}></div>
+      </Flex>
+      <FormControl pt={4}>
         <InputGroup>
           <InputRightElement>
             <IconButton
@@ -70,7 +71,7 @@ const PublicChat = () => {
           />
         </InputGroup>
       </FormControl>
-   </Flex>
+    </Flex>
   );
 };
 

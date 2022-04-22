@@ -14,7 +14,7 @@ import Topbar from "./Topbar";
 const Layout = ({ children }) => {
   return (
     <Flex justifyContent="center">
-      <Flex maxW="1600px" justifyContent="space-between" w="full">
+      <Flex maxW="1500px" justifyContent="space-between" w="full">
         <Box display={{ base: "none", md: "flex" }}>
           <Leftbar />
         </Box>
@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
           h="100vh"
           overflow="auto"
           position="relative"
+
         >
           <Flex w="full" position="sticky" top="0px" zIndex={2}>
             <Topbar />
