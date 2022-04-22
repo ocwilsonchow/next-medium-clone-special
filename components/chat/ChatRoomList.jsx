@@ -18,6 +18,7 @@ const ChatRoomList = () => {
   const router = useRouter();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
+  console.log("swr error:" , error)
 
   if (!data)
     return (
