@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
 import { useSession } from "next-auth/react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
 import groq from "groq";
@@ -28,18 +28,31 @@ const ChatRoomList = () => {
   const { data, error } = useSWR("/api/chat", fetcher);
   const { data: session } = useSession();
   const key = groq`*[_type == "onlineUsers" ]`;
-  const { data: onlineUsers, error: userError } = useSWR(key, sanityFetcher, {
-    refreshInterval: 1000,
-  });
+  const { data: onlineUsers, error: userError, mutate } = useSWR(key, sanityFetcher);
 
-  console.log(session?.user?.email);
+  console.log(onlineUsers);
 
   useEffect(() => {
+    listenToOnlineStatus()
     pushOnlineUser();
     return () => {
       removeOnlineUser();
     };
   }, []);
+
+
+  const listenToOnlineStatus = () => {
+    console.log('listening')
+    const query = `
+    *[_type == "onlineUsers" ]`
+    const subscription = readClient.listen(query).subscribe((update) => {
+     const message = update.result;
+     mutate()
+    });
+  };
+
+
+
 
   if (!data)
     return (
