@@ -8,7 +8,7 @@ import React from "react";
 import ThumbsUp from "../../images/Thumbsup.png";
 
 const CallForContact = () => {
-  const boxColor = useColorModeValue("gray.50", 'gray.900')
+  const boxColor = useColorModeValue("gray.50", '#0A0E19')
 
   return (
     <Flex

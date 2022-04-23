@@ -12,7 +12,7 @@ import Link from "next/link";
 const FeaturedProject = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
-  const boxColor = useColorModeValue("gray.50", "gray.900");
+  const boxColor = useColorModeValue("gray.50", "#0A0E19");
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);

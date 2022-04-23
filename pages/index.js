@@ -88,12 +88,12 @@ export default function Home() {
         >
           <Flex columnGap={3} rowGap={3} flexWrap="wrap">
             <Link href="/me/about">
-              <Button colorScheme="twitter" size="lg">
+              <Button colorScheme="twitter" size="lg" borderRadius="full">
                 My Story 🌍
               </Button>
             </Link>
             <Link href="/me/contactWilson">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" borderRadius="full">
                 Contact Me 💬
               </Button>
             </Link>

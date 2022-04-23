@@ -13,7 +13,7 @@ import { apiGetGalleryImages } from "../../lib/gallery";
 import imageUrlBuilder from "@sanity/image-url";
 
 const PageAlbum = ({ images }) => {
-  const boxColor = useColorModeValue("gray.50", "gray.900");
+  const boxColor = useColorModeValue("gray.50", "#0A0E19");
 
   const builder = imageUrlBuilder({
     projectId: "zmau43jq",

@@ -9,10 +9,10 @@ import Rightbar from "./Rightbar";
 import Topbar from "./Topbar";
 
 const Layout = ({ children }) => {
-  const bgColor = useColorModeValue("white", "#17181f")
+  const bgColor = useColorModeValue("white", "#0D1220")
 
   return (
-    <Flex justifyContent="center" >
+    <Flex justifyContent="center" bg={bgColor}>
       <Flex maxW="1500px" justifyContent="space-between" w="full">
         <Box display={{ base: "none", md: "flex" }}>
           <Leftbar />
