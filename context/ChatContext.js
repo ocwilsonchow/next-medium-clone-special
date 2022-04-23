@@ -2,6 +2,8 @@ import { useState, createContext, useContext, useEffect } from "react";
 import {
   apiCreatePublicChatMessages,
   apiGetPublicChatMessages,
+  apiPushOnlineUser,
+  apiRemoveOnlineUser,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
@@ -15,17 +17,18 @@ export function ChatProvider({ children }) {
   const [newPublicMessage, setNewPublicMessage] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [anonymousId, setAnonymousId] = useState();
-  const [chatPageMounted, setChatPageMounted] = useState(false)
-  const [onPublicChat, setOnPublicChat] = useState()
+  const [chatPageMounted, setChatPageMounted] = useState(false);
+  const [onPublicChat, setOnPublicChat] = useState();
 
   useEffect(() => {
     getPublicMessages();
     listenToChat();
+
     return setPublicMessages([]);
   }, []);
 
   useEffect(() => {
-// Generate an anonymous ID if not signed in
+    // Generate an anonymous ID if not signed in
     if (!session && !anonymousId) {
       setAnonymousId(uuidv4());
     }
@@ -34,7 +37,7 @@ export function ChatProvider({ children }) {
     if (session && anonymousId) {
       setAnonymousId();
     }
-  }, [session])
+  }, [session]);
 
   useEffect(() => {
     setPublicMessages([...publicMessages, newPublicMessage]);
@@ -59,6 +62,8 @@ export function ChatProvider({ children }) {
       setNewPublicMessage(message);
     });
   };
+
+
 
   // Get public messages from Sanity
   const getPublicMessages = async () => {
@@ -92,6 +97,24 @@ export function ChatProvider({ children }) {
     }
   };
 
+  // Push Online User
+  const pushOnlineUser = async () => {
+    try {
+      await apiPushOnlineUser(session);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Remove Online User
+  const removeOnlineUser = async () => {
+    try {
+      await apiRemoveOnlineUser(session)
+    } catch (err) {
+      console.log(error)
+    }
+  }
+
   const contextData = {
     publicMessages,
     setPublicMessages,
@@ -102,7 +125,9 @@ export function ChatProvider({ children }) {
     chatPageMounted,
     setChatPageMounted,
     onPublicChat,
-    setOnPublicChat
+    setOnPublicChat,
+    pushOnlineUser,
+    removeOnlineUser
   };
 
   return (

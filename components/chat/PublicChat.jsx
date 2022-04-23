@@ -1,28 +1,18 @@
 import { useRef, useEffect } from "react";
 import {
   Flex,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   FormControl,
-  Button,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   IconButton,
-  Box,
   Input,
   Fade,
   Spinner,
   Text,
   Center,
-  VStack,
 } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
-import { useSWR } from "swr";
 import Message from "./Message";
 
 const PublicChat = () => {
@@ -33,6 +23,8 @@ const PublicChat = () => {
   useEffect(() => {
     dummyRef.current.scrollIntoView({ behavior: "smooth" });
   }, [publicMessages]);
+
+  // TODO add validation
 
   const handleSubmit = () => {
     createPublicMessage();
@@ -47,11 +39,7 @@ const PublicChat = () => {
           </Center>
         )}
         {publicMessages.length !== 0 &&
-          publicMessages?.map((msg, i) => (
-            <Fade in key={i}>
-              <Message msg={msg} key={msg?._id} />
-            </Fade>
-          ))}
+          publicMessages?.map((msg, i) => <Message msg={msg} key={msg?._id} />)}
         <Flex pb={2} ref={dummyRef}></Flex>
       </Flex>
       <FormControl pt={4}>

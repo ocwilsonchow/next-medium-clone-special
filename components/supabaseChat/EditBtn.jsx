@@ -9,7 +9,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalFooter,
-  ModalBody,
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -54,7 +53,8 @@ const EditBtn = ({ messageId }) => {
           variant="ghost"
           as={Button}
           rightIcon={<BsThreeDots />}
-          _focus={{outline: 0 }}
+          color="gray.500"
+          _focus={{ outline: 0 }}
         />
         <MenuList boxShadow="none" p={0}>
           <>

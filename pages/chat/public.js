@@ -4,12 +4,14 @@ import { useChat } from "../../context/ChatContext";
 import LgPublicChat from "../../components/chat/LgPublicChat";
 
 const PagePublicChatroom = () => {
-  const { setChatPageMounted } = useChat();
+  const { setChatPageMounted, pushOnlineUser } = useChat();
 
   useEffect(() => {
+
     setChatPageMounted(true);
     return () => {
       setChatPageMounted(false);
+
     };
   }, []);
 
