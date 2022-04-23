@@ -90,11 +90,10 @@ const Leftbar = () => {
         {menuItems.map((item, i) => (
           <Link href={item.link} key={i}>
             <IconButton
-              icon={q === item.link &&  item.fillIcon || item.outlineIcon}
+              icon={(q === item.link && item.fillIcon) || item.outlineIcon}
               variant="ghost"
               fontSize="20px"
               _focus={{ outline: 0 }}
-              transition="all ease 0.1s"
               color={q === item.link && "blue.500"}
             />
           </Link>
