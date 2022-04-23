@@ -51,13 +51,13 @@ const ChatRoomList = () => {
             Public Channels
           </Text>
           <CreateRoomBtn />
-          <Flex overflow="auto" borderWidth="0.5px" h="50px">
+          <Flex overflow="auto" borderWidth="0.5px" h="60px" borderRadius="base" p={1} alignItems="center">
             {onlineUsers?.map((user) => (
               <Fade in key={user.id}>
                 <Avatar src={user.userImage} />
               </Fade>
             ))}
-            {onlineUsers.length===0 && <Text p={2} fontSize="sm">No signed in user in chat.</Text>}
+            {onlineUsers?.length===0 && <Text p={2} fontSize="sm">No signed in user in chat.</Text>}
           </Flex>
         </Flex>
 
