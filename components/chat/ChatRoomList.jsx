@@ -7,6 +7,7 @@ import {
   Spinner,
   Box,
   Avatar,
+  Tooltip,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
@@ -51,14 +52,27 @@ const ChatRoomList = () => {
             Public Channels
           </Text>
           <CreateRoomBtn />
-          <Flex overflow="auto" borderWidth="0.5px" h="60px" borderRadius="base" p={1} alignItems="center">
-            {onlineUsers?.map((user) => (
-              <Fade in key={user.id}>
-                <Avatar src={user.userImage} />
-              </Fade>
-            ))}
-            {onlineUsers?.length===0 && <Text p={2} fontSize="sm">No signed in user in chat.</Text>}
-          </Flex>
+          <Tooltip label="Online registered users">
+            <Flex
+              overflow="auto"
+              borderWidth="0.5px"
+              h="60px"
+              borderRadius="base"
+              p={1}
+              alignItems="center"
+            >
+              {onlineUsers?.map((user) => (
+                <Fade in key={user.id}>
+                  <Avatar src={user.userImage} />
+                </Fade>
+              ))}
+              {onlineUsers?.length === 0 && (
+                <Text p={2} fontSize="sm">
+                 There is no registered user online yet
+                </Text>
+              )}
+            </Flex>
+          </Tooltip>
         </Flex>
 
         <Flex flexDir="column" my={4} h="calc(100vh - 270px)" overflow="auto">
