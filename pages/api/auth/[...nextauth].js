@@ -4,6 +4,7 @@ import GitHubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 const prisma = new PrismaClient();
 
@@ -35,6 +36,7 @@ export default NextAuth({
   session: {
     jwt: true,
   },
+
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
       user && (token.user = user);

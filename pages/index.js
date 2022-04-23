@@ -15,7 +15,7 @@ import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/about/SocialLinks";
 
-const Typewritter = dynamic(() => import("../components/Typewritter"), {
+const Typewritter = dynamic(() => import("../components/home/Typewritter"), {
   ssr: false,
 });
 const skills = [

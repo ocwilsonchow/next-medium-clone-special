@@ -11,16 +11,12 @@ import React from "react";
 import {
   AiFillHome,
   AiOutlineHome,
-  AiOutlineNotification,
-  AiFillNotification,
   AiFillFileText,
   AiOutlineFileText,
-  AiOutlineForm,
-  AiFillEdit,
-  AiOutlineHeart,
   AiTwotoneMail,
   AiOutlineMail,
   AiOutlineTrophy,
+  AiFillTrophy,
   AiOutlineSetting,
   AiFillSetting,
   AiFillCamera,
@@ -29,48 +25,51 @@ import {
 import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Leftbar = () => {
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const q = router.pathname;
   const menuItems = [
     {
-      name: "Home",
+      name: "home",
       fillIcon: <AiFillHome />,
       outlineIcon: <AiOutlineHome />,
       link: "/",
     },
     {
-      name: "About",
-      fillIcon: <AiOutlineTrophy />,
+      name: "about",
+      fillIcon: <AiFillTrophy />,
       outlineIcon: <AiOutlineTrophy />,
       link: "/me/about",
     },
     {
-      name: "Blog",
+      name: "blog",
       fillIcon: <AiFillFileText />,
       outlineIcon: <AiOutlineFileText />,
       link: "/me/blog",
     },
     {
-      name: "Album",
+      name: "album",
       fillIcon: <AiFillCamera />,
       outlineIcon: <AiOutlineCamera />,
       link: "/me/album",
     },
     {
-      name: "Chat",
+      name: "chat",
       fillIcon: <BsChatDotsFill />,
       outlineIcon: <BsChatDots />,
       link: "/chat/public",
     },
     {
-      name: "Favorites",
+      name: "favorites",
       fillIcon: <AiTwotoneMail />,
       outlineIcon: <AiOutlineMail />,
       link: "/me/contactWilson",
     },
     {
-      name: "Settings",
+      name: "settings",
       fillIcon: <AiFillSetting />,
       outlineIcon: <AiOutlineSetting />,
       link: "/settings",
@@ -89,11 +88,14 @@ const Leftbar = () => {
       <VStack spacing={6}>
         {session && <Avatar src={session?.user.image} size="sm" />}
         {menuItems.map((item, i) => (
-          <Link key={i} href={item.link}>
+          <Link href={item.link} key={i}>
             <IconButton
-              icon={item.outlineIcon}
+              icon={q === item.link &&  item.fillIcon || item.outlineIcon}
               variant="ghost"
               fontSize="20px"
+              _focus={{ outline: 0 }}
+              transition="all ease 0.1s"
+              color={q === item.link && "blue.500"}
             />
           </Link>
         ))}

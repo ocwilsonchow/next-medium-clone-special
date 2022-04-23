@@ -78,7 +78,7 @@ const ChatRoomList = () => {
               ))}
               {onlineUsers?.length === 0 && (
                 <Text p={2} fontSize="sm">
-                  There is no registered user online yet
+                 Nobody online yet
                 </Text>
               )}
             </Flex>
