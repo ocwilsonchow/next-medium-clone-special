@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
+import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import CreateRoomBtn from "../supabaseChat/CreateRoomBtn";
@@ -25,11 +26,13 @@ const ChatRoomList = () => {
   const router = useRouter();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
-
+  const { data: session } = useSession();
   const key = groq`*[_type == "onlineUsers" ]`;
   const { data: onlineUsers, error: userError } = useSWR(key, sanityFetcher, {
     refreshInterval: 1000,
   });
+
+  console.log(session?.user?.email);
 
   useEffect(() => {
     pushOnlineUser();
@@ -52,7 +55,7 @@ const ChatRoomList = () => {
             Public Channels
           </Text>
           <CreateRoomBtn />
-          <Tooltip label="Online registered users">
+          <Tooltip label={`In Sanity chat room: ${onlineUsers?.length  }`}>
             <Flex
               overflow="auto"
               borderWidth="0.5px"
@@ -68,7 +71,7 @@ const ChatRoomList = () => {
               ))}
               {onlineUsers?.length === 0 && (
                 <Text p={2} fontSize="sm">
-                 There is no registered user online yet
+                  There is no registered user online yet
                 </Text>
               )}
             </Flex>
