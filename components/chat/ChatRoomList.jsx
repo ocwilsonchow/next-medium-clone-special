@@ -26,11 +26,8 @@ const ChatRoomList = () => {
   const router = useRouter();
   const { room: params } = router.query;
   const { data, error } = useSWR("/api/chat", fetcher);
-  const { data: session } = useSession();
   const key = groq`*[_type == "onlineUsers" ]`;
-  const { data: onlineUsers, error: userError, mutate } = useSWR(key, sanityFetcher);
-
-  console.log(onlineUsers);
+  const { data: onlineUsers, mutate } = useSWR(key, sanityFetcher);
 
   useEffect(() => {
     listenToOnlineStatus()
@@ -50,9 +47,6 @@ const ChatRoomList = () => {
      mutate()
     });
   };
-
-
-
 
   if (!data)
     return (
