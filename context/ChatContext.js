@@ -4,6 +4,7 @@ import {
   apiGetPublicChatMessages,
   apiPushOnlineUser,
   apiRemoveOnlineUser,
+  apiLikeAMessage
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
@@ -53,7 +54,8 @@ export function ChatProvider({ children }) {
       _id,
       username,
       userEmail,
-      userImage
+      userImage,
+      likes
     }
   `;
 
@@ -63,7 +65,11 @@ export function ChatProvider({ children }) {
     });
   };
 
-
+  // Like a message
+  const likeAMessage = async (messageId) => {
+    console.log("liking")
+   await apiLikeAMessage(session, anonymousId, messageId)
+  }
 
   // Get public messages from Sanity
   const getPublicMessages = async () => {
@@ -127,7 +133,8 @@ export function ChatProvider({ children }) {
     onPublicChat,
     setOnPublicChat,
     pushOnlineUser,
-    removeOnlineUser
+    removeOnlineUser,
+    likeAMessage
   };
 
   return (

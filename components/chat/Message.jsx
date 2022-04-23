@@ -10,24 +10,41 @@ import {
 import { useChat } from "../../context/ChatContext";
 import { useSession } from "next-auth/react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import moment from "moment";
 import { motion } from "framer-motion";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
-  const { anonymousId } = useChat();
+  const { anonymousId, likeAMessage } = useChat();
 
   const isSender = session?.user?.email === msg?.userEmail;
   const isAnonymousSender = anonymousId === msg?.userEmail;
 
-  if (!msg ) return null
+  if (!msg) return null;
+
+  const handleClick = (e, msgId) => {
+    switch (e.detail) {
+      case 1:
+        console.log("click");
+        break;
+      case 2:
+        console.log("double click", msgId);
+        likeAMessage(msgId)
+        break;
+      case 3:
+        console.log("triple click");
+        break;
+      default:
+        return;
+    }
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
-
     >
       <Box py={2} cursor={isSender && "pointer"}>
         <Flex
@@ -60,10 +77,13 @@ const Message = ({ msg }) => {
                 <Text fontSize="xs" fontWeight="medium" isTruncated>
                   {msg?.username}
                 </Text>
-                <Text fontSize="10px" isTruncated>{moment(msg?.createdAt).calendar()}</Text>
+                <Text fontSize="10px" isTruncated>
+                  {moment(msg?.createdAt).calendar()}
+                </Text>
               </HStack>
               <Flex
                 w="full"
+                alignItems="flex-end"
                 justifyContent={
                   (isSender && "flex-end") ||
                   (isAnonymousSender && "flex-end") ||
@@ -76,7 +96,7 @@ const Message = ({ msg }) => {
                     (isAnonymousSender && "green") ||
                     "twitter"
                   }
-                  _hover={{ color: "teal.500" }}
+                  _hover={{ color: "blue.500" }}
                   px={3}
                   py={2}
                   borderRadius="xl"
@@ -84,10 +104,13 @@ const Message = ({ msg }) => {
                   display="flex"
                   flexWrap="wrap"
                   transition="all ease 0.1s"
+                  cursor="pointer"
+                  onClick={(e) => handleClick(e, msg._id)}
                 >
                   {msg?.message}
                 </Tag>
               </Flex>
+              {msg?.likes !==null && <Box px={1}>👍🏻 {msg?.likes?.length}</Box>}
             </Box>
           </HStack>
           <IconButton
