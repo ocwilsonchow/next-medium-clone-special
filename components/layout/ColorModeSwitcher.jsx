@@ -6,7 +6,7 @@ export const ColorModeSwitcher = (props) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const iconColor = useColorModeValue('blue.400', "yellow")
+  const iconColor = useColorModeValue('blue.400', "blue.400")
 
   return (
     <IconButton
@@ -18,7 +18,7 @@ export const ColorModeSwitcher = (props) => {
       _focus={{ outline: 0 }}
       {...props}
       transition="all ease 0.2s"
-      color={iconColor}
+
     />
   );
 };

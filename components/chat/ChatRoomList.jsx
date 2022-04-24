@@ -5,9 +5,10 @@ import {
   LinkBox,
   Text,
   Spinner,
-  Box,
+  AvatarBadge,
   Avatar,
   Tooltip,
+  AvatarGroup,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useChat } from "../../context/ChatContext";
@@ -30,21 +31,20 @@ const ChatRoomList = () => {
   const { data: onlineUsers, mutate } = useSWR(key, sanityFetcher);
 
   useEffect(() => {
-    listenToOnlineStatus()
+    console.log("layout");
+    listenToOnlineStatus();
     pushOnlineUser();
     return () => {
       removeOnlineUser();
     };
   }, []);
 
-
   const listenToOnlineStatus = () => {
-    console.log('listening')
     const query = `
-    *[_type == "onlineUsers" ]`
+    *[_type == "onlineUsers" ]`;
     const subscription = readClient.listen(query).subscribe((update) => {
-     const message = update.result;
-     mutate()
+      const message = update.result;
+      mutate();
     });
   };
 
@@ -62,26 +62,23 @@ const ChatRoomList = () => {
             Public Channels
           </Text>
           <CreateRoomBtn />
-          <Tooltip label={`In Sanity chat room: ${onlineUsers?.length  }`}>
-            <Flex
-              overflow="auto"
-              borderWidth="0.5px"
-              h="60px"
-              borderRadius="base"
-              p={1}
-              alignItems="center"
-            >
+          <Tooltip label={`In chat room: ${onlineUsers?.length}`}>
+            <AvatarGroup h="60px" p={1} size="md" max={5}>
               {onlineUsers?.map((user) => (
                 <Fade in key={user.id}>
-                  <Avatar src={user.userImage} />
+                  <Avatar
+                    src={user.userImage}
+                    borderWidth="2px"
+                    borderColor="green.400"
+                  />
                 </Fade>
               ))}
               {onlineUsers?.length === 0 && (
                 <Text p={2} fontSize="sm">
-                 Nobody online yet
+                  Nobody is online yet
                 </Text>
               )}
-            </Flex>
+            </AvatarGroup>
           </Tooltip>
         </Flex>
 

@@ -40,7 +40,6 @@ const Message = ({ msg }) => {
     }
   };
 
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -111,7 +110,6 @@ const Message = ({ msg }) => {
                   {msg?.message}
                 </Tag>
               </Flex>
-              {msg?.likes !==null && <Box px={1}>👍🏻 {msg?.likes?.length}</Box>}
             </Box>
           </HStack>
           <IconButton

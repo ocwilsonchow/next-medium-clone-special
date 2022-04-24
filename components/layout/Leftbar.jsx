@@ -94,7 +94,7 @@ const Leftbar = () => {
               variant="ghost"
               fontSize="20px"
               _focus={{ outline: 0 }}
-              color={q === item.link && "blue.500"}
+              color={q === item.link && "blue.400"}
             />
           </Link>
         ))}
