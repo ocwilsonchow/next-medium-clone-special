@@ -55,7 +55,7 @@ export function ChatProvider({ children }) {
       username,
       userEmail,
       userImage,
-      likes
+
     }
   `;
 

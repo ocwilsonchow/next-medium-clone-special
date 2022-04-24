@@ -30,7 +30,7 @@ const Message = ({ msg }) => {
         break;
       case 2:
         console.log("double click", msgId);
-        likeAMessage(msgId)
+
         break;
       case 3:
         console.log("triple click");
@@ -39,6 +39,7 @@ const Message = ({ msg }) => {
         return;
     }
   };
+
 
   return (
     <motion.div

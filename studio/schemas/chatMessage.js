@@ -32,17 +32,6 @@ export default {
       title: "Username",
       type: "string",
     },
-    {
-      name: "likes",
-      title: "Likes",
-      type: "array",
-      of: [
-        {
-          name: "userId",
-          title: "UserId",
-          type: "string"
-        }
-      ]
-    },
+
   ],
 };
