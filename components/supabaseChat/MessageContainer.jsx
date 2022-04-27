@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -16,6 +17,7 @@ import axios from "axios";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
+  const [messageLiked, setMessageLiked] = useState(false);
   const handleClick = async (e, msgId) => {
     if (!session) return;
     switch (e.detail) {
@@ -38,6 +40,17 @@ const Message = ({ msg }) => {
   if (!msg) return null;
 
   const isSender = session?.user?.email === msg?.sender?.email;
+  const newArr = msg?.likedUsers?.find((each) => {
+    return each.userId === session?.user?.id;
+  });
+
+  useEffect(() => {
+    if (newArr?.length !== 0) {
+      setMessageLiked(true);
+    } else {
+      return setMessageLiked(false)
+    }
+  }, [newArr]);
 
   return (
     <motion.div
@@ -89,13 +102,13 @@ const Message = ({ msg }) => {
                     {msg?.text}
                   </Tag>
                   {isSender && <EditBtn messageId={msg?.id} />}
-                  {msg?.likedUsers?.length > 0 && (
-                    <Tag bg="none" fontSize="xs">
-                      👍🏻 {msg?.likedUsers?.length}
-                    </Tag>
-                  )}
                 </Flex>
               </Flex>
+              {msg?._count?.likedUsers !==0 && (
+                <Flex justifyContent={(isSender && "flex-end") || "flex-start"}>
+                  <Tag fontSize="xs">👍 {msg?._count?.likedUsers}</Tag>
+                </Flex>
+              )}
             </Box>
           </HStack>
         </Flex>
