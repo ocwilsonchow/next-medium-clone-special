@@ -6,12 +6,13 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
 
   if (req.method === "POST") {
+    console.log(messageId, session.user.id)
     try {
       const likedMessage = await prisma.userLikedMessage.create({
         data: {
           user: {
             connect: {
-              id: session.user.id,
+              id: session?.user?.id,
             },
           },
           message: {
@@ -33,7 +34,7 @@ export default async function handler(req, res) {
       const deletedMessage = await prisma.userLikedMessage.delete({
         where: {
           user: {
-            id: session.user.id,
+            id: session?.user?.id,
           },
           message: {
             id: messageId,

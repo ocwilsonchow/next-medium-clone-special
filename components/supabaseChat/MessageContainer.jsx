@@ -16,7 +16,6 @@ import axios from "axios";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
-
   const handleClick = async (e, msgId) => {
     if (!session) return;
     switch (e.detail) {
@@ -38,7 +37,7 @@ const Message = ({ msg }) => {
 
   if (!msg) return null;
 
-  const isSender = session?.user?.email === msg?.sender.email;
+  const isSender = session?.user?.email === msg?.sender?.email;
 
   return (
     <motion.div
@@ -90,6 +89,11 @@ const Message = ({ msg }) => {
                     {msg?.text}
                   </Tag>
                   {isSender && <EditBtn messageId={msg?.id} />}
+                  {msg?.likedUsers?.length > 0 && (
+                    <Tag bg="none" fontSize="xs">
+                      👍🏻 {msg?.likedUsers?.length}
+                    </Tag>
+                  )}
                 </Flex>
               </Flex>
             </Box>

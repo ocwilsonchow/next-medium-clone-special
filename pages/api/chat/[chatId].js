@@ -27,7 +27,7 @@ export default async function handler(req, res) {
               sender: true,
               likedUsers: {
                 where: {
-                  userId: session.user.id
+                  userId: session?.user?.id
                 }
               },
               _count: {
