@@ -17,20 +17,30 @@ import axios from "axios";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
-  const [messageLiked, setMessageLiked] = useState(false);
+  const isSender = session?.user?.email === msg?.sender?.email;
+
+  // Handle Like || Unlike
   const handleClick = async (e, msgId) => {
     if (!session) return;
     switch (e.detail) {
-      case 1:
-        break;
       case 2:
-        console.log("double click", msgId);
-        await axios({
-          method: "POST",
-          url: `/api/chat/message/like/${msgId}`,
-        });
-        break;
-      case 3:
+        console.log('double click')
+        if (msg.likedUsers.some((user)=> user.userId===session?.user?.id)==false) {
+          await axios({
+            method: "POST",
+            url: `/api/chat/message/like/${msgId}`,
+          }).catch((err) => {
+            console.log(err);
+          });
+        } else if (msg.likedUsers.some((user)=> user.userId===session?.user?.id)) {
+
+          await axios({
+            method: "DELETE",
+            url: `/api/chat/message/like/${msgId}`,
+          }).catch((err) => {
+            console.log(err);
+          });
+        }
         break;
       default:
         return;
@@ -39,18 +49,8 @@ const Message = ({ msg }) => {
 
   if (!msg) return null;
 
-  const isSender = session?.user?.email === msg?.sender?.email;
-  const newArr = msg?.likedUsers?.find((each) => {
-    return each.userId === session?.user?.id;
-  });
 
-  useEffect(() => {
-    if (newArr?.length !== 0) {
-      setMessageLiked(true);
-    } else {
-      return setMessageLiked(false)
-    }
-  }, [newArr]);
+
 
   return (
     <motion.div
@@ -104,7 +104,7 @@ const Message = ({ msg }) => {
                   {isSender && <EditBtn messageId={msg?.id} />}
                 </Flex>
               </Flex>
-              {msg?._count?.likedUsers !==0 && (
+              {msg?._count?.likedUsers !== 0 && (
                 <Flex justifyContent={(isSender && "flex-end") || "flex-start"}>
                   <Tag fontSize="xs">👍 {msg?._count?.likedUsers}</Tag>
                 </Flex>
