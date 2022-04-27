@@ -45,7 +45,7 @@ const PageAlbum = ({ images }) => {
                 <Img
                   borderRadius="base"
                   src={urlFor(img?.mainImage)}
-                  boxSize={{ base: 'full' , md: "250px"}}
+                  boxSize={{ base: "full", md: "250px" }}
                   objectFit="cover"
                   draggable="false"
                 />
@@ -66,5 +66,6 @@ export async function getStaticProps() {
     props: {
       images,
     },
+    revalidate: 60*60*12,
   };
 }

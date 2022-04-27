@@ -14,32 +14,46 @@ import {
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
 import Message from "./Message";
+import groq from "groq";
+import useSWR from "swr";
+import { readClient } from "../../lib/sanity";
+
+const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
+  createdAt,
+  _id,
+  message,
+  userEmail,
+  username,
+  userImage
+}`;
 
 const PublicChat = () => {
   const dummyRef = useRef();
-  const { publicMessages, createPublicMessage, setMessageInput, messageInput } =
-    useChat();
+  const { publicMessages, createPublicMessage, setMessageInput, messageInput } = useChat();
+  const fetcher = (query) => readClient.fetch(query)
+  const { data: sanityMessages, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
     dummyRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [publicMessages]);
-
-  // TODO add validation
+  }, [sanityMessages]);
 
   const handleSubmit = () => {
     createPublicMessage();
   };
+
+  console.log(sanityMessages)
+
   return (
     <Flex flexDir="column">
       <Flex flexDir="column" h="calc(100vh - 203px)" overflow="auto">
-        {publicMessages.length === 0 && (
+        {sanityMessages?.length === 0 && (
           <Center p={4}>
             <Text>Loading...</Text>
             <Spinner />
           </Center>
         )}
-        {publicMessages.length !== 0 &&
-          publicMessages?.map((msg, i) => <Message msg={msg} key={msg?._id} />)}
+        {sanityMessages?.length !== 0 &&
+          sanityMessages?.map((msg) => <Message key={msg._id} msg={msg} />)}
         <Flex pb={2} ref={dummyRef}></Flex>
       </Flex>
       <FormControl pt={4}>

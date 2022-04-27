@@ -21,8 +21,7 @@ const Message = ({ msg }) => {
   const isSender = session?.user?.email === msg?.userEmail;
   const isAnonymousSender = anonymousId === msg?.userEmail;
 
-  if (!msg) return null;
-
+  // console.log(msg)
   const handleClick = (e, msgId) => {
     switch (e.detail) {
       case 1:
@@ -40,11 +39,14 @@ const Message = ({ msg }) => {
     }
   };
 
+  if (!msg) return null;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
+
     >
       <Box py={2} cursor={isSender && "pointer"}>
         <Flex

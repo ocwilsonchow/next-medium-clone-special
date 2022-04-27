@@ -12,13 +12,8 @@ import Link from "next/link";
 import {
   AiFillHome,
   AiOutlineHome,
-  AiOutlineNotification,
-  AiFillNotification,
   AiFillFileText,
   AiOutlineFileText,
-  AiOutlineForm,
-  AiFillEdit,
-  AiOutlineHeart,
   AiTwotoneMail,
   AiOutlineMail,
   AiOutlineTrophy,

@@ -31,7 +31,6 @@ const ChatRoomList = () => {
   const { data: onlineUsers, mutate } = useSWR(key, sanityFetcher);
 
   useEffect(() => {
-    console.log("layout");
     listenToOnlineStatus();
     pushOnlineUser();
     return () => {

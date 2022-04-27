@@ -16,6 +16,23 @@ import EditBtn from "./EditBtn";
 const Message = ({ msg }) => {
   const { data: session } = useSession();
 
+  const handleClick = (e, msgId) => {
+    switch (e.detail) {
+      case 1:
+        console.log("click");
+        break;
+      case 2:
+        console.log("double click", msgId);
+
+        break;
+      case 3:
+        console.log("triple click");
+        break;
+      default:
+        return;
+    }
+  };
+
   if (!msg) return null;
 
   const isSender = session?.user?.email === msg?.sender.email;
@@ -64,6 +81,8 @@ const Message = ({ msg }) => {
                     display="flex"
                     flexWrap="wrap"
                     transition="all ease 0.1s"
+                    cursor="pointer"
+                    onClick={(e) => handleClick(e, msg._id)}
                   >
                     {msg?.text}
                   </Tag>

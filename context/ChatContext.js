@@ -4,13 +4,18 @@ import {
   apiGetPublicChatMessages,
   apiPushOnlineUser,
   apiRemoveOnlineUser,
-  apiLikeAMessage
+  apiLikeAMessage,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
+import groq from "groq";
 
 const ChatContext = createContext();
+
+const fetcher = (query) =>
+  readClient.fetch(query).then();
 
 export function ChatProvider({ children }) {
   const { data: session } = useSession();
@@ -20,6 +25,8 @@ export function ChatProvider({ children }) {
   const [anonymousId, setAnonymousId] = useState();
   const [chatPageMounted, setChatPageMounted] = useState(false);
   const [onPublicChat, setOnPublicChat] = useState();
+  const key = groq`*[_type == "chatMessage"]`;
+  const { data: sanityMessages, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
     getPublicMessages();
@@ -61,20 +68,20 @@ export function ChatProvider({ children }) {
 
     const subscription = readClient.listen(query).subscribe((update) => {
       const message = update.result;
-      setNewPublicMessage(message);
+      mutate()
     });
   };
 
   // Like a message
   const likeAMessage = async (messageId) => {
-    console.log("liking")
-   await apiLikeAMessage(session, anonymousId, messageId)
-  }
+    console.log("liking");
+    await apiLikeAMessage(session, anonymousId, messageId);
+  };
 
   // Get public messages from Sanity
   const getPublicMessages = async () => {
     const data = await apiGetPublicChatMessages();
-    setPublicMessages(data);
+
   };
 
   // Create public message
@@ -115,11 +122,11 @@ export function ChatProvider({ children }) {
   // Remove Online User
   const removeOnlineUser = async () => {
     try {
-      await apiRemoveOnlineUser(session)
+      await apiRemoveOnlineUser(session);
     } catch (err) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const contextData = {
     publicMessages,
@@ -134,7 +141,7 @@ export function ChatProvider({ children }) {
     setOnPublicChat,
     pushOnlineUser,
     removeOnlineUser,
-    likeAMessage
+    likeAMessage,
   };
 
   return (

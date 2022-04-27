@@ -28,7 +28,7 @@ const Comments = ({ postId, slug }) => {
       username,
       userEmail,
       userImage,
-      publishedAt,
+      createdAt,
       comment,
     }
   }`;
