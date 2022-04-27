@@ -67,8 +67,6 @@ const ChatRoomList = () => {
                 <Fade in key={user.id}>
                   <Avatar
                     src={user.userImage}
-                    borderWidth="2px"
-                    borderColor="green.400"
                   />
                 </Fade>
               ))}

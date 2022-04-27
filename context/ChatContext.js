@@ -13,25 +13,27 @@ import useSWR from "swr";
 import groq from "groq";
 
 const ChatContext = createContext();
-
-const fetcher = (query) =>
-  readClient.fetch(query).then();
+const fetcher = (query) => readClient.fetch(query).then();
+const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
+createdAt,
+_id,
+message,
+userEmail,
+username,
+userImage
+}`;
 
 export function ChatProvider({ children }) {
   const { data: session } = useSession();
   const [publicMessages, setPublicMessages] = useState([]);
-  const [newPublicMessage, setNewPublicMessage] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [anonymousId, setAnonymousId] = useState();
   const [chatPageMounted, setChatPageMounted] = useState(false);
   const [onPublicChat, setOnPublicChat] = useState();
-  const key = groq`*[_type == "chatMessage"]`;
-  const { data: sanityMessages, mutate } = useSWR(key, fetcher);
+  const { data, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
-    getPublicMessages();
     listenToChat();
-
     return setPublicMessages([]);
   }, []);
 
@@ -47,28 +49,17 @@ export function ChatProvider({ children }) {
     }
   }, [session]);
 
-  useEffect(() => {
-    setPublicMessages([...publicMessages, newPublicMessage]);
-  }, [newPublicMessage]);
-
   const listenToChat = () => {
-    const query = `
-    *[_type == "chatMessage" ] {
-      chatroom->,
-      chatroom,
-      message,
+    const query = `*[_type == "chatMessage"]  | order(createdAt asc) {
       createdAt,
       _id,
-      username,
+      message,
       userEmail,
-      userImage,
-
-    }
-  `;
-
+      username,
+      userImage
+    }`;
     const subscription = readClient.listen(query).subscribe((update) => {
-      const message = update.result;
-      mutate()
+      mutate();
     });
   };
 
@@ -81,7 +72,6 @@ export function ChatProvider({ children }) {
   // Get public messages from Sanity
   const getPublicMessages = async () => {
     const data = await apiGetPublicChatMessages();
-
   };
 
   // Create public message
@@ -101,9 +91,11 @@ export function ChatProvider({ children }) {
       },
     };
 
+    // TODO make it optimistic update
     try {
       setMessageInput("");
       await apiCreatePublicChatMessages(chatMessageDoc);
+      mutate();
     } catch (error) {
       setMessageInput("");
       console.error(error);
@@ -129,8 +121,6 @@ export function ChatProvider({ children }) {
   };
 
   const contextData = {
-    publicMessages,
-    setPublicMessages,
     createPublicMessage,
     setMessageInput,
     messageInput,

@@ -29,8 +29,8 @@ const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
 
 const PublicChat = () => {
   const dummyRef = useRef();
-  const { publicMessages, createPublicMessage, setMessageInput, messageInput } = useChat();
-  const fetcher = (query) => readClient.fetch(query)
+  const { createPublicMessage, setMessageInput, messageInput } = useChat();
+  const fetcher = (query) => readClient.fetch(query);
   const { data: sanityMessages, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
@@ -40,8 +40,6 @@ const PublicChat = () => {
   const handleSubmit = () => {
     createPublicMessage();
   };
-
-  console.log(sanityMessages)
 
   return (
     <Flex flexDir="column">

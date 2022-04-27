@@ -19,7 +19,7 @@ import groq from "groq";
 import useSWR from "swr";
 import { readClient } from "../../lib/sanity";
 
-const key = groq`*[_type == "chatMessage"] | order(createdAt asc) {
+const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
   createdAt,
   _id,
   message,
