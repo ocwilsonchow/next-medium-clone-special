@@ -12,21 +12,24 @@ import { useSession } from "next-auth/react";
 import moment from "moment";
 import { motion } from "framer-motion";
 import EditBtn from "./EditBtn";
+import axios from "axios";
 
 const Message = ({ msg }) => {
   const { data: session } = useSession();
 
-  const handleClick = (e, msgId) => {
+  const handleClick = async (e, msgId) => {
+    if (!session) return;
     switch (e.detail) {
       case 1:
-        console.log("click");
         break;
       case 2:
         console.log("double click", msgId);
-
+        await axios({
+          method: "POST",
+          url: `/api/chat/message/like/${msgId}`,
+        });
         break;
       case 3:
-        console.log("triple click");
         break;
       default:
         return;
@@ -82,7 +85,7 @@ const Message = ({ msg }) => {
                     flexWrap="wrap"
                     transition="all ease 0.1s"
                     cursor="pointer"
-                    onClick={(e) => handleClick(e, msg._id)}
+                    onClick={(e) => handleClick(e, msg.id)}
                   >
                     {msg?.text}
                   </Tag>
