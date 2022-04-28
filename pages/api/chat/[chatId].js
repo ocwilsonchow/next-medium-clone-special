@@ -26,13 +26,14 @@ export default async function handler(req, res) {
             include: {
               sender: true,
               likedUsers: true,
-              _count: {
-                select: {
-                  likedUsers: true
-                }
-              }
+              // _count: {
+              //   select: {
+              //     likedUsers: true
+              //   }
+              // }
             },
           },
+          users: true,
         },
       });
       res.status(200).json(foundChats);
