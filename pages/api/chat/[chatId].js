@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         },
         include: {
           messages: {
-            take: 500,
+
             include: {
               sender: true,
               likedUsers: true,
