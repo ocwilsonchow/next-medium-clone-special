@@ -1,7 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import {
   apiCreatePublicChatMessages,
-  apiGetPublicChatMessages,
   apiPushOnlineUser,
   apiRemoveOnlineUser,
   apiLikeAMessage,
@@ -15,17 +14,16 @@ import groq from "groq";
 const ChatContext = createContext();
 const fetcher = (query) => readClient.fetch(query).then();
 const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
-createdAt,
-_id,
-message,
-userEmail,
-username,
-userImage
+  createdAt,
+  _id,
+  message,
+  userEmail,
+  username,
+  userImage
 }`;
 
 export function ChatProvider({ children }) {
   const { data: session } = useSession();
-  const [publicMessages, setPublicMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [anonymousId, setAnonymousId] = useState();
   const [chatPageMounted, setChatPageMounted] = useState(false);
@@ -34,7 +32,6 @@ export function ChatProvider({ children }) {
 
   useEffect(() => {
     listenToChat();
-    return setPublicMessages([]);
   }, []);
 
   useEffect(() => {
@@ -50,14 +47,7 @@ export function ChatProvider({ children }) {
   }, [session]);
 
   const listenToChat = () => {
-    const query = `*[_type == "chatMessage"]  | order(createdAt asc) {
-      createdAt,
-      _id,
-      message,
-      userEmail,
-      username,
-      userImage
-    }`;
+    const query = key
     const subscription = readClient.listen(query).subscribe((update) => {
       mutate();
     });
@@ -69,11 +59,6 @@ export function ChatProvider({ children }) {
     await apiLikeAMessage(session, anonymousId, messageId);
   };
 
-  // Get public messages from Sanity
-  const getPublicMessages = async () => {
-    const data = await apiGetPublicChatMessages();
-  };
-
   // Create public message
   const createPublicMessage = async () => {
     const chatMessageDoc = {
@@ -83,7 +68,7 @@ export function ChatProvider({ children }) {
       userEmail: session?.user.email || anonymousId,
       userImage:
         session?.user.image ||
-        "https://lab-restful-api.s3.ap-northeast-2.amazonaws.com/profile.jpeg",
+        "",
       username: session?.user.name || "anonymous",
       chatroom: {
         _ref: "b1c0ca9b-3e12-4c3d-9fc0-6f4fe3a154f5",
@@ -92,6 +77,7 @@ export function ChatProvider({ children }) {
     };
 
     // TODO make it optimistic update
+
     try {
       setMessageInput("");
       await apiCreatePublicChatMessages(chatMessageDoc);

@@ -37,8 +37,8 @@ const PublicChat = () => {
     dummyRef.current.scrollIntoView({ behavior: "smooth" });
   }, [sanityMessages]);
 
-  const handleSubmit = () => {
-    createPublicMessage();
+  const handleSubmit = async () => {
+    await createPublicMessage();
   };
 
   return (

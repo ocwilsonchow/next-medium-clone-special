@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
 
   if (req.method === "POST") {
-    console.log("like", messageId, session.user.id)
     try {
       const likedMessage = await prisma.userLikedMessage.create({
         data: {
@@ -29,16 +28,13 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "DELETE") {
-    console.log("unlike")
     try {
       const deletedMessage = await prisma.userLikedMessage.delete({
         where: {
-          user: {
-            id: session?.user?.id,
-          },
-          message: {
-            id: messageId,
-          },
+          userId_messageId: {
+            userId: session?.user?.id,
+            messageId: messageId
+          }
         },
       });
       res.status(200).json(deletedMessage);

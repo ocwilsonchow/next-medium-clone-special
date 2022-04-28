@@ -67,9 +67,9 @@ model Chat {
 
 model UserLikedMessage {
   id        String  @id @default(cuid())
-  user      User    @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
-  message   Message @relation(fields: [messageId], references: [id])
+  message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
   messageId String
 
   @@unique([userId, messageId])
