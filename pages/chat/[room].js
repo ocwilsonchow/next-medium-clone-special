@@ -14,7 +14,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import ChatContainer from "../../components/supabaseChat/ChatContainer";
 import MessageInput from "../../components/supabaseChat/MessageInput";
 import useSWR from "swr";
-import axios from 'axios'
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -27,7 +26,7 @@ const PageDynamicRoom = () => {
     data: thisRoom,
     error,
     mutate,
-  } = useSWR(`/api/chat/${room}`, fetcher, { refreshInterval: 1000 });
+  } = useSWR(room ? `/api/chat/${room}` : null, fetcher, { refreshInterval: 1000 });
 
   useEffect(() => {
     setChatPageMounted(true);
