@@ -2,7 +2,6 @@ import { getSession } from "next-auth/react";
 import prisma from "../../../helpers/prisma";
 
 export default async function handler(req, res) {
-  const session = await getSession({ req });
   const { chatId } = req.query;
 
   if (req.method === "POST") {
