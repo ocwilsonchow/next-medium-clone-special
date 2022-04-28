@@ -21,7 +21,7 @@ const MessageInput = ({ roomId}) => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [messageInput, setMessageInput] = useState("");
-  const { data: thisRoom, mutate } = useSWR(`/api/chat/${roomId}`, fetcher);
+  const { data: thisRoom, mutate } = useSWR(roomId ? `/api/chat/${roomId}` : null, fetcher);
 
   // TODO setup error state | setup validation  with react-hook-form
   const handleCreateMessage = async () => {
