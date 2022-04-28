@@ -2,6 +2,7 @@ import { getSession } from "next-auth/react";
 import prisma from "../../../helpers/prisma";
 
 export default async function handler(req, res) {
+  const session = await getSession({ req });
   const { chatId } = req.query;
 
   if (req.method === "POST") {
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
         },
         include: {
           messages: {
-
+            take: 500,
             include: {
               sender: true,
               likedUsers: true,
@@ -32,6 +33,7 @@ export default async function handler(req, res) {
               }
             },
           },
+          users: true,
         },
       });
       res.status(200).json(foundChats);
