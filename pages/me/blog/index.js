@@ -5,7 +5,7 @@ import {
   Spinner,
   Fade,
 } from "@chakra-ui/react";
-import SinglePostPreview from "../../../components/SinglePost";
+import SinglePostPreview from "../../../components/blog/SinglePost";
 import { apiGetBlogPosts } from "../../../lib/blog";
 
 export default function PageBlogIndex({ posts }) {

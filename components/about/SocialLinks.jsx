@@ -33,6 +33,7 @@ const SocialLinks = () => {
           fontSize="lg"
           variant="outline"
           borderRadius="full"
+
         />
       </a>
       <a

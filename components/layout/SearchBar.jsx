@@ -9,7 +9,7 @@ const SearchBar = () => {
           <InputLeftElement pointerEvents="none">
             <SearchIcon />
           </InputLeftElement>
-          <Input type="tel" placeholder="Search" />
+          <Input placeholder="Search" />
         </InputGroup>
       </FormControl>
     </Box>

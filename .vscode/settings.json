@@ -1,12 +1,19 @@
 {
   "cSpell.words": [
     "auth",
+    "chat",
+    "context",
     "editorjs",
     "groq",
+    "immer",
     "next",
     "options",
     "rightbar",
+    "supabase",
     "topbar",
     "typewritter"
+  ],
+  "cSpell.ignoreWords": [
+    "chatrooms"
   ]
 }

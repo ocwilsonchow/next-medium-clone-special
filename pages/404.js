@@ -1,11 +1,14 @@
-import { Center, Flex } from '@chakra-ui/react'
+import { Center, Circle, Flex, VStack, Text, Square } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 const PageNotFound = () => {
   return (
-    <Flex >
-      <Center fontWeight="bold" fontSize="4xl">This Page Does Not Exist!</Center>
-    </Flex>
-  )
-}
+    <Center w="full" h="80vh">
+      <Text py={20} fontWeight="bold" fontSize="2xl">
+        Sorry, this Page Does Not Exist! 🙇🏻
+      </Text>
+    </Center>
+  );
+};
 
-export default PageNotFound
+export default PageNotFound;

@@ -1,28 +1,28 @@
-import { Center, Flex, Tag, Text, VStack } from "@chakra-ui/react";
-import { StreamChat } from "stream-chat";
-import { Chat } from "stream-chat-react";
-import Cookies from "universal-cookie";
+import { useEffect } from "react";
+import { Flex, Text } from "@chakra-ui/react";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useChat } from "../../context/ChatContext";
 
-import { ChannelContainer, ChannelListContainer } from '../../components/getstream/index'
 
-const apiKey = "93myuqwykf99";
-const client = StreamChat.getInstance(apiKey)
+const PageChatEngine = () => {
+  const { data: session } = useSession();
+  const { setChatPageMounted } = useChat();
 
-const PageChatHome = () => {
+  useEffect(() => {
+    setChatPageMounted(true);
+    return () => {
+      setChatPageMounted(false);
+    };
+  }, []);
+
   return (
-    <Flex flexDir="column" w="full">
-      <Center p={6}>
-        <Tag fontWeight="bold" fontSize="2xl">
-          Welcome to the Big Chatroom!
-        </Tag>
-      </Center>
-      <Chat client={client} theme="team dark">
-        <ChannelListContainer />
-
-        <ChannelContainer />
-      </Chat>
-    </Flex>
+    <Flex
+      flexDir="column"
+      rowGap={4}
+      alignItems="center"
+      position="relative"
+    >Supabase Chat</Flex>
   );
 };
 
-export default PageChatHome;
+export default PageChatEngine;

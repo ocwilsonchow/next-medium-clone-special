@@ -8,7 +8,7 @@ import React from "react";
 import ThumbsUp from "../../images/Thumbsup.png";
 
 const CallForContact = () => {
-  const boxColor = useColorModeValue("gray.50", 'gray.900')
+  const boxColor = useColorModeValue("gray.50", '#0A0E19')
 
   return (
     <Flex
@@ -33,7 +33,7 @@ const CallForContact = () => {
         >
           Get in touch today to explore opportunities for collaborations
         </Text>
-        <Link href="/contactWilson">
+        <Link href="/me/contactWilson">
           <Button colorScheme="twitter" size="lg" isTruncated>
             Leave a message
           </Button>

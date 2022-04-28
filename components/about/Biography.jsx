@@ -20,7 +20,6 @@ const Biography = () => {
         <TabList>
           <Tab>Background Story</Tab>
           <Tab>Education and Training</Tab>
-
         </TabList>
         <TabPanels>
           <TabPanel pt={10}>

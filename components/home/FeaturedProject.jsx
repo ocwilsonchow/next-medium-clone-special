@@ -12,7 +12,7 @@ import Link from "next/link";
 const FeaturedProject = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
-  const boxColor = useColorModeValue("gray.50", 'gray.900')
+  const boxColor = useColorModeValue("gray.50", "#0A0E19");
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -22,7 +22,7 @@ const FeaturedProject = () => {
     {
       title: " Next.js Blog",
       description:
-        "A blog and portfolio website built with Next, NextAuth, Sanity, Framer Motion, Chakra UI and Tailwind.",
+        "A blog and portfolio website built with Next, NextAuth, Sanity, Supabase, SWR, Prisma, Framer Motion, and Chakra UI.",
       image: personal,
       link: "/",
       remark: "See it on Vercel",
@@ -111,10 +111,12 @@ const FeaturedProject = () => {
                       width={310}
                       height={200}
                       objectFit="contain"
+                      draggable="false"
+
                     />
                   </Flex>
                   <Link href={item.link}>
-                    <Button mt={2} p={4} variant='outline'>
+                    <Button mt={2} p={4} variant="outline">
                       <Text>
                         {(item.remark && item.remark) || "Check it out"}
                       </Text>

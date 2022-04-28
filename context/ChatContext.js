@@ -1,31 +1,41 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import {
   apiCreatePublicChatMessages,
-  apiGetPublicChatMessages,
-  apiListenPublicChatMessages,
+  apiPushOnlineUser,
+  apiRemoveOnlineUser,
+  apiLikeAMessage,
 } from "../lib/chat";
 import { useSession } from "next-auth/react";
 import { readClient } from "../lib/sanity";
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
+import groq from "groq";
 
 const ChatContext = createContext();
+const fetcher = (query) => readClient.fetch(query).then();
+const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
+  createdAt,
+  _id,
+  message,
+  userEmail,
+  username,
+  userImage
+}`;
 
 export function ChatProvider({ children }) {
-  const [publicMessages, setPublicMessages] = useState([]);
-  const [newPublicMessage, setNewPublicMessage] = useState("");
-  const [messageInput, setMessageInput] = useState("");
   const { data: session } = useSession();
+  const [messageInput, setMessageInput] = useState("");
   const [anonymousId, setAnonymousId] = useState();
-  const [chatPageMounted, setChatPageMounted] = useState(false)
+  const [chatPageMounted, setChatPageMounted] = useState(false);
+  const [onPublicChat, setOnPublicChat] = useState();
+  const { data, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
-    getPublicMessages();
     listenToChat();
-    return setPublicMessages([]);
   }, []);
 
   useEffect(() => {
-// Generate an anonymous ID if not signed in
+    // Generate an anonymous ID if not signed in
     if (!session && !anonymousId) {
       setAnonymousId(uuidv4());
     }
@@ -34,36 +44,19 @@ export function ChatProvider({ children }) {
     if (session && anonymousId) {
       setAnonymousId();
     }
-  }, [session])
-
-  useEffect(() => {
-    setPublicMessages([...publicMessages, newPublicMessage]);
-  }, [newPublicMessage]);
+  }, [session]);
 
   const listenToChat = () => {
-    const query = `
-    *[_type == "chatMessage" ] {
-      chatroom->,
-      chatroom,
-      message,
-      createdAt,
-      _id,
-      username,
-      userEmail,
-      userImage
-    }
-  `;
-
+    const query = key
     const subscription = readClient.listen(query).subscribe((update) => {
-      const message = update.result;
-      setNewPublicMessage(message);
+      mutate();
     });
   };
 
-  // Get public messages from Sanity
-  const getPublicMessages = async () => {
-    const data = await apiGetPublicChatMessages();
-    setPublicMessages(data);
+  // Like a message
+  const likeAMessage = async (messageId) => {
+    console.log("liking");
+    await apiLikeAMessage(session, anonymousId, messageId);
   };
 
   // Create public message
@@ -75,7 +68,7 @@ export function ChatProvider({ children }) {
       userEmail: session?.user.email || anonymousId,
       userImage:
         session?.user.image ||
-        "https://lab-restful-api.s3.ap-northeast-2.amazonaws.com/profile.jpeg",
+        "",
       username: session?.user.name || "anonymous",
       chatroom: {
         _ref: "b1c0ca9b-3e12-4c3d-9fc0-6f4fe3a154f5",
@@ -83,24 +76,48 @@ export function ChatProvider({ children }) {
       },
     };
 
+    // TODO make it optimistic update
+
     try {
       setMessageInput("");
       await apiCreatePublicChatMessages(chatMessageDoc);
+      mutate();
     } catch (error) {
       setMessageInput("");
       console.error(error);
     }
   };
 
+  // Push Online User
+  const pushOnlineUser = async () => {
+    try {
+      await apiPushOnlineUser(session);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Remove Online User
+  const removeOnlineUser = async () => {
+    try {
+      await apiRemoveOnlineUser(session);
+    } catch (err) {
+      console.log(error);
+    }
+  };
+
   const contextData = {
-    publicMessages,
-    setPublicMessages,
     createPublicMessage,
     setMessageInput,
     messageInput,
     anonymousId,
     chatPageMounted,
-    setChatPageMounted
+    setChatPageMounted,
+    onPublicChat,
+    setOnPublicChat,
+    pushOnlineUser,
+    removeOnlineUser,
+    likeAMessage,
   };
 
   return (

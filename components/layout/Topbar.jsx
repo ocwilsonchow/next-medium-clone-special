@@ -3,7 +3,6 @@ import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";
 
-
 const Topbar = () => {
   return (
     <Flex
@@ -15,6 +14,7 @@ const Topbar = () => {
       justifyContent="space-between"
       alignItems="center"
       backdropFilter="blur(20px)"
+
     >
       <Link href="/">
         <Code

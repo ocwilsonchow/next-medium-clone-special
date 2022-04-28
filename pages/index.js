@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   Box,
   Button,
@@ -6,7 +5,6 @@ import {
   Fade,
   Flex,
   SlideFade,
-  Tag,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -17,12 +15,13 @@ import FeaturedProject from "../components/home/FeaturedProject";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/about/SocialLinks";
 
-const Typewritter = dynamic(() => import("../components/Typewritter"), {
+const Typewritter = dynamic(() => import("../components/home/Typewritter"), {
   ssr: false,
 });
 const skills = [
   "React.js",
   "Next.js 🔥",
+  "SWR",
   "Blender ⚙️ ",
   "Framer Motion",
   "Chakra UI",
@@ -36,12 +35,18 @@ const learnings = [
   "Graphql",
   "Typescript",
   "Motion Framer",
+  "Immer",
 ];
 
 export default function Home() {
   return (
     <Fade in>
-      <Flex flexDir="column" w="full" justifyContent="space-evenly">
+      <Flex
+        flexDir="column"
+        w="full"
+        justifyContent="space-evenly"
+        position="relative"
+      >
         <SlideFade in offsetX="-100px">
           <Box py="16%" w="100%" minH="550px" pb={20}>
             <Flex>
@@ -83,12 +88,12 @@ export default function Home() {
         >
           <Flex columnGap={3} rowGap={3} flexWrap="wrap">
             <Link href="/me/about">
-              <Button colorScheme="twitter" size="lg">
+              <Button colorScheme="twitter" size="lg" borderRadius="full">
                 My Story 🌍
               </Button>
             </Link>
             <Link href="/me/contactWilson">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" borderRadius="full">
                 Contact Me 💬
               </Button>
             </Link>

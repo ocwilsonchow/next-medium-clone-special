@@ -1,76 +1,98 @@
 import { useRef, useEffect } from "react";
 import {
   Flex,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   FormControl,
-  Button,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   IconButton,
-  Box,
   Input,
   Fade,
   Spinner,
   Text,
   Center,
-  VStack,
+  useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useChat } from "../../context/ChatContext";
+import groq from "groq";
+import useSWR from "swr";
+import { readClient } from "../../lib/sanity";
+
+const key = groq`*[_type == "chatMessage"]  | order(createdAt asc) {
+  createdAt,
+  _id,
+  message,
+  userEmail,
+  username,
+  userImage
+}`;
 
 import Message from "./Message";
 
 const PublicChat = () => {
   const dummyRef = useRef();
-  const { publicMessages, createPublicMessage, setMessageInput, messageInput } =
-    useChat();
+  const {
+    createPublicMessage,
+    setMessageInput,
+    messageInput,
+    setOnPublicChat,
+  } = useChat();
+  const fetcher = (query) => readClient.fetch(query);
+  const { data: sanityMessages, mutate } = useSWR(key, fetcher);
 
   useEffect(() => {
-    dummyRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [publicMessages]);
+    setOnPublicChat(true);
+    dummyRef.current.scrollIntoView();
+    return () => {
+      setOnPublicChat(false);
+    };
+  }, [sanityMessages]);
 
   const handleSubmit = () => {
     createPublicMessage();
   };
   return (
-   <Flex flexDir="column" bg='salmon'>
-      <Flex flexDir="column" maxH="60vh" w='full' overflow="auto" bg='salmon'>
-      {publicMessages.length === 0 && (
-        <Center p={4}>
-          <Text>Loading...</Text>
-          <Spinner />
-        </Center>
-      )}
-      {publicMessages.length !== 0 && publicMessages?.map((msg) => (
-        <Fade in key={msg?._id}>
-          <Message msg={msg} />
-        </Fade>
-      ))}
-      <div ref={dummyRef}></div>
-    </Flex>
-    <FormControl pt={3}>
-        <InputGroup>
-          <InputRightElement>
-            <IconButton
-              variant="ghost"
-              icon={<AiOutlineSend />}
-              onClick={() => handleSubmit()}
-              disabled={messageInput == ""}
+    <Flex flexDir="column" position="relative">
+      <Box p={4}>
+        <Flex flexDir="column" w="full" h="calc(100vh - 180px)" overflow="auto">
+          {sanityMessages?.length === 0 && (
+            <Center p={4}>
+              <Text>Loading...</Text>
+              <Spinner />
+            </Center>
+          )}
+          {sanityMessages?.length !== 0 &&
+            sanityMessages?.map((msg) => (
+              <Fade in key={msg?._id}>
+                <Message msg={msg} />
+              </Fade>
+            ))}
+          <div ref={dummyRef}></div>
+        </Flex>
+      </Box>
+
+      <Box position="sticky" bottom={4}>
+        <FormControl w="full">
+          <InputGroup>
+            <InputRightElement>
+              <IconButton
+                variant="ghost"
+                icon={<AiOutlineSend />}
+                onClick={() => handleSubmit()}
+                disabled={messageInput == ""}
+              />
+            </InputRightElement>
+            <Input
+              value={messageInput}
+              boxShadow="base"
+              placeholder="Message"
+              onChange={(e) => setMessageInput(e.target.value)}
             />
-          </InputRightElement>
-          <Input
-            value={messageInput}
-            placeholder="Message"
-            onChange={(e) => setMessageInput(e.target.value)}
-          />
-        </InputGroup>
-      </FormControl>
-   </Flex>
+          </InputGroup>
+        </FormControl>
+      </Box>
+    </Flex>
   );
 };
 

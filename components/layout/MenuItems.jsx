@@ -12,13 +12,8 @@ import Link from "next/link";
 import {
   AiFillHome,
   AiOutlineHome,
-  AiOutlineNotification,
-  AiFillNotification,
   AiFillFileText,
   AiOutlineFileText,
-  AiOutlineForm,
-  AiFillEdit,
-  AiOutlineHeart,
   AiTwotoneMail,
   AiOutlineMail,
   AiOutlineTrophy,
@@ -32,6 +27,8 @@ const MenuComponent = (props) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue("🌙 Dark", "☀️ Light");
   const Mode = useColorModeValue("🌙 Dark Mode", "☀️ Light Mode");
+  const bgColor = useColorModeValue("white", "#0D1220");
+
 
   const menuItems = [
     {
@@ -53,10 +50,16 @@ const MenuComponent = (props) => {
       link: "/me/blog",
     },
     {
+      name: "📷 Album",
+      fillIcon: <AiFillFileText />,
+      outlineIcon: <AiOutlineFileText />,
+      link: "/me/album",
+    },
+    {
       name: "💬 Chat",
       fillIcon: <BsChatDotsFill />,
       outlineIcon: <BsChatDots />,
-      link: "/me/chat",
+      link: "/chat/public",
     },
     {
       name: "📩 Contact",
@@ -78,7 +81,7 @@ const MenuComponent = (props) => {
       <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
         <Text>Menu</Text>
       </MenuButton>
-      <MenuList>
+      <MenuList bg={bgColor}>
         {menuItems.map((item, i) => (
           <Link key={i} href={item.link}>
             <MenuItem>
@@ -90,7 +93,6 @@ const MenuComponent = (props) => {
         ))}
 
         <MenuItem
-
           px={5}
           py={4}
           variant="link"
@@ -98,7 +100,7 @@ const MenuComponent = (props) => {
           onClick={toggleColorMode}
           {...props}
           transition="all ease 0.2s"
-          cursor='pointer'
+          cursor="pointer"
         >
           {Mode}
         </MenuItem>
