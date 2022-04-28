@@ -22,10 +22,14 @@ export default async function handler(req, res) {
         },
         include: {
           messages: {
-            take: 500,
+            take: 100,
             include: {
               sender: true,
-              likedUsers: true,
+              likedUsers: {
+                where: {
+                  userId: session?.user?.id
+                }
+              },
               _count: {
                 select: {
                   likedUsers: true
