@@ -33,7 +33,7 @@ export default async function handler(req, res) {
               }
             },
           },
-          users: true,
+          // users: true,
         },
       });
       res.status(200).json(foundChats);
