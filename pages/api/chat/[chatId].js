@@ -3,7 +3,7 @@ import prisma from "../../../helpers/prisma";
 
 export default async function handler(req, res) {
   const session = await getSession({ req });
-  const { chatId } = await req.query;
+  const { chatId } = req.query;
 
   if (req.method === "POST") {
     try {
@@ -26,11 +26,11 @@ export default async function handler(req, res) {
             include: {
               sender: true,
               likedUsers: true,
-              // _count: {
-              //   select: {
-              //     likedUsers: true
-              //   }
-              // }
+              _count: {
+                select: {
+                  likedUsers: true
+                }
+              }
             },
           },
           users: true,
