@@ -28,7 +28,7 @@ const Comments = ({ postId, slug }) => {
       username,
       userEmail,
       userImage,
-      createdAt,
+      publishedAt,
       comment,
     }
   }`;
@@ -58,9 +58,7 @@ const Comments = ({ postId, slug }) => {
 
   // Handle submit delete comment
   const handleDelete = async (id, i) => {
-    console.log(data)
     const comments = data.filter((item, index) => index!==i)
-    console.log('optimistic:', comments)
     const options = { optimisticData: comments, rollbackOnError: true}
     mutate(apiDeleteBlogComment(comments, id), options);
   };
