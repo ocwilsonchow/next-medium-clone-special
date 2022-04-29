@@ -96,12 +96,13 @@ const Message = ({ msg }) => {
                   colorScheme={
                     (isSender && "green") ||
                     (isAnonymousSender && "green") ||
-                    "twitter"
+                    "gray"
                   }
                   _hover={{ color: "blue.500" }}
                   px={3}
                   py={2}
                   borderRadius="xl"
+                  fontWeight="regular"
                   fontSize="sm"
                   display="flex"
                   flexWrap="wrap"
