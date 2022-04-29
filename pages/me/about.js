@@ -3,11 +3,6 @@ import {
   Flex,
   Fade,
   Box,
-  HStack,
-  VStack,
-  Avatar,
-  Code,
-  Tag,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import Biography from "../../components/about/Biography";
@@ -20,11 +15,11 @@ const PageAbout = () => {
       <Fade in>
         <Flex justifyContent="space-between" alignItems="center" flexWrap='wrap' >
           <Box mr={10} pb={10}>
-            <Text bg="none" fontWeight="bold" fontSize={["3xl","3xl","5xl","5xl"]} my={5}>
-              Hi, I am Wilson
+            <Text bg="none" fontWeight="bold" fontSize={["4xl","4xl","5xl","5xl"]} my={5}>
+              Wilson Chow
             </Text>
 
-            <Text mb={2} fontWeight="bold" fontSize={["sm","md","lg","lg"]}>
+            <Text mb={2} fontWeight="bold" fontSize={["md","lg","xl","2xl"]}>
               Full Stack Developer
             </Text>
             <Text mb={5} fontSize={["sm","md","lg","lg"]}>sinlongchow@gmail.com</Text>

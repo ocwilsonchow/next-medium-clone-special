@@ -56,7 +56,7 @@ const PageContactWilson = () => {
       <VStack>
         <Flex flexDir="column" py={6} maxW="800px">
           <Text fontWeight="bold" fontSize="4xl">
-            Leave a message to Wilson
+            Leave me a message
           </Text>
           <Box py={10}>
             <form onSubmit={handleSubmit(onSubmit)}>

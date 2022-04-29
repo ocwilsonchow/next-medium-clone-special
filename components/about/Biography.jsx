@@ -18,8 +18,8 @@ const Biography = () => {
     <Flex flexDir="column" py={10} fontWeight="light">
       <Tabs variant="enclosed" >
         <TabList >
-          <Tab _focus={{outline: 0}} >Background Story</Tab>
-          <Tab _focus={{outline: 0}} >Education and Training</Tab>
+          <Tab _focus={{outline: 0}} fontWeight="bold" >Background Story</Tab>
+          <Tab _focus={{outline: 0}} fontWeight="bold" >Education and Training</Tab>
         </TabList>
         <TabPanels>
           <TabPanel pt={10}>

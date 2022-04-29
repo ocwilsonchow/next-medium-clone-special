@@ -17,6 +17,7 @@ const Slider = () => {
     "Tailwind",
     "Chakra UI",
     "Motion Framer",
+    "Immer",
     "NextAuth",
     "Socket.io",
     "GraphCMS",

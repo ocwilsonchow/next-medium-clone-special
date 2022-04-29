@@ -5,6 +5,7 @@ import {
   Fade,
   Flex,
   SlideFade,
+  Square,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -29,13 +30,15 @@ const skills = [
   "Tailwind 💨",
 ];
 const learnings = [
+  "Typescript",
+  "Testing frameworks",
   "Three.js",
   "Redux",
   "RTK Query",
   "Graphql",
-  "Typescript",
-  "Motion Framer",
-  "Immer",
+  "Framer Motion",
+  "Elixir",
+  "Phoenix Liveview",
 ];
 
 export default function Home() {
@@ -48,9 +51,14 @@ export default function Home() {
         position="relative"
       >
         <SlideFade in offsetX="-100px">
-          <Box py="16%" w="100%" minH="550px" pb={20}>
+          <Box py="16%" w="100%" minH="550px" pb={20} position="relative">
             <Flex>
-              <Text fontWeight="bold" fontSize={["5xl", "6xl", "6xl", "7xl"]}>
+              <Text
+                fontWeight="bold"
+                fontSize={["5xl", "6xl", "6xl", "7xl"]}
+                bgGradient="linear(to-r, blue.400, blue.500)"
+                bgClip="text"
+              >
                 Hello
               </Text>
               <motion.div
@@ -88,7 +96,7 @@ export default function Home() {
         >
           <Flex columnGap={3} rowGap={3} flexWrap="wrap">
             <Link href="/me/about">
-              <Button colorScheme="twitter" size="lg" borderRadius="full">
+              <Button colorScheme="blue" size="lg" borderRadius="full">
                 My Story 🌍
               </Button>
             </Link>
@@ -152,7 +160,7 @@ export default function Home() {
         >
           <Box pb={20}>
             <Text fontWeight="bold" fontSize="3xl" mb={4}>
-              Libraries that I use
+              Technologies that I use
             </Text>
             <Slider />
           </Box>
@@ -166,7 +174,7 @@ export default function Home() {
         >
           <Box pb={20}>
             <Text fontWeight="bold" fontSize="3xl" mb={4}>
-              Technologies that I am learning and practising
+              Technologies that I am learning and exploring
             </Text>
             <Flex flexWrap="wrap">
               {learnings.map((tech, i) => (
