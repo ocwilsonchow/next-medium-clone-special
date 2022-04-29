@@ -6,6 +6,7 @@ import anothergram from "../../images/anothergram.png";
 import oxygen from "../../images/oxygen.png";
 import personal from "../../images/personal.png";
 import uber from "../../images/uberclone.png";
+import tie from "../../images/tie.png"
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -19,6 +20,14 @@ const FeaturedProject = () => {
   }, []);
 
   const projects = [
+     {
+      title: "Doctor Booking App",
+      description:
+        "An UI-focused doctor booking system built with Next.js and Chakra UI. This project was completed in 12 hours. ",
+      image: tie,
+      link: "/",
+      remark: "PM for demo link",
+    },
     {
       title: " Next.js Blog",
       description:
