@@ -25,8 +25,8 @@ const ChatContainer = () => {
      <SearchBar/>
       <Tabs>
         <TabList>
-          <Tab>Public</Tab>
-          <Tab>Private</Tab>
+          <Tab _focus={{outline: 0}} >Public</Tab>
+          <Tab _focus={{outline: 0}} >Private</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>

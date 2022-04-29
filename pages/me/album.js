@@ -36,7 +36,7 @@ const PageAlbum = ({ images }) => {
           <motion.div key={i} className="mr-1 p-1">
             <Flex
               flexDir="column"
-              p={6}
+              p={2}
               borderWidth="0.5px"
               borderRadius="base"
               bgColor={boxColor}

@@ -78,7 +78,7 @@ const MenuComponent = (props) => {
 
   return (
     <Menu>
-      <MenuButton as={Button} variant="ghost" rightIcon={<HamburgerIcon />}>
+      <MenuButton as={Button} variant="ghost" _focus={{outline: 0}} rightIcon={<HamburgerIcon /> }>
         <Text>Menu</Text>
       </MenuButton>
       <MenuList bg={bgColor}>

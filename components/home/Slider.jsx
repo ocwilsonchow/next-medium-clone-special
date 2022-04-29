@@ -1,9 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Box,
-  Text,
-  Flex,
   useColorModeValue,
   Img,
   Button,

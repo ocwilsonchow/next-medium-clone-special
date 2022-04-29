@@ -17,9 +17,9 @@ const Biography = () => {
   return (
     <Flex flexDir="column" py={10} fontWeight="light">
       <Tabs variant="enclosed" >
-        <TabList>
-          <Tab>Background Story</Tab>
-          <Tab>Education and Training</Tab>
+        <TabList >
+          <Tab _focus={{outline: 0}} >Background Story</Tab>
+          <Tab _focus={{outline: 0}} >Education and Training</Tab>
         </TabList>
         <TabPanels>
           <TabPanel pt={10}>
