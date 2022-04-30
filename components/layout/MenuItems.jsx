@@ -27,7 +27,7 @@ const MenuComponent = (props) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue("🌙 Dark", "☀️ Light");
   const Mode = useColorModeValue("🌙 Dark Mode", "☀️ Light Mode");
-  const bgColor = useColorModeValue("white", "#0D1220");
+  const bgColor = useColorModeValue("none", "none");
 
 
   const menuItems = [
@@ -81,7 +81,7 @@ const MenuComponent = (props) => {
       <MenuButton as={Button} variant="ghost" _focus={{outline: 0}} rightIcon={<HamburgerIcon /> }>
         <Text>Menu</Text>
       </MenuButton>
-      <MenuList bg={bgColor}>
+      <MenuList bg={bgColor} backdropFilter="blur(50px)">
         {menuItems.map((item, i) => (
           <Link key={i} href={item.link}>
             <MenuItem>
@@ -92,7 +92,7 @@ const MenuComponent = (props) => {
           </Link>
         ))}
 
-        <MenuItem
+        {/* <MenuItem
           px={5}
           py={4}
           variant="link"
@@ -103,7 +103,7 @@ const MenuComponent = (props) => {
           cursor="pointer"
         >
           {Mode}
-        </MenuItem>
+        </MenuItem> */}
       </MenuList>
     </Menu>
   );

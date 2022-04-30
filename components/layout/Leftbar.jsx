@@ -100,7 +100,7 @@ const Leftbar = () => {
         ))}
       </VStack>
       <VStack>
-        <ColorModeSwitcher />
+
       </VStack>
     </VStack>
   );

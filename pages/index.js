@@ -56,8 +56,8 @@ export default function Home() {
               <Text
                 fontWeight="bold"
                 fontSize={["5xl", "6xl", "6xl", "7xl"]}
-                bgGradient="linear(to-r, blue.400, blue.500)"
-                bgClip="text"
+                // bgGradient="linear(to-r, blue.100, blue.200)"
+                // bgClip="text"
               >
                 Hello
               </Text>
@@ -102,6 +102,7 @@ export default function Home() {
                 size="lg"
                 _hover={{ bgGradient: "linear(to-r, blue.600, blue.700)" }}
                 borderRadius="full"
+                borderWidth="0px"
 
               >
                 My Story 🌍

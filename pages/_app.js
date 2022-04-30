@@ -5,7 +5,7 @@ import { ChatProvider } from "../context/ChatContext";
 import { BlogProvider } from "../context/BlogContext";
 import { SupabaseChatProvider } from "../context/SupabaseChatContext";
 import Layout from "../components/layout/Layout";
-
+import theme from "../context/theme"
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -13,8 +13,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <SupabaseChatProvider>
         <BlogProvider>
           <ChatProvider>
-            <ChakraProvider>
-                <Layout>
+            <ChakraProvider theme={theme}>
+              <Layout>
                 <Component {...pageProps} />
               </Layout>
             </ChakraProvider>

@@ -39,13 +39,12 @@ const PageAlbum = ({ images }) => {
               p={2}
               borderWidth="0.5px"
               borderRadius="base"
-              bgColor={boxColor}
             >
               <Tooltip fontSize="md" label={img.description}>
                 <Img
                   borderRadius="base"
                   src={urlFor(img?.mainImage)}
-                  boxSize={{ base: "full", md: "250px" }}
+                  boxSize={{ md: "full", md: "250px" }}
                   objectFit="cover"
                   draggable="false"
                 />
