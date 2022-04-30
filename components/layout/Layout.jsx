@@ -9,11 +9,13 @@ const Layout = ({ children }) => {
   return (
     <Flex
       justifyContent="center"
-      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/react-ecommerce-app-48eb1.appspot.com/o/752854%20Large.jpeg?alt=media&token=2d22f653-57c2-4b84-921c-a36e1988e243')"
+      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/react-ecommerce-app-48eb1.appspot.com/o/752854%20Medium.jpeg?alt=media&token=65f04299-2573-467d-a2ec-0f77f64877ba')"
       backgroundPosition="center"
       bgSize="cover"
       backgroundRepeat="no-repeat"
       w="full"
+      transition="all ease 0.2s"
+
     >
       <Flex w="full" justifyContent="center" backdropFilter="blur(20px)" >
         <Flex maxW="1500px" justifyContent="space-between" w="full">
