@@ -86,12 +86,13 @@ const ChatRoomList = () => {
               py={3}
               px={4}
               borderWidth="0.5px"
-              borderColor={onPublicChat && "green.500"}
+              bg={onPublicChat && "green.500"}
+
               borderRadius="base"
               _hover={{ color: "blue.500" }}
               cursor="pointer"
             >
-              <Text fontWeight="medium" color={onPublicChat && "green.500"}>
+              <Text fontWeight="medium"   color={onPublicChat && "white"}>
                 🪐 Sanity Chat
               </Text>
             </LinkBox>
@@ -106,12 +107,12 @@ const ChatRoomList = () => {
                 borderWidth="0.5px"
                 borderRadius="base"
                 _hover={{ color: "blue.500" }}
-                borderColor={room.id === params && "green.500"}
+                bg={room.id === params && "green.500"}
                 cursor="pointer"
               >
                 <Text
                   fontWeight="medium"
-                  color={room.id === params && "green.500"}
+                  color={room.id === params && "white"}
                 >
                   {room.name}
                 </Text>

@@ -94,9 +94,16 @@ export default function Home() {
           transition={{ delay: 0.1 }}
           className="my-10"
         >
-          <Flex columnGap={3} rowGap={3} flexWrap="wrap">
-            <Link href="/me/about">
-              <Button colorScheme="blue" size="lg" borderRadius="full">
+          <Flex columnGap={3} rowGap={3} flexWrap="wrap" >
+            <Link href="/me/about ">
+              <Button
+                bgGradient="linear(to-r, blue.400, blue.600)"
+                color="white"
+                size="lg"
+                _hover={{ bgGradient: "linear(to-r, blue.600, blue.700)" }}
+                borderRadius="full"
+
+              >
                 My Story 🌍
               </Button>
             </Link>
