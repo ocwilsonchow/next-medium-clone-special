@@ -4,7 +4,7 @@ import Image from "next/image";
 import ecom from "../../images/react_ecom.png";
 import anothergram from "../../images/anothergram.png";
 import oxygen from "../../images/oxygen.png";
-import personal from "../../images/personal.png";
+import personal from "../../images/personal2.png";
 import uber from "../../images/uberclone.png";
 import tie from "../../images/tie.png";
 import { motion } from "framer-motion";
