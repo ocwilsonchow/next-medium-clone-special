@@ -27,7 +27,7 @@ const MenuComponent = (props) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue("🌙 Dark", "☀️ Light");
   const Mode = useColorModeValue("🌙 Dark Mode", "☀️ Light Mode");
-  const bgColor = useColorModeValue("none", "none");
+  const bgColor = useColorModeValue("gray.900", "blue.800");
 
 
   const menuItems = [

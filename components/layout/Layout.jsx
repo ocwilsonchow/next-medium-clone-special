@@ -17,8 +17,8 @@ const Layout = ({ children }) => {
       transition="all ease 0.2s"
 
     >
-      <Flex w="full" justifyContent="center" backdropFilter="blur(20px)" >
-        <Flex maxW="1500px" justifyContent="space-between" w="full">
+      <Flex w="full" justifyContent="center" backdropFilter="blur(10px)">
+        <Flex maxW="1500px" justifyContent="space-between" w="full" >
           <Box display={{ base: "none", md: "flex" }}>
             <Leftbar />
           </Box>
@@ -29,8 +29,9 @@ const Layout = ({ children }) => {
             h="100vh"
             overflow="auto"
             position="relative"
+
           >
-            <Flex w="full" position="sticky" top="0px" zIndex={2}>
+            <Flex w="full"  top="0px" zIndex={2}>
               <Topbar />
             </Flex>
             <Flex
@@ -39,6 +40,7 @@ const Layout = ({ children }) => {
               px={[4, 6, 6, 12]}
               maxW="1000px"
               w="95%"
+              zIndex={0}
             >
               {children}
             </Flex>

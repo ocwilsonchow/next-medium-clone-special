@@ -13,8 +13,8 @@ const Topbar = () => {
       mx={0.5}
       justifyContent="space-between"
       alignItems="center"
-      backdropFilter="blur(20px)"
-
+      backdropFilter="blur(10px)"
+      zIndex={5}
     >
       <Link href="/">
         <Code

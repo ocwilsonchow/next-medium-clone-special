@@ -49,8 +49,9 @@ export default function Home() {
         w="full"
         justifyContent="space-evenly"
         position="relative"
+
       >
-        <SlideFade in offsetX="-100px">
+        <SlideFade in offsetX="-100px" zIndex={-5}>
           <Box py="16%" w="100%" minH="550px" pb={20} position="relative">
             <Flex>
               <Text
