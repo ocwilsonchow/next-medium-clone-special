@@ -45,6 +45,12 @@ const Leftbar = () => {
       link: "/me/about",
     },
     {
+      name: "chat",
+      fillIcon: <BsChatDotsFill />,
+      outlineIcon: <BsChatDots />,
+      link: "/chat/public",
+    },
+    {
       name: "blog",
       fillIcon: <AiFillFileText />,
       outlineIcon: <AiOutlineFileText />,
@@ -56,12 +62,7 @@ const Leftbar = () => {
       outlineIcon: <AiOutlineCamera />,
       link: "/me/album",
     },
-    {
-      name: "chat",
-      fillIcon: <BsChatDotsFill />,
-      outlineIcon: <BsChatDots />,
-      link: "/chat/public",
-    },
+
     {
       name: "favorites",
       fillIcon: <AiTwotoneMail />,
@@ -99,9 +100,7 @@ const Leftbar = () => {
           </Link>
         ))}
       </VStack>
-      <VStack>
-
-      </VStack>
+      <VStack></VStack>
     </VStack>
   );
 };
