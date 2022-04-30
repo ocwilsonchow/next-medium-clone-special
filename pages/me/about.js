@@ -3,6 +3,7 @@ import {
   Flex,
   Fade,
   Box,
+  Avatar,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import Biography from "../../components/about/Biography";
@@ -24,9 +25,6 @@ const PageAbout = () => {
             </Text>
             <Text mb={5} fontSize={["sm","md","lg","lg"]}>sinlongchow@gmail.com</Text>
             <SocialLinks />
-          </Box>
-          <Box boxSize={{ base: "100%", md: "250px" }} pb={10}>
-            <Image src={me} width={250} height={250} objectFit="cover" />
           </Box>
         </Flex>
 

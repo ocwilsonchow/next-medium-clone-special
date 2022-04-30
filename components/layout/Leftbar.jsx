@@ -83,7 +83,7 @@ const Leftbar = () => {
       h="full"
       justifyContent="space-evenly"
       spacing={6}
-      w="150px"
+      w="100px"
     >
       <VStack spacing={6}>
         {session && <Avatar src={session?.user.image} size="sm" />}
