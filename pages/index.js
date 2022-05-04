@@ -79,8 +79,6 @@ export default function Home() {
               fontWeight="bold"
               fontSize={["5xl", "6xl", "6xl", "7xl"]}
               mb={6}
-               bgGradient="linear(to-r, blue.300, blue.400)"
-                bgClip="text"
             >
               I am Wilson
             </Text>

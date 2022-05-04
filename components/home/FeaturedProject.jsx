@@ -6,7 +6,7 @@ import anothergram from "../../images/anothergram.png";
 import oxygen from "../../images/oxygen.png";
 import personal from "../../images/personal2.png";
 import uber from "../../images/uberclone.png";
-import okie from "../../images/okie.png"
+import okie from "../../images/okie.png";
 import tie from "../../images/tie.png";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -29,6 +29,13 @@ const FeaturedProject = () => {
       link: "/",
       remark: "PM for demo link",
     },
+       {
+      title: "Next.js Landing Page",
+      description: "A modern landing page built with Chakra UI. ",
+      image: okie,
+      link: "/",
+      remark: "PM for demo link",
+    },
     {
       title: " Next.js Blog",
       description:
@@ -37,6 +44,7 @@ const FeaturedProject = () => {
       link: "/",
       remark: "See it on Vercel",
     },
+
     {
       title: " React E-Commerce",
       description:
@@ -45,14 +53,7 @@ const FeaturedProject = () => {
       link: "https://react-ecommerce-app-tan.vercel.app",
       remark: "See it on Vercel",
     },
-     {
-      title: "Next.js Landing Page",
-      description:
-        "A modern landing page built with Chakra UI. ",
-      image: okie,
-      link: "/",
-      remark: "See it on Vercel",
-    },
+
     {
       title: "Uber Blockchain Clone",
       description:
