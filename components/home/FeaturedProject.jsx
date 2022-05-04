@@ -6,6 +6,7 @@ import anothergram from "../../images/anothergram.png";
 import oxygen from "../../images/oxygen.png";
 import personal from "../../images/personal2.png";
 import uber from "../../images/uberclone.png";
+import okie from "../../images/okie.png"
 import tie from "../../images/tie.png";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -42,6 +43,14 @@ const FeaturedProject = () => {
         "An interactive online store built with React, Firestore, Firebase Authentication, Algolia, Stripe Checkout, PayPal and Chakra UI.",
       image: ecom,
       link: "https://react-ecommerce-app-tan.vercel.app",
+      remark: "See it on Vercel",
+    },
+     {
+      title: "Next.js Landing Page",
+      description:
+        "A modern landing page built with Chakra UI. ",
+      image: okie,
+      link: "/",
       remark: "See it on Vercel",
     },
     {

@@ -52,13 +52,11 @@ export default function Home() {
 
       >
         <SlideFade in offsetX="-100px" zIndex={-5}>
-          <Box py="16%" w="100%" minH="550px" pb={20} position="relative">
+          <Box py="19%" w="100%" minH="550px" pb={20} position="relative">
             <Flex>
               <Text
                 fontWeight="bold"
                 fontSize={["5xl", "6xl", "6xl", "7xl"]}
-                // bgGradient="linear(to-r, blue.100, blue.200)"
-                // bgClip="text"
               >
                 Hello
               </Text>
@@ -81,6 +79,8 @@ export default function Home() {
               fontWeight="bold"
               fontSize={["5xl", "6xl", "6xl", "7xl"]}
               mb={6}
+               bgGradient="linear(to-r, blue.300, blue.400)"
+                bgClip="text"
             >
               I am Wilson
             </Text>
