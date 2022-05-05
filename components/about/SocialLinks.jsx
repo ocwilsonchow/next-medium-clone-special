@@ -1,16 +1,6 @@
 import {
-  Box,
-  Button,
-  Center,
-  Code,
-  Collapse,
-  Fade,
-  Flex,
   HStack,
   IconButton,
-  SlideFade,
-  Tag,
-  Text,
 } from "@chakra-ui/react"
 import {
   AiOutlineGithub,
