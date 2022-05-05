@@ -6,7 +6,7 @@ import anothergram from "../../images/anothergram.png";
 import oxygen from "../../images/oxygen.png";
 import personal from "../../images/personal2.png";
 import uber from "../../images/uberclone.png";
-import okie from "../../images/okie.png";
+import okie from "../../images/okiee.png";
 import tie from "../../images/tie.png";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -33,8 +33,8 @@ const FeaturedProject = () => {
       title: "Next.js Landing Page",
       description: "A modern landing page built with Chakra UI. ",
       image: okie,
-      link: "/",
-      remark: "PM for demo link",
+      link: "https://next-landing-page-sage-tau.vercel.app/",
+      remark: "See it on Vercel",
     },
     {
       title: " Next.js Blog",
