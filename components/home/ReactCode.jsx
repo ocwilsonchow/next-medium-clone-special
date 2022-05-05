@@ -12,7 +12,7 @@ const ReactCode = () => {
   return (
     <Flex
       flexDir="column"
-      bg="gray.600"
+      bg="gray.800"
       borderRadius="md"
       borderColor="gray.500"
       borderWidth="0.5px"
@@ -36,7 +36,7 @@ const ReactCode = () => {
         flexDir="column"
         w="full"
         h="70px"
-        bg="gray.700"
+        bg="gray.900"
         color="gray.200"
         p={4}
         borderBottomRadius="md"
