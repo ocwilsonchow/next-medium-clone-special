@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <Flex
       justifyContent="center"
-      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/react-ecommerce-app-48eb1.appspot.com/o/bg%20Medium.jpeg?alt=media&token=5e5e0dbb-5c58-4c7f-88c7-48f2aa09c946')"
+      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/react-ecommerce-app-48eb1.appspot.com/o/macos-monterey-stock-green-dark-mode-layers-5k-6016x6016-5888%20Medium.jpeg?alt=media&token=60d75662-138c-4700-b387-f772b42fa639')"
       backgroundPosition="center"
       bgSize="cover"
       backgroundRepeat="no-repeat"
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       transition="all ease 0.2s"
 
     >
-      <Flex w="full" justifyContent="center" backdropFilter="blur(30px)">
+      <Flex w="full" justifyContent="center" backdropFilter="blur(25px)">
         <Flex maxW="1450px" justifyContent="space-between" w="full" >
           <Box display={{ base: "none", md: "flex" }} ml={{lg: 0, xl:20}}>
             <Leftbar />

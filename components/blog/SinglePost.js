@@ -82,17 +82,6 @@ const SinglePostPreview = ({ post }) => {
                     {tag.label}
                   </Tag>
                 ))}
-                <Tag
-                  my={1}
-                  borderRadius="full"
-                  fontSize="xs"
-                   fontWeight="light"
-                  mr={2.5}
-                  variant="subtle"
-
-                >
-                 Like
-                </Tag>
               </Flex>
             </Flex>
             <Img
