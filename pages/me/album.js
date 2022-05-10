@@ -8,6 +8,8 @@ import {
   Img,
   Button,
   Tooltip,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { apiGetGalleryImages } from "../../lib/gallery";
 import imageUrlBuilder from "@sanity/image-url";
@@ -31,28 +33,30 @@ const PageAlbum = ({ images }) => {
         </Text>
       </Box>
 
-      <Flex flexWrap="wrap" justifyContent="center" pb={6}>
+      <Grid templateColumns="repeat(6, 1fr)" templateRows="repeat(1, 1fr)" pb={6}>
         {images.map((img, i) => (
-          <motion.div key={i} className="mr-1 p-1">
-            <Flex
-              flexDir="column"
-              p={2}
-              borderWidth="0.5px"
-              borderRadius="base"
-            >
-              <Tooltip fontSize="md" label={img.description}>
-                <Img
-                  borderRadius="base"
-                  src={urlFor(img?.mainImage)}
-                  boxSize={{ md: "full", md: "250px" }}
-                  objectFit="cover"
-                  draggable="false"
-                />
-              </Tooltip>
-            </Flex>
-          </motion.div>
+          <GridItem
+            colSpan={{ base: 3, sm: 3, md: 2 }}
+            rowSpan={1}
+            flexDir="column"
+            p={2}
+            borderWidth="0.5px"
+            borderRadius="base"
+            key={i}
+          >
+            <Tooltip fontSize="md" label={img.description}>
+              <Img
+                borderRadius="base"
+                src={urlFor(img?.mainImage)}
+                boxSize="full"
+
+                objectFit="cover"
+                draggable="false"
+              />
+            </Tooltip>
+          </GridItem>
         ))}
-      </Flex>
+      </Grid>
     </>
   );
 };
@@ -65,6 +69,6 @@ export async function getStaticProps() {
     props: {
       images,
     },
-    revalidate: 60*60*12,
+    revalidate: 60 * 60 * 12,
   };
 }
