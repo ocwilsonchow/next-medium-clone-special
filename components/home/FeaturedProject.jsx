@@ -8,6 +8,7 @@ import personal from "../../images/personal3.png";
 import uber from "../../images/uberclone.png";
 import okie from "../../images/okiee.png";
 import tie from "../../images/tie.png";
+import bni from "../../images/bni.png";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -22,6 +23,14 @@ const FeaturedProject = () => {
 
   const projects = [
     {
+      title: "Business Landing Page",
+      description:
+        "A Next.js landing page for a business organization.",
+      image: bni,
+      link: "https://bni-faith.vercel.app",
+      remark: "See it on Vercel",
+    },
+    {
       title: "Doctor Booking App",
       description:
         "An UI-focused doctor booking system built with Next.js and Chakra UI. This project was completed in 12 hours. ",
@@ -29,7 +38,7 @@ const FeaturedProject = () => {
       link: "/",
       remark: "PM for demo link",
     },
-       {
+    {
       title: "Next.js Landing Page",
       description: "A modern landing page built with Chakra UI. ",
       image: okie,
