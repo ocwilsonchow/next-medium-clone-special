@@ -23,27 +23,12 @@ const FeaturedProject = () => {
 
   const projects = [
     {
-      title: "Business Landing Page",
-      description:
-        "A Next.js landing page for a business organization.",
-      image: bni,
-      link: "https://bni-faith.vercel.app",
-      remark: "See it on Vercel",
-    },
-    {
       title: "Doctor Booking App",
       description:
         "An UI-focused doctor booking system built with Next.js and Chakra UI. This project was completed in 12 hours. ",
       image: tie,
       link: "/",
       remark: "PM for demo link",
-    },
-    {
-      title: "Next.js Landing Page",
-      description: "A modern landing page built with Chakra UI. ",
-      image: okie,
-      link: "https://next-landing-page-sage-tau.vercel.app/",
-      remark: "See it on Vercel",
     },
     {
       title: " Next.js Blog",
@@ -69,6 +54,20 @@ const FeaturedProject = () => {
         "A Next.js clone of the Uber app, built with Mapbox, Ethers and Tailwind.",
       image: uber,
       link: "https://next-uber-clone-blockchain.vercel.app/",
+      remark: "See it on Vercel",
+    },
+    {
+      title: "Business Landing Page",
+      description: "A Next.js landing page for a business organization.",
+      image: bni,
+      link: "https://bni-faith.vercel.app",
+      remark: "See it on Vercel",
+    },
+      {
+      title: "Next.js Landing Page",
+      description: "A modern landing page built with Chakra UI. ",
+      image: okie,
+      link: "https://next-landing-page-sage-tau.vercel.app/",
       remark: "See it on Vercel",
     },
     {
@@ -137,8 +136,8 @@ const FeaturedProject = () => {
                     <Image
                       src={item.image}
                       width={310}
-                      height={200}
-                      objectFit="contain"
+                      height={210}
+                      objectFit="cover"
                       draggable="false"
                     />
                   </Flex>
