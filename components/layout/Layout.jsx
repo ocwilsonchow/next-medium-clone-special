@@ -4,12 +4,11 @@ import Rightbar from "./Rightbar";
 import Topbar from "./Topbar";
 
 const Layout = ({ children }) => {
-  const bgColor = useColorModeValue("white", "#0D1220");
 
   return (
     <Flex
       justifyContent="center"
-      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/react-ecommerce-app-48eb1.appspot.com/o/macos-monterey-stock-green-dark-mode-layers-5k-6016x6016-5888%20Medium.jpeg?alt=media&token=60d75662-138c-4700-b387-f772b42fa639')"
+      backgroundImage="url('/macbg.jpeg')"
       backgroundPosition="center"
       bgSize="cover"
       backgroundRepeat="no-repeat"

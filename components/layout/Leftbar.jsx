@@ -84,7 +84,7 @@ const Leftbar = () => {
       h="full"
       justifyContent="space-evenly"
       spacing={6}
-      w="100px"
+      w="80px"
     >
       <VStack spacing={6}>
         {session && <Avatar src={session?.user.image} size="sm" />}
@@ -95,7 +95,7 @@ const Leftbar = () => {
               variant="ghost"
               fontSize="20px"
               _focus={{ outline: 0 }}
-              color={q === item.link && "blue.400"}
+              color={q === item.link && "blue.300"}
             />
           </Link>
         ))}
