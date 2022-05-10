@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
 
     >
       <Flex w="full" justifyContent="center" backdropFilter="blur(25px)">
-        <Flex maxW="1450px" justifyContent="space-between" w="full" >
+        <Flex maxW="1800px" justifyContent="space-between" w="full" >
           <Box display={{ base: "none", md: "flex" }} ml={{lg: 0, xl:20}}>
             <Leftbar />
           </Box>

@@ -52,11 +52,11 @@ export default function Home() {
 
       >
         <SlideFade in offsetX="-100px" zIndex={-5}>
-          <Box py="19%" w="100%" minH="550px" pb={20} position="relative">
+          <Box py="100px" w="100%" minH="550px" pb={20} position="relative">
             <Flex>
               <Text
                 fontWeight="bold"
-                fontSize={["5xl", "6xl", "6xl", "7xl"]}
+                fontSize={["5xl", "6xl", "7xl", "8xl"]}
               >
                 Hello
               </Text>
@@ -69,7 +69,7 @@ export default function Home() {
                 <Text
                   ml={2}
                   fontWeight="bold"
-                  fontSize={["5xl", "6xl", "6xl", "7xl"]}
+                  fontSize={["5xl", "6xl", "67xl", "8xl"]}
                 >
                   👋🏻
                 </Text>
@@ -77,7 +77,7 @@ export default function Home() {
             </Flex>
             <Text
               fontWeight="bold"
-              fontSize={["5xl", "6xl", "6xl", "7xl"]}
+              fontSize={["5xl", "6xl", "7xl", "8xl"]}
               mb={6}
             >
               I am Wilson
