@@ -1,4 +1,4 @@
-import { Code, HStack, Flex, Box } from "@chakra-ui/react";
+import { Code, Button, Flex, Box } from "@chakra-ui/react";
 import MenuItems from "../layout/MenuItems";
 import React, { useRef } from "react";
 import Link from "next/link";

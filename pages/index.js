@@ -66,13 +66,13 @@ export default function Home() {
                 className="inline-flex"
                 transition={{ delay: 0.5 }}
               >
-                <Text
+                {/* <Text
                   ml={2}
                   fontWeight="bold"
                   fontSize={["5xl", "6xl", "67xl", "8xl"]}
                 >
                   👋🏻
-                </Text>
+                </Text> */}
               </motion.div>
             </Flex>
             <Text

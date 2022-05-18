@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import {
   Box,
   Text,
-  Flex,
-  useColorModeValue,
   Img,
   Button,
   Tooltip,
@@ -15,8 +13,6 @@ import { apiGetGalleryImages } from "../../lib/gallery";
 import imageUrlBuilder from "@sanity/image-url";
 
 const PageAlbum = ({ images }) => {
-  const boxColor = useColorModeValue("gray.50", "#0A0E19");
-
   const builder = imageUrlBuilder({
     projectId: "zmau43jq",
     dataset: "production",
@@ -69,6 +65,5 @@ export async function getStaticProps() {
     props: {
       images,
     },
-    revalidate: 60 * 60 * 12,
   };
 }

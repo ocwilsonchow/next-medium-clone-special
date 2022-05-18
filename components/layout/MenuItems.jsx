@@ -21,14 +21,8 @@ import {
   AiFillSetting,
 } from "react-icons/ai";
 import { BsChatDots, BsChatDotsFill } from "react-icons/bs";
-import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
 
 const MenuComponent = (props) => {
-  const { toggleColorMode } = useColorMode();
-  const text = useColorModeValue("🌙 Dark", "☀️ Light");
-  const Mode = useColorModeValue("🌙 Dark Mode", "☀️ Light Mode");
-  const bgColor = useColorModeValue("gray.900", "blue.800");
-
 
   const menuItems = [
     {
@@ -81,7 +75,7 @@ const MenuComponent = (props) => {
       <MenuButton as={Button} variant="ghost" _focus={{outline: 0}} rightIcon={<HamburgerIcon /> }>
         <Text>Menu</Text>
       </MenuButton>
-      <MenuList bg={bgColor} backdropFilter="blur(50px)">
+      <MenuList bg="gray.300" color="black">
         {menuItems.map((item, i) => (
           <Link key={i} href={item.link}>
             <MenuItem>
@@ -91,19 +85,6 @@ const MenuComponent = (props) => {
             </MenuItem>
           </Link>
         ))}
-
-        {/* <MenuItem
-          px={5}
-          py={4}
-          variant="link"
-          aria-label={`Switch to ${text} mode`}
-          onClick={toggleColorMode}
-          {...props}
-          transition="all ease 0.2s"
-          cursor="pointer"
-        >
-          {Mode}
-        </MenuItem> */}
       </MenuList>
     </Menu>
   );

@@ -15,7 +15,6 @@ import Link from "next/link";
 const FeaturedProject = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0);
-  const boxColor = useColorModeValue("gray.50", "#0A0E19");
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -63,7 +62,7 @@ const FeaturedProject = () => {
       link: "https://bni-faith.vercel.app",
       remark: "See it on Vercel",
     },
-      {
+    {
       title: "Next.js Landing Page",
       description: "A modern landing page built with Chakra UI. ",
       image: okie,
